@@ -1,0 +1,168 @@
+/********************* variables ************************/
+:root {
+    --light-text-color: #cacaca;
+    --dark-background-color: #666666;
+
+    --dark-text-color: #353535;
+    --light-background-color: #ffffff;
+
+    --accent-color: rgb(131, 115, 79);
+  }
+
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* border: 1px dotted rgb(97, 97, 97); */
+}
+
+/********************* layout ************************/
+
+body {
+    font-family:"";
+    border: 0px;
+    color: var(--dark-text-color);
+    background-color: var(--light-background-color);
+    overflow-x: hidden;
+}
+
+.layout {
+    width: 100dvw;
+    min-height: 100dvh;
+    /* background-color: gray; */
+
+    display: grid;
+    grid-template-columns: 5% 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "left-navigation contents";
+    gap: 0px 0px;
+}
+
+
+/********************* left navigation buttons ************************/
+
+.left-navigation-buttons {
+    width: 5dvw;
+    min-height: 100dvh;
+    /* background-color: rgb(160, 160, 143); */
+
+    grid-area: left-navigation;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: center;
+    gap:10px 0;
+    position: fixed;
+}
+
+.left-navigation-buttons > * {
+    /* background-color: rgb(175, 175, 175); */
+    width: 100%;
+    height: 5%;
+    padding: 10px;
+    border: 1px dotted black;
+}
+
+.left-navigation-buttons > *:last-child {
+    margin-bottom: 40px;
+}
+
+/********************* contents ************************/
+.contents {
+    width: 90dvw;
+    min-height: 100dvh;
+    /* height: auto; */
+    /* background-color: beige; */
+
+    grid-area: contents;
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.main-comics {
+    min-height: 100dvh;
+    width: 100%;
+    display: flex;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap:10px 00px;
+}
+
+.main-comics .chapter-title {
+
+    /* background-color: grey; */
+    font-size: 1.2em;
+    padding: 3dvh 2dvw;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-comics .comic-item {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.end-of-page-buttons {
+    height: 10dvh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap:0 10px;
+    margin: auto;
+}
+
+.end-of-page-buttons > * {
+/* background-color: var(--dark-background-color); */
+/* color: var(--light-background-color); */
+padding: 10px 10px;
+border: 1px dotted black;
+}
+
+select#chapter-select {
+    background-color: rgba(255, 255, 255, 0);
+    border: rgba(255, 255, 255, 0);;
+}
+
+
+
+/********************* responsive ************************/
+
+
+@media screen and (min-width: 768px) {
+    .main-comics, .chapter-title, .comic-item, .end-of-page-buttons {
+        width: 55%;
+     }
+}
+
+@media screen and (min-width: 1024px) {
+    .main-comics, .chapter-title, .comic-item, .end-of-page-buttons {
+        width: 40%;
+     }
+}
+
+@media screen and (min-width: 1200px) {
+    .main-comics, .chapter-title, .comic-item, .end-of-page-buttons{
+        width: 35%;
+     }
+}
