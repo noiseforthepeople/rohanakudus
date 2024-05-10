@@ -166,7 +166,6 @@ body {
 .end-of-page-buttons {
     height: 10dvh;
     width: 100%;
-
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -175,6 +174,7 @@ body {
     align-items: center;
     gap:0 10px;
     margin: auto;
+    /* background-color: gray; */
 }
 
 .end-of-page-buttons > * {
@@ -184,33 +184,41 @@ padding: 7px 10px;
 /* border: 1px dotted black; */
 border-radius: 12px;
 cursor: pointer;
+
 }
 
 
 .end-of-page-first, .end-of-page-last {
     background-color: #000000;
-    border: 3px solid #000000;
+    /* border: 3px solid #000000; */
     font-weight: 800;
 }
 
 .end-of-page-prev, .end-of-page-next {
     background-color:#BB1436;
-    border: 3px solid #bb1436;
+    /* border: 3px solid #bb1436; */
     font-weight: 800;
 }
 
 .end-of-page-select {
-    border: 3px solid #bb1436;
+/* background-color: red; */
+padding: 0 1dvw;
+border: 3px solid #bb1436;
+border-radius: 12px;
     /* background-color: ; */
 }
 
 select#chapter-select {
     font-weight: 400;
     background-color: rgba(255, 255, 255, 0);
-    font-size: 1em;
+    height: 100%;
+
     /* color: var(--dark-background-color); */
     border: none;
     cursor: pointer;
+    padding: 7px 0;
+    text-align-last:center;
+    max-width: 14ch;
 }
 
 
@@ -225,7 +233,7 @@ select#chapter-select {
     }
 
     .main-comics, .chapter-title, .comic-item, .end-of-page-buttons {
-        width: 55%;
+        width: 80%;
      }
 }
 
@@ -236,7 +244,7 @@ select#chapter-select {
     }
 
     .main-comics, .chapter-title, .comic-item, .end-of-page-buttons {
-        width: 40%;
+        width: 70%;
      }
 }
 
@@ -246,6 +254,6 @@ select#chapter-select {
     }
 
     .main-comics, .chapter-title, .comic-item, .end-of-page-buttons{
-        width: 35%;
+        width: 65%;
      }
 }
