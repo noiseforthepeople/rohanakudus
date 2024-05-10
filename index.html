@@ -3,46 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohana Kudus Webcomic</title>
+    <title>Komik Roehana Koeddoes</title>
     <link rel="stylesheet" href="frontend/styles.css">
-    <style></style>
+    <link rel="icon" href="/frontend/favicon.gif">
+    <style>
+    </style>
 </head>
 <body>
 <div class="layout">
 
 
     <div class="left-navigation-buttons">
-        <div class="left-navigation-sound">a</div>
-        <div class="left-navigation-aboutComic">b</div>
-        <div class="left-navigation-author">c</div>
+        <div class="left-navigation-aboutComic"></div>
+        <div class="left-navigation-sound"></div>
+        <div class="left-navigation-author"></div>
     </div>
 
     <div class="contents">
 
         <div class="main-comics">
-            <div class="chapter-title">chapter 1. prolog</div>
-            <img class="comic-item" src="comics/[SKETCH] Prolog_Page 1.jpg">
-            <img class="comic-item" src="comics/[SKETCH] Prolog_Page 2.jpg">
-            <img class="comic-item" src="comics/[SKETCH] Prolog_Page 3.jpg">
-            <img class="comic-item" src="comics/[SKETCH] Prolog_Page 4.jpg">
+            <!-- <div class="chapter-title">chapter 1. prolog</div> -->
+            <img class="comic-item" src="comics/01_01_PROLOG/000.png">
+            <div class="special-panel i-001">
+            <img class="special-item i-001-c" src="comics/01_01_PROLOG/001-1.png">
+            <img class="special-item i-001-c" src="comics/01_01_PROLOG/001-2.png">
+            <img class="special-item i-001-c" src="comics/01_01_PROLOG/001-3.png">
+            </div>
+            <img class="comic-item" src="comics/01_01_PROLOG/002.png">
+            <img class="comic-item" src="comics/01_01_PROLOG/003.png">
         </div>
 
         <div class="end-of-page-buttons">
-            <div class="end-of-page-prev">prev</div>
+            <div class="end-of-page-first">FIRST</div>
+            <div class="end-of-page-prev">PREV</div>
             <div class="end-of-page-select">
                 <select autocomplete="off" id="chapter-select">
-                    <option selected value="1">chapter 1: prolog</option>
+                    <option selected value="1">Prolog, page 1</option>
                     <option value="2">chapter 2: ipsum</option>
                     <option value="3">chapter 3: lorem</option>
                     <option value="4">chapter 4: padang</option>
                   </select>
             </div>
-            <div class="end-of-page-next">next</div>
+            <div class="end-of-page-next">NEXT</div>
+            <div class="end-of-page-last">LAST</div>
         </div>
 
 </div>
 
 </div>
 </body>
+<script src="comics/01_01_PROLOG/interaction.js"></script>
 <script src="frontend/frontend.js"></script>
 </html>

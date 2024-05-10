@@ -1,10 +1,13 @@
 /********************* variables ************************/
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 :root {
     --light-text-color: #cacaca;
     --dark-background-color: #666666;
 
     --dark-text-color: #353535;
-    --light-background-color: #ffffff;
+    --light-background-color: #FEF4EA;
 
     --accent-color: rgb(131, 115, 79);
   }
@@ -15,12 +18,15 @@
     margin: 0;
     padding: 0;
     /* border: 1px dotted rgb(97, 97, 97); */
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 /********************* layout ************************/
 
 body {
-    font-family:"";
+
     border: 0px;
     color: var(--dark-text-color);
     background-color: var(--light-background-color);
@@ -44,8 +50,8 @@ body {
 /********************* left navigation buttons ************************/
 
 .left-navigation-buttons {
-    width: 5dvw;
-    min-height: 100dvh;
+    width: 10dvw;
+    height: 95vh;
     /* background-color: rgb(160, 160, 143); */
 
     grid-area: left-navigation;
@@ -54,20 +60,36 @@ body {
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-content: center;
+    align-items: center;
     gap:10px 0;
     position: fixed;
+    z-index: 999;
 }
 
 .left-navigation-buttons > * {
-    /* background-color: rgb(175, 175, 175); */
-    width: 100%;
-    height: 5%;
+    background-color: rgb(175, 175, 175);
+    width: 1.4dvw;
+    height: 1.4dvw;
     padding: 10px;
-    border: 1px dotted black;
+    /* border: 1px dotted black; */
+    border-radius: 50%;
+    border: 1px solid var(--light-background-color);
 }
 
 .left-navigation-buttons > *:last-child {
     margin-bottom: 40px;
+}
+
+.left-navigation-sound {
+    background-color: #BCC602;
+}
+
+.left-navigation-aboutComic {
+    background-color: #BB1436;
+}
+
+.left-navigation-author {
+    background-color: #FEBF0F;
 }
 
 /********************* contents ************************/
@@ -118,6 +140,29 @@ body {
     display: block;
 }
 
+.main-comics .special-panel {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.special-panel .special-item {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.special-panel .special-item:not(:first-child) {
+    position: absolute;
+}
+
+
 .end-of-page-buttons {
     height: 10dvh;
     width: 100%;
@@ -134,14 +179,38 @@ body {
 
 .end-of-page-buttons > * {
 /* background-color: var(--dark-background-color); */
-/* color: var(--light-background-color); */
-padding: 10px 10px;
-border: 1px dotted black;
+color: var(--light-background-color);
+padding: 7px 10px;
+/* border: 1px dotted black; */
+border-radius: 12px;
+cursor: pointer;
+}
+
+
+.end-of-page-first, .end-of-page-last {
+    background-color: #000000;
+    border: 3px solid #000000;
+    font-weight: 800;
+}
+
+.end-of-page-prev, .end-of-page-next {
+    background-color:#BB1436;
+    border: 3px solid #bb1436;
+    font-weight: 800;
+}
+
+.end-of-page-select {
+    border: 3px solid #bb1436;
+    /* background-color: ; */
 }
 
 select#chapter-select {
+    font-weight: 400;
     background-color: rgba(255, 255, 255, 0);
-    border: rgba(255, 255, 255, 0);;
+    font-size: 1em;
+    /* color: var(--dark-background-color); */
+    border: none;
+    cursor: pointer;
 }
 
 
@@ -150,18 +219,32 @@ select#chapter-select {
 
 
 @media screen and (min-width: 768px) {
+
+    .left-navigation-buttons {
+        width: 7dvw;
+    }
+
     .main-comics, .chapter-title, .comic-item, .end-of-page-buttons {
         width: 55%;
      }
 }
 
 @media screen and (min-width: 1024px) {
+
+    .left-navigation-buttons {
+        width: 6dvw;
+    }
+
     .main-comics, .chapter-title, .comic-item, .end-of-page-buttons {
         width: 40%;
      }
 }
 
 @media screen and (min-width: 1200px) {
+    .left-navigation-buttons {
+        width: 5dvw;
+    }
+
     .main-comics, .chapter-title, .comic-item, .end-of-page-buttons{
         width: 35%;
      }
