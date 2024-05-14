@@ -74,6 +74,13 @@ body {
     /* border: 1px dotted black; */
     border-radius: 50%;
     border: 1px solid var(--light-background-color);
+    cursor: pointer;
+}
+
+.left-navigation-buttons > *:hover { 
+    background-color: #000000;
+    transform: scale(1.2);
+    transition: all 0.2s ease-in-out;
 }
 
 .left-navigation-buttons > *:last-child {
@@ -93,7 +100,7 @@ body {
 }
 
 /********************* contents ************************/
-.contents {
+#contents {
     width: 90dvw;
     min-height: 100dvh;
     /* height: auto; */
@@ -110,7 +117,7 @@ body {
 }
 
 .main-comics {
-    min-height: 100dvh;
+    min-height: 90dvh;
     width: 100%;
     display: flex;
     margin: auto;
@@ -127,7 +134,7 @@ body {
 .main-comics .chapter-title {
 
     /* background-color: grey; */
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 3dvh 2dvw;
     width: 100%;
     display: flex;
@@ -172,7 +179,7 @@ body {
     justify-content: center;
     align-content: center;
     align-items: center;
-    gap:0 10px;
+    gap:0 5px;
     margin: auto;
     /* background-color: gray; */
 }
@@ -180,31 +187,39 @@ body {
 .end-of-page-buttons > * {
 /* background-color: var(--dark-background-color); */
 color: var(--light-background-color);
-padding: 7px 10px;
+padding: 5px 7px;
 /* border: 1px dotted black; */
 border-radius: 12px;
 cursor: pointer;
+font-size: 0.9em;
+}
 
+
+.end-of-page-buttons > *:hover { 
+    background-color: #00000000;
+    color: #bb1436;
+    border: 2px solid #bb1436;
+    transition: all 0.2s ease-in-out;
 }
 
 
 .end-of-page-first, .end-of-page-last {
     background-color: #000000;
-    /* border: 3px solid #000000; */
+    border: 2px solid #000000;
     font-weight: 800;
 }
 
 .end-of-page-prev, .end-of-page-next {
     background-color:#BB1436;
-    /* border: 3px solid #bb1436; */
+    border: 2px solid #bb1436;
     font-weight: 800;
 }
 
 .end-of-page-select {
 /* background-color: red; */
-padding: 0 1dvw;
-border: 3px solid #bb1436;
-border-radius: 12px;
+padding: 0 0.4dvw;
+border: 2px solid #bb1436;
+/* border-radius: 12px; */
     /* background-color: ; */
 }
 
@@ -216,7 +231,7 @@ select#chapter-select {
     /* color: var(--dark-background-color); */
     border: none;
     cursor: pointer;
-    padding: 7px 0;
+    padding: 6px 0;
     text-align-last:center;
     max-width: 14ch;
 }
@@ -256,4 +271,68 @@ select#chapter-select {
     .main-comics, .chapter-title, .comic-item, .end-of-page-buttons{
         width: 65%;
      }
+}
+
+
+/********************* animation ************************/
+
+.fadeOut_05s{
+    animation: fadeOut; /* referring directly to the animation's @keyframe declaration */
+   animation-duration: 0.5s; /* don't forget to set a duration! */
+   opacity: 0;
+   }
+
+.fadeIn_05s{
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+   animation-duration: 0.5s; /* don't forget to set a duration! */
+   opacity: 1
+}
+
+.fadeOut_1s{
+    animation: fadeOut; /* referring directly to the animation's @keyframe declaration */
+   animation-duration: 1s; /* don't forget to set a duration! */
+   opacity: 0;
+   }
+
+.fadeIn_1s{
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+   animation-duration: 1s; /* don't forget to set a duration! */
+   opacity: 1
+}
+
+
+.fadeOut_2s{
+    animation: fadeOut; /* referring directly to the animation's @keyframe declaration */
+   animation-duration: 2s; /* don't forget to set a duration! */
+   opacity: 0;
+   }
+
+.fadeIn_2s{
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+   animation-duration: 2s; /* don't forget to set a duration! */
+   opacity: 1;
+   }
+
+   
+
+.delay_1s {
+       animation-delay: 1s;
+   }
+
+
+/********************* loading ************************/
+#loading {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: var(--light-background-color);
+    background-image: url("/frontend/loading.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    position: fixed;
+    z-index: 1000;
+}
+
+.hide {
+    display: none;
 }
