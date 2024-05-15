@@ -79,13 +79,13 @@ createObserver(
 
 /********************* start chapter1_001 *********************/
 specialPanels.chaper1_001 = document.querySelector(".sp-chapter1-001");
-specialPanelsOpt.chaper1_001 = { threshold: 0.3 };
+specialPanelsOpt.chaper1_001 = { threshold: 0.8 };
 
 function chaper1_001_act(entries) {
   entries.forEach((e) => {
     // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
-      if (e.intersectionRatio < 0.9) {
+      if (e.intersectionRatio < 1) {
         // element 1
         e.target.children[1].style.opacity = "1";
         e.target.children[1].classList.toggle("fadeIn_2s", true);
