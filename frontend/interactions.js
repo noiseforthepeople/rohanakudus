@@ -44,30 +44,28 @@ createObserver(
 
 /********************* start chapter1_000 *********************/
 specialPanels.chaper1_000 = document.querySelector(".sp-chapter1-000");
-specialPanelsOpt.chaper1_000 = { threshold: 0.5 };
+specialPanelsOpt.chaper1_000 = { threshold: 0.2 };
 
 function chaper1_000_act(entries) {
   entries.forEach((e) => {
     // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
-      if (e.intersectionRatio < 1) {
-        // element 1
+      // element 1
 
-        delay(1000).then(() => {
-          e.target.children[1].style.opacity = "1";
-          e.target.children[1].classList.toggle("fadeIn_05s", true);
-        });
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_05s", true);
+      });
 
-        // element 2
-        delay(1500).then(() => {
-          e.target.children[2].style.opacity = "1";
-          e.target.children[2].classList.toggle("fadeIn_05s", true);
-        });
+      // element 2
+      delay(1500).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_05s", true);
+      });
 
-        // kalau udah muncul semua diunobserve
-        this.unobserve(e.target);
-        //
-      }
+      // kalau udah muncul semua diunobserve
+      this.unobserve(e.target);
+      //
     }
   });
 }
