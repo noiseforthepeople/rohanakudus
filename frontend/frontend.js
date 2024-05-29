@@ -61,6 +61,8 @@ let specialPanelsOpt = {};
 const error404 =
   '<div class="chapter-title">(404) konten tidak ditemukan / belum ada.</div>';
 
+let currentPageNumber = 0;
+
 // first page
 if (currentHash === "#" || currentHash === "") {
   // mulai insert page
@@ -96,6 +98,10 @@ if (currentHash === "#" || currentHash === "") {
 
 // all pages
 else {
+  currentPageNumber = [...listOfAllPages].findIndex(
+    (pages) => pages.value === currentHash.replace("#", "")
+  );
+
   // mulai insert page
   showLoading();
   selectButton.children[0].value = window.location.hash.replace("#", "");
@@ -186,9 +192,7 @@ function delay(time) {
 
 /********************* check URL function ************************/
 let currentPage = listOfAllPages[0].value;
-let currentPageNumber = [...listOfAllPages].findIndex(
-  (pages) => pages.value === currentHash.replace("#", "")
-);
+
 let currentPage_old = selectButton.children[0].value;
 
 /********************* navigate page function ************************/
