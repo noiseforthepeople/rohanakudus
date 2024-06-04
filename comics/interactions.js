@@ -8,11 +8,6 @@ function createObserver(element, act, options) {
 
 /********************* create scrollMagic controller ************************/
 
-function countHeightPanel(element) {
-  if (element === null) return console.log("no element existed");
-  return element.clientHeight;
-}
-
 function createScene(element, act, options) {
   if (element === null)
     return console.log("no scrollMagic scene panel created");
@@ -243,20 +238,31 @@ function chapter1pg2_002_act() {
   // triggerDOM.style.backgroundColor = "rgba(244, 244, 10," + this.progress().toFixed(2)+ ")";
 
   let scrollProgres = this.progress().toFixed(2);
+  const theScene = this.triggerElement();
 
-  if (scrollProgres > 0) {
-    console.log("0%");
+  if (between(scrollProgres, 0, 0)) {
+    console.log("30-59%");
+
+    theScene.children[0].style.opacity = "1";
+    theScene.children[1].style.opacity = "0";
+    theScene.children[2].style.opacity = "0";
+  }
+  if (between(scrollProgres, 0.1, 0.5)) {
+    console.log("30-59%");
+
+    theScene.children[0].style.opacity = "0";
+    theScene.children[1].style.opacity = "1";
+    theScene.children[2].style.opacity = "0";
+  }
+  if (between(scrollProgres, 0.51, 1)) {
+    console.log("60-100%");
+
+    theScene.children[0].style.opacity = "0";
+    theScene.children[1].style.opacity = "0";
+    theScene.children[2].style.opacity = "1";
   }
 
-  if (scrollProgres > 0.3) {
-    console.log("30%");
-  }
-
-  if (scrollProgres > 0.6) {
-    console.log("60%");
-  }
-
-  console.log(scrollProgres);
+  // console.log(scrollProgres);
 }
 
 createScene(

@@ -13,6 +13,43 @@ const loadingBlock = document.getElementById("loading");
 const listOfAllPages = document.querySelectorAll(".pagesList");
 const contentsAboutClose = document.querySelectorAll(".contents-about-close");
 
+/********************* parallax page function ************************/
+
+function between(x, min, max) {
+  return x >= min && x <= max;
+}
+
+function countHeightPanel(element) {
+  if (element === null) return console.log("no element existed");
+
+  waitForElement(element).then((elm) => {
+    element.clientHeight = elm.clientHeight;
+  });
+
+  return element.clientHeight;
+}
+
+function waitForElement(selector) {
+  return new Promise((resolve) => {
+    if (selector) {
+      return resolve(selector);
+    }
+
+    const observer = new MutationObserver((mutations) => {
+      if (selector) {
+        observer.disconnect();
+        resolve(selector);
+      }
+    });
+
+    // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+}
+
 /********************* fetch page function ************************/
 
 // loading
@@ -28,17 +65,6 @@ function hideLoading() {
   delay(500).then(() => {
     loadingBlock.classList.toggle("hide");
   });
-}
-
-// fetch
-function fetchPage1(pageURL) {
-  showLoading();
-  fetch(/*window.location.origin + "/" + */ pageURL)
-    .then((res) => res.text())
-    .then((data) => {
-      console.log(data);
-      hideLoading();
-    });
 }
 
 // fetch
@@ -99,7 +125,11 @@ if (currentHash === "#" || currentHash === "") {
       // selesai insert page
       specialPanels = {};
       specialPanelsOpt = {};
-      hideLoading();
+
+      waitForElement(comicsPage).then((elm) => {
+        console.log("all element load successfully");
+        hideLoading();
+      });
     });
 }
 
@@ -137,7 +167,10 @@ else {
       // selesai insert page
       specialPanels = {};
       specialPanelsOpt = {};
-      hideLoading();
+      waitForElement(comicsPage).then((elm) => {
+        console.log("all element load successfully");
+        hideLoading();
+      });
     });
 }
 
@@ -198,7 +231,10 @@ window.addEventListener("hashchange", (e) => {
       comicsPage.scrollIntoView();
       specialPanels = {};
       specialPanelsOpt = {};
-      hideLoading();
+      waitForElement(comicsPage).then((elm) => {
+        console.log("all element load successfully");
+        hideLoading();
+      });
     });
 });
 
