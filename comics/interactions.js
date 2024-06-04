@@ -6,20 +6,6 @@ function createObserver(element, act, options) {
   observer.observe(element);
 }
 
-/********************* create scrollMagic controller ************************/
-
-function createScene(element, act, options) {
-  if (element === null)
-    return console.log("no scrollMagic scene panel created");
-
-  const scene = new ScrollMagic.Scene(options);
-  scene.addTo(scrollMagicController);
-  scene.addIndicators();
-  scene.on("progress", act);
-
-  specialPanelsScenes.push(scene);
-}
-
 /********************* create special panels object ***********************/
 
 /********************* start prolog1_001 *********************/
@@ -222,6 +208,20 @@ createObserver(
   specialPanelsOpt.chapter1pg1_003
 );
 /******** end chapter1pg1_003 ********/
+
+/********************* create scrollMagic controller ************************/
+
+function createScene(element, act, options) {
+  if (element === null)
+    return console.log("no scrollMagic scene panel created");
+
+  const scene = new ScrollMagic.Scene(options);
+  scene.addTo(scrollMagicController);
+  scene.addIndicators();
+  scene.on("progress", act);
+
+  specialPanelsScenes.push(scene);
+}
 
 /********************* start chapter1pg2_001 *********************/
 specialPanels.chapter1pg2_002 = document.querySelector(".sp-chapter1pg2-002");

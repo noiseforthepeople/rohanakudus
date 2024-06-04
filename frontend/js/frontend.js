@@ -69,13 +69,13 @@ function hideLoading() {
 
 // fetch
 function fetchPage(pageURL) {
-  showLoading();
+  // showLoading();
   fetch(window.location.origin + "/" + pageURL)
     .then((res) => res.text())
     .then((data) => {
       //   document.write(data);
       console.log(data);
-      hideLoading();
+      // hideLoading();
     });
 }
 
