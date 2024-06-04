@@ -57,6 +57,7 @@ function fetchPage(pageURL) {
 
 let specialPanels = {};
 let specialPanelsOpt = {};
+let specialPanelsScenes = [];
 
 const error404 =
   '<div class="chapter-title">(404) konten tidak ditemukan / belum ada.</div>';
@@ -141,7 +142,18 @@ else {
 }
 
 /********************* url hash change listener ************************/
+
+let scrollMagicController = new ScrollMagic.Controller();
+
 window.addEventListener("hashchange", (e) => {
+  // console.log(specialPanelsScenes);
+
+  specialPanelsScenes.forEach((scene) => {
+    scene.remove();
+    scene.destroy();
+    specialPanelsScenes.pop();
+  });
+
   if (window.location.hash === "" || window.location.hash === "#") {
     selectButton.children[0].value = "prolog_1";
   } else {

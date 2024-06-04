@@ -6,6 +6,25 @@ function createObserver(element, act, options) {
   observer.observe(element);
 }
 
+/********************* create scrollMagic controller ************************/
+
+function countHeightPanel(element) {
+  if (element === null) return console.log("no element existed");
+  return element.clientHeight;
+}
+
+function createScene(element, act, options) {
+  if (element === null)
+    return console.log("no scrollMagic scene panel created");
+
+  const scene = new ScrollMagic.Scene(options);
+  scene.addTo(scrollMagicController);
+  scene.addIndicators();
+  scene.on("progress", act);
+
+  specialPanelsScenes.push(scene);
+}
+
 /********************* create special panels object ***********************/
 
 /********************* start prolog1_001 *********************/
@@ -41,7 +60,7 @@ createObserver(
 );
 /******** end prolog1_001 ********/
 
-/********************* start chapter1_000 *********************/
+/********************* start chapter1pg1_000 *********************/
 specialPanels.chapter1pg1_000 = document.querySelector(".sp-chapter1pg1-000");
 specialPanelsOpt.chapter1pg1_000 = { threshold: 0.2 };
 
@@ -74,9 +93,9 @@ createObserver(
   chapter1pg1_000_act,
   specialPanelsOpt.chapter1pg1_000
 );
-/******** end chapter1_000 ********/
+/******** end chapter1pg1_000 ********/
 
-/********************* start chapter1_001 *********************/
+/********************* start chapter1pg1_001 *********************/
 specialPanels.chapter1pg1_001 = document.querySelector(".sp-chapter1pg1-001");
 specialPanelsOpt.chapter1pg1_001 = { threshold: 0.8 };
 
@@ -123,9 +142,9 @@ createObserver(
   chapter1pg1_001_act,
   specialPanelsOpt.chapter1pg1_001
 );
-/******** end chapter1_001 ********/
+/******** end chapter1pg1_001 ********/
 
-/********************* start chapter1_002 *********************/
+/********************* start chapter1pg1_002 *********************/
 specialPanels.chapter1pg1_002 = document.querySelector(".sp-chapter1pg1-002");
 specialPanelsOpt.chapter1pg1_002 = { threshold: 0.5 };
 
@@ -163,9 +182,9 @@ createObserver(
   chapter1pg1_002_act,
   specialPanelsOpt.chapter1pg1_002
 );
-/******** end chapter1_002 ********/
+/******** end chapter1pg1_002 ********/
 
-/********************* start chapter1_003 *********************/
+/********************* start chapter1pg1_003 *********************/
 specialPanels.chapter1pg1_003 = document.querySelector(".sp-chapter1pg1-003");
 specialPanelsOpt.chapter1pg1_003 = { threshold: 0.5 };
 
@@ -207,4 +226,41 @@ createObserver(
   chapter1pg1_003_act,
   specialPanelsOpt.chapter1pg1_003
 );
-/******** end chapter1_003 ********/
+/******** end chapter1pg1_003 ********/
+
+/********************* start chapter1pg2_001 *********************/
+specialPanels.chapter1pg2_002 = document.querySelector(".sp-chapter1pg2-002");
+
+specialPanelsOpt.chapter1pg2_002 = {
+  triggerElement: specialPanels.chapter1pg2_002,
+  duration: countHeightPanel(specialPanels.chapter1pg2_002),
+  triggerHook: "0.2",
+  reverse: true,
+};
+
+function chapter1pg2_002_act() {
+  // triggerDOM.innerText = this.progress().toFixed(2);
+  // triggerDOM.style.backgroundColor = "rgba(244, 244, 10," + this.progress().toFixed(2)+ ")";
+
+  let scrollProgres = this.progress().toFixed(2);
+
+  if (scrollProgres > 0) {
+    console.log("0%");
+  }
+
+  if (scrollProgres > 0.3) {
+    console.log("30%");
+  }
+
+  if (scrollProgres > 0.6) {
+    console.log("60%");
+  }
+
+  console.log(scrollProgres);
+}
+
+createScene(
+  specialPanels.chapter1pg2_002,
+  chapter1pg2_002_act,
+  specialPanelsOpt.chapter1pg2_002
+);
