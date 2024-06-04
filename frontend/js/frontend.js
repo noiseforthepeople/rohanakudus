@@ -13,8 +13,15 @@ const loadingBlock = document.getElementById("loading");
 const listOfAllPages = document.querySelectorAll(".pagesList");
 const contentsAboutClose = document.querySelectorAll(".contents-about-close");
 
-/********************* parallax page function ************************/
-/********************* create scrollMagic controller ************************/
+/********************* create observer ************************/
+function createObserver(element, act, options) {
+  if (element === null) return console.log("no element to be observed");
+
+  const observer = new IntersectionObserver(act, options);
+  observer.observe(element);
+}
+
+/********************* (parallax) create scrollMagic controller ************************/
 
 function createScene(element, act, options) {
   if (element === null)
@@ -28,6 +35,7 @@ function createScene(element, act, options) {
   specialPanelsScenes.push(scene);
 }
 
+/********************* (parallax) misc function ************************/
 function between(x, min, max) {
   return x >= min && x <= max;
 }

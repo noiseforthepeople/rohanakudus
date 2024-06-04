@@ -1,11 +1,3 @@
-/********************* create observer ************************/
-function createObserver(element, act, options) {
-  if (element === null) return console.log("no element to be observed");
-
-  const observer = new IntersectionObserver(act, options);
-  observer.observe(element);
-}
-
 /********************* create special panels object ***********************/
 
 /********************* start prolog1_001 *********************/
