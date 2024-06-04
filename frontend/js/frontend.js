@@ -146,6 +146,8 @@ window.addEventListener("hashchange", (e) => {
     selectButton.children[0].value = "prolog_1";
   } else {
     selectButton.children[0].value = window.location.hash.replace("#", "");
+    document.getElementsByTagName("title")[0].innerText =
+      siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
   }
 
   showLoading();
@@ -257,6 +259,11 @@ prevButton.addEventListener("click", (e) => {
   window.location.hash = prevPage.value;
 });
 
+//
+selectButton.addEventListener("click", (e) => {
+  allPagesToggle();
+});
+
 // goto selected page
 selectButton.children[0].addEventListener("change", (e) => {
   //
@@ -264,8 +271,6 @@ selectButton.children[0].addEventListener("change", (e) => {
   window.location.hash = e.target.value;
   //   goTo(e.target.value);
   //
-  document.getElementsByTagName("title")[0].innerText =
-    siteTitle + " / " + e.target.selectedOptions[0].innerText;
 });
 
 /********************* sound aboutcomic aboutauthors ************************/
@@ -288,19 +293,23 @@ leftButtons[0].addEventListener("click", soundsToggle);
 
 // about comic
 const aboutComicPage = document.getElementById("contents-aboutComics");
+
 function aboutComicToggle() {
   if (aboutComicPage.classList.contains("hide")) {
     aboutComicPage.classList.add("animate__slideInLeft");
     aboutComicPage.classList.remove("animate__slideOutLeft");
     aboutComicPage.classList.toggle("hide");
+    document.body.style.overflowY = "hidden";
   } else {
     aboutComicPage.classList.remove("animate__slideInLeft");
     aboutComicPage.classList.add("animate__slideOutLeft");
+    document.body.style.overflowY = "scroll";
     delay(700).then(() => {
       aboutComicPage.classList.toggle("hide");
     });
   }
 }
+
 leftButtons[1].addEventListener("click", aboutComicToggle);
 contentsAboutClose[0].addEventListener("click", () => {
   aboutComicToggle();
@@ -313,9 +322,11 @@ function aboutAuthorsToggle() {
     aboutAuthorsPage.classList.add("animate__slideInLeft");
     aboutAuthorsPage.classList.remove("animate__slideOutLeft");
     aboutAuthorsPage.classList.toggle("hide");
+    document.body.style.overflowY = "hidden";
   } else {
     aboutAuthorsPage.classList.remove("animate__slideInLeft");
     aboutAuthorsPage.classList.add("animate__slideOutLeft");
+    document.body.style.overflowY = "scroll";
     delay(700).then(() => {
       aboutAuthorsPage.classList.toggle("hide");
     });
@@ -324,4 +335,41 @@ function aboutAuthorsToggle() {
 leftButtons[2].addEventListener("click", aboutAuthorsToggle);
 contentsAboutClose[1].addEventListener("click", () => {
   aboutAuthorsToggle();
+});
+
+// pages list
+
+const allPagesList = document.getElementById("contents-allPages");
+function allPagesToggle() {
+  if (allPagesList.classList.contains("hide")) {
+    allPagesList.classList.add("animate__slideInUp");
+    allPagesList.classList.remove("animate__slideOutDown");
+    allPagesList.classList.toggle("hide");
+    document.body.style.overflowY = "hidden";
+  } else {
+    allPagesList.classList.remove("animate__slideInUp");
+    allPagesList.classList.add("animate__slideOutDown");
+    document.body.style.overflowY = "scroll";
+    delay(700).then(() => {
+      allPagesList.classList.toggle("hide");
+    });
+  }
+}
+
+document
+  .querySelector(".allPagesList-Close")
+  .addEventListener("click", allPagesToggle);
+
+const allPagesContainer = document.getElementById("contents-allPages");
+
+allPagesContainer.addEventListener("click", (e) => {
+  if (e.target.dataset.id) {
+    currentPageNumber = detectPageNumber(e.target.dataset.id);
+    window.location.hash = e.target.dataset.id;
+
+    allPagesList.classList.add("animate__slideInUp");
+    allPagesList.classList.remove("animate__slideOutDown");
+    allPagesList.classList.toggle("hide");
+    document.body.style.overflowY = "scroll";
+  }
 });

@@ -9,9 +9,13 @@
     --dark-text-color: #353535;
     --light-background-color: #FEF4EA;
 
-    --accent-color: rgb(131, 115, 79);
+    --green-color: 188, 198, 2;
+    --red-color: 187, 20, 54;
+    --yellow-color: 254, 191, 15;    
 
     overscroll-behavior: none;
+
+    scrollbar-color: rgba(var(--green-color), 1)  rgba(255, 255, 255, 0) ;
   }
 
 * {
@@ -34,6 +38,7 @@ body {
     color: var(--dark-text-color);
     background-color: var(--light-background-color);
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .layout {
@@ -72,7 +77,7 @@ body {
 }
 
 .left-navigation-buttons > * {
-    background-color: rgb(175, 175, 175);
+    background-color: var(--dark-background-color);
     width: 1.4dvw;
     height: 1.4dvw;
     padding: 10px;
@@ -93,15 +98,15 @@ body {
 }
 
 .left-navigation-sound {
-    background-color: #BCC602;
+    background-color: rgba(var(--green-color), 1);
 }
 
 .left-navigation-aboutComic {
-    background-color: #BB1436;
+    background-color: rgba(var(--red-color), 1);
 }
 
 .left-navigation-author {
-    background-color: #FEBF0F;
+    background-color: rgba(var(--yellow-color), 1);
 }
 
 /********************* contents ************************/
@@ -225,26 +230,30 @@ font-size: 0.9em;
 
 .end-of-page-select {
 /* background-color: red; */
-padding-top: 0;
-padding-bottom: 0;
+padding-top: 1px;
+padding-bottom: 1px;
 padding-left: 0.3dvw;
 padding-right: 0.3dvw;
 border: 2px solid #bb1436;
+background-color:   var(--light-background-color);
 /* border-radius: 12px; */
     /* background-color: ; */
 }
 
+
 select#chapter-select {
     font-weight: 400;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(var(--green-color), 0);
     height: 100%;
-
     /* color: var(--dark-background-color); */
     border: none;
     cursor: pointer;
-    padding: 6px 0;
+    padding: 5px 0;
     text-align-last:center;
+    outline: none;
     /* max-width: 14ch; */
+    pointer-events:none;
+
 }
 
 /********************* modal pages ************************/
@@ -253,6 +262,8 @@ select#chapter-select {
     background-color: #BB1436;
     color: var(--light-text-color);
     display: flex;
+    gap:10px;
+    padding: 0dvh 15dvw;
 }
 
 
@@ -260,25 +271,104 @@ select#chapter-select {
     background-color: #FEBF0F;
     color: var(--dark-text-color);
     display: flex;
+    gap:10px;
+    padding: 0dvh 15dvw;
 }
 
-#contents-aboutComics, #contents-aboutAuthors {
+.allPages {
+    background-color: var(--light-background-color);
+    color: var(--dark-text-color);
+    display: flex;
+    gap: 3px;
+    padding: 3dvh 0dvw;
+}
+
+.allPagesList {
+width: 100%;
+height: auto;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+align-content: center;
+align-items: center;
+justify-content: center;
+gap: 3px;
+/* border:1px solid black; */
+}
+
+.allPagesList > * {
+    min-width: 10%;
+    min-height: 4dvh;
+    padding: 0 1dvw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.allPagesList-Buttons:hover {
+    border-bottom:2px dotted rgba(var(--red-color), 1);
+}
+
+.allPagesList-Close {
+    margin-top: 30px;
+    background-color: var(--light-text-color);
+    width: 80%;
+    padding: 17px 0px;
+    border: 2px solid var(--light-text-color);
+}
+
+.allPagesList-Close:hover {
+    border-bottom: none;
+    background-color: var(--light-background-color);
+    border: 2px dotted var(--dark-text-color)
+}
+
+
+
+
+.allPagesList:nth-child(even) {
+    /* background-color: rgb(241, 232, 223); */
+}
+
+
+
+
+.allPagesList-Buttons {
+    /* background-color: wheat; */
+    color: black;
+    cursor: pointer;
+}
+
+.allPagesList-Title {
+    /* background-color: var(--dark-text-color); */
+    width: 100%;
+    color: black;
+    font-weight: 600;
+    /* border-bottom: 1px dotted var(--dark-background-color); */
+}
+
+#contents-aboutComics, #contents-aboutAuthors, #contents-allPages {
     width: 100dvw;
     height: 100dvh;
     position: fixed;
     z-index: 2001;
     flex-direction: column;
     flex-wrap: nowrap;
-    padding: 10dvh 10dvw;
-    gap:10px;
     animation-duration: 0.7s;
     /* display: none; */
+    overflow: auto;
 }
 
 .contents-about-layout {
     width: 100%;
     margin: 0 auto;
     margin-bottom:10px;
+    padding-bottom: 2dvh;
+    padding-top: 10dvh;
+    padding-left: 0;
+    padding-right: 0;
     /* background-color: #000000; */
 }
 
@@ -467,7 +557,7 @@ select#chapter-select {
     width: 100dvw;
     height: 100dvh;
     background-color: var(--light-background-color);
-    background-image: url("/frontend/loading.webp");
+    background-image: url("/frontend/images/loading.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 20%;
@@ -490,7 +580,7 @@ select#chapter-select {
     z-index: 9999;
     mix-blend-mode: overlay;
 
-    background-image: url("/frontend/textures.gif");
+    background-image: url("/frontend/images/textures.gif");
     background-repeat: repeat-x repeat-y;
     background-position: center;
     background-size: 100%;
