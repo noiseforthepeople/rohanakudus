@@ -14,6 +14,19 @@ const listOfAllPages = document.querySelectorAll(".pagesList");
 const contentsAboutClose = document.querySelectorAll(".contents-about-close");
 
 /********************* parallax page function ************************/
+/********************* create scrollMagic controller ************************/
+
+function createScene(element, act, options) {
+  if (element === null)
+    return console.log("no scrollMagic scene panel created");
+
+  const scene = new ScrollMagic.Scene(options)
+    .addTo(scrollMagicController)
+    .addIndicators()
+    .on("progress", act);
+
+  specialPanelsScenes.push(scene);
+}
 
 function between(x, min, max) {
   return x >= min && x <= max;
@@ -24,6 +37,7 @@ function countHeightPanel(element) {
 
   // element.children[0].addEventListener("load", function (e) {
   //   console.log("ok");
+  //   return element.scrollHeight;
   // });
 
   // console.log(element.children[0].clientHeight);
@@ -32,7 +46,7 @@ function countHeightPanel(element) {
   //   element.clientHeight = elm.clientHeight;
   // });
 
-  return element.children[0].clientHeight;
+  return element.scrollHeight;
 }
 
 function waitForElement(selector) {
