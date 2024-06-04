@@ -21,23 +21,6 @@ function createObserver(element, act, options) {
   observer.observe(element);
 }
 
-/********************* (parallax) create scrollMagic controller ************************/
-
-function createScene(element, act, options) {
-  if (element === null)
-    return console.log("no scrollMagic scene panel created");
-
-  console.log(element.scrollHeight);
-
-  const scene = new ScrollMagic.Scene(options)
-    .addTo(scrollMagicController)
-    .addIndicators()
-    .on("progress", act)
-    .refresh();
-
-  specialPanelsScenes.push(scene);
-}
-
 /********************* (parallax) misc function ************************/
 function between(x, min, max) {
   return x >= min && x <= max;
@@ -57,7 +40,9 @@ function countHeightPanel(element) {
   //   element.clientHeight = elm.clientHeight;
   // });
 
-  return element.scrollHeight;
+  // console.log();
+
+  return element.getBoundingClientRect().height.toFixed(2);
 }
 
 function waitForElement(selector) {

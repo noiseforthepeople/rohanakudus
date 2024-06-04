@@ -1,5 +1,22 @@
 /********************* create special panels object ***********************/
 
+/********************* (parallax) create scrollMagic controller ************************/
+
+function createScene(element, act, options) {
+  if (element === null)
+    return console.log("no scrollMagic scene panel created");
+
+  console.log(element.scrollHeight);
+
+  const scene = new ScrollMagic.Scene(options)
+    .addTo(scrollMagicController)
+    .addIndicators()
+    .on("progress", act)
+    .refresh();
+
+  specialPanelsScenes.push(scene);
+}
+
 /********************* start prolog1_001 *********************/
 specialPanels.prolog1_001 = document.querySelector(".sp-prolog1-001");
 specialPanelsOpt.prolog1_001 = { threshold: 0.5 };
