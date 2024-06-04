@@ -10,6 +10,8 @@
     --light-background-color: #FEF4EA;
 
     --accent-color: rgb(131, 115, 79);
+
+    overscroll-behavior: none;
   }
 
 * {
@@ -21,6 +23,7 @@
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+
 }
 
 /********************* layout ************************/
@@ -44,7 +47,6 @@ body {
     grid-template-areas: 
     "left-navigation contents";
     gap: 0px 0px;
-    
 
 }
 
@@ -483,7 +485,7 @@ select#chapter-select {
     position: fixed;
     width: 100dvw;
     height: 100dvh;
-    /* background-color: var(--light-background-color); */
+    background-color: var(--light-background-color);
     /* background-blend-mode: overlay; */
     z-index: 9999;
     mix-blend-mode: overlay;
@@ -494,4 +496,6 @@ select#chapter-select {
     background-size: 100%;
 
     pointer-events:none;
+
+    opacity: 0.8;
 }

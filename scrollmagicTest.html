@@ -1,0 +1,104 @@
+<style>
+.spacer {
+    padding: 2dvw;
+    height: auto;
+    width: 900px;
+    border: 1px solid gray;
+}
+
+.trigger {
+    width: 100%;
+    height: 40%;
+    background-color: rgba(244, 244, 10, 0);
+    border: 1px solid green;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.trigger2 {
+    width: 100%;
+    height: 40%;
+    background-color: rgba(244, 244, 10, 0);
+    border: 1px solid green;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.fill {
+    width: 800px;
+    height: 20%;
+    background-color: gray;
+}
+
+.fill2 {
+    width: 800px;
+    height: 100%;
+    background-color: gray;
+}
+
+</style>
+
+<body>
+    <div class="spacer">
+        <div id="" class="fill"></div>
+        <div id="" class="trigger">a</div>
+        <div id="" class="fill2"></div>
+        <div id="" class="trigger2">a</div>
+        <div id="" class="fill2"></div>
+    </div>
+
+</body>
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js"></script>
+<script>
+
+// global scroll magic controller
+const scrollMagicController = new ScrollMagic.Controller();
+
+    function countHeightPanel(element) {
+        return element.clientHeight;
+    }
+
+    function createScene(element, act, options) {
+         if (element === null) return console.log("no scrollMagic scene panel created");
+            const scene = new ScrollMagic.Scene(options)
+            scene.addTo(scrollMagicController)
+            scene.addIndicators()
+            scene.on("progress", act)
+    }
+
+
+
+// per-panel scroll trigger
+const triggerDOM = document.querySelector(".trigger")
+const triggerDOM_Opt = {triggerElement: triggerDOM,
+                            duration:countHeightPanel(triggerDOM),
+                            triggerHook: "0.2",
+                            reverse: true }
+function triggerDOM_act() {
+        triggerDOM.innerText = this.progress().toFixed(2);
+        triggerDOM.style.backgroundColor = "rgba(244, 244, 10," + this.progress().toFixed(2)+ ")";
+        console.log(this.progress().toFixed(2))
+    }                       
+
+createScene(triggerDOM, triggerDOM_act, triggerDOM_Opt)
+
+
+
+
+	// build scene
+	// let scene = new ScrollMagic.Scene({triggerElement: triggerDOM, duration: "40%", triggerHook: "0.2", reverse: true})
+	// scene.addTo(scrollMagicController)
+	// scene.addIndicators() // add indicators (requires plugin)
+	// 				// .on("enter leave", function (e) {
+    //                 //     console.log(e.type == "enter" ? "inside" : "outside")
+	// 				// })
+	// 				// .on("start end", function (e) {
+    //                 //     console.log(e.type == "start" ? "top" : "bottom")
+	// 				// })
+	// scene.on("progress", triggerDOM_act )
+</script>
