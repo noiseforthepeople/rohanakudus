@@ -22,11 +22,17 @@ function between(x, min, max) {
 function countHeightPanel(element) {
   if (element === null) return console.log("no element existed");
 
-  waitForElement(element).then((elm) => {
-    element.clientHeight = elm.clientHeight;
-  });
+  // element.children[0].addEventListener("load", function (e) {
+  //   console.log("ok");
+  // });
 
-  return element.clientHeight;
+  // console.log(element.children[0].clientHeight);
+
+  // waitForElement(element).then((elm) => {
+  //   element.clientHeight = elm.clientHeight;
+  // });
+
+  return element.children[0].clientHeight;
 }
 
 function waitForElement(selector) {
