@@ -27,10 +27,13 @@ function createScene(element, act, options) {
   if (element === null)
     return console.log("no scrollMagic scene panel created");
 
+  console.log(element.scrollHeight);
+
   const scene = new ScrollMagic.Scene(options)
     .addTo(scrollMagicController)
     .addIndicators()
-    .on("progress", act);
+    .on("progress", act)
+    .refresh();
 
   specialPanelsScenes.push(scene);
 }
