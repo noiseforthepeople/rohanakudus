@@ -1,7 +1,7 @@
 <style>
 .spacer {
     padding: 2dvw;
-    height: auto;
+    min-height: 800px;
     width: 900px;
     border: 1px solid gray;
 }
@@ -16,26 +16,16 @@
     flex-direction: column;
 }
 
-.trigger2 {
-    width: 100%;
-    height: 40%;
-    background-color: rgba(244, 244, 10, 0);
-    border: 1px solid green;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-}
-
 .fill {
-    width: 800px;
+    width: 100%;
     height: 20%;
-    background-color: gray;
+    border: 1px solid red;
 }
 
 .fill2 {
-    width: 800px;
+    width: 100%;
     height: 100%;
-    background-color: gray;
+    border: 1px solid blue;
 }
 
 </style>
@@ -43,17 +33,17 @@
 <body>
     <div class="spacer">
         <div id="" class="fill"></div>
-        <div id="" class="trigger">a</div>
+        <div id="" class="trigger"></div>
         <div id="" class="fill2"></div>
-        <div id="" class="trigger2">a</div>
-        <div id="" class="fill2"></div>
+        <!-- <div id="" class="trigger2">a</div>
+        <div id="" class="fill2"></div> -->
     </div>
 
 </body>
 
 
-<script src="frontend/js/ScrollMagic_2-0-7.min.js"></script>
-<script src="frontend/js/debug.addIndicators_2-0-7.js"></script>
+<script src="../frontend/js/ScrollMagic_2-0-7.min.js"></script>
+<script src="../frontend/js/debug.addIndicators_2-0-7.js"></script>
 <script>
 
 // global scroll magic controller
@@ -65,7 +55,7 @@ const scrollMagicController = new ScrollMagic.Controller();
 
     function createScene(element, act, options) {
          if (element === null) return console.log("no scrollMagic scene panel created");
-            const scene = new ScrollMagic.Scene(options)
+             scene = new ScrollMagic.Scene(options)
             scene.addTo(scrollMagicController)
             scene.addIndicators()
             scene.on("progress", act)
@@ -76,8 +66,8 @@ const scrollMagicController = new ScrollMagic.Controller();
 // per-panel scroll trigger
 const triggerDOM = document.querySelector(".trigger")
 const triggerDOM_Opt = {triggerElement: triggerDOM,
-                            duration:countHeightPanel(triggerDOM),
-                            triggerHook: "0.2",
+                            duration: "10%",
+                            triggerHook: "0.5",
                             reverse: true }
 function triggerDOM_act() {
         triggerDOM.innerText = this.progress().toFixed(2);

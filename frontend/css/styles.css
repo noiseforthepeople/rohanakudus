@@ -162,7 +162,7 @@ body {
 
 .main-comics .special-panel {
     width: 100%;
-    height: auto;
+    min-height: 100px;
     position: relative;
     display: flex;
     flex-direction: column;

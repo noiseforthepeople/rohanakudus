@@ -12,37 +12,25 @@ const selectButton = document.querySelector(".end-of-page-select");
 const loadingBlock = document.getElementById("loading");
 const listOfAllPages = document.querySelectorAll(".pagesList");
 const contentsAboutClose = document.querySelectorAll(".contents-about-close");
+const frontendJS = document.getElementById("frontendJS");
+let interactionsJS;
 
-/********************* create observer ************************/
-function createObserver(element, act, options) {
-  if (element === null) return console.log("no element to be observed");
+/********************* check URL function ************************/
+let currentPage = listOfAllPages[0].value;
 
-  const observer = new IntersectionObserver(act, options);
-  observer.observe(element);
-}
+// let currentPage_old = selectButton.children[0].value;
+
+window.addEventListener("keydown", (event) => {
+  if (event.key == "ArrowLeft") {
+    prevButton.click();
+  } else if (event.key == "ArrowRight") {
+    nextButton.click();
+  }
+});
 
 /********************* (parallax) misc function ************************/
 function between(x, min, max) {
   return x >= min && x <= max;
-}
-
-function countHeightPanel(element) {
-  if (element === null) return console.log("no element existed");
-
-  // element.children[0].addEventListener("load", function (e) {
-  //   console.log("ok");
-  //   return element.scrollHeight;
-  // });
-
-  // console.log(element.children[0].clientHeight);
-
-  // waitForElement(element).then((elm) => {
-  //   element.clientHeight = elm.clientHeight;
-  // });
-
-  // console.log();
-
-  return element.getBoundingClientRect().height.toFixed(2);
 }
 
 function waitForElement(selector) {
@@ -113,7 +101,7 @@ function detectPageNumber(hash) {
 let currentPageNumber = 0;
 
 // first page
-if (currentHash === "#" || currentHash === "") {
+if (!currentHash) {
   // mulai insert page
   showLoading();
   selectButton.children[0].value = "prolog_1";
@@ -130,28 +118,33 @@ if (currentHash === "#" || currentHash === "") {
       for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
         let element = comicPageHTML.childNodes[index];
         // console.log(element);
+
         comicsPage.appendChild(element);
       }
+
+      comicsPage.addEventListener("onload", function (e) {
+        console.log("loaded");
+      });
 
       // add interactions scripts
       let interactionsScript = document.createElement("script");
       interactionsScript.src = "comics/interactions.js";
-      comicsPage.appendChild(interactionsScript);
+      interactionsScript.id = "interactionsJS";
+      frontendJS.insertAdjacentElement("afterend", interactionsScript);
+      interactionsJS = document.getElementById("interactionsJS");
 
       // selesai insert page
       specialPanels = {};
       specialPanelsOpt = {};
 
-      waitForElement(comicsPage).then((elm) => {
-        console.log("all element load successfully");
-        hideLoading();
-      });
+      hideLoading();
     });
 }
 
 // all pages
 else {
   currentPageNumber = detectPageNumber(currentHash);
+  currentPage = window.location.hash.replace("#", "");
 
   // mulai insert page
   showLoading();
@@ -168,6 +161,9 @@ else {
         "text/html"
       ).body;
 
+      console.log("----");
+      console.log(comicPageHTML.children[0]);
+
       // add childs from comics file
       for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
         let element = comicPageHTML.childNodes[index];
@@ -178,15 +174,19 @@ else {
       // add interactions scripts
       let interactionsScript = document.createElement("script");
       interactionsScript.src = "comics/interactions.js";
-      comicsPage.appendChild(interactionsScript);
+      interactionsScript.id = "interactionsJS";
+      frontendJS.insertAdjacentElement("afterend", interactionsScript);
+      interactionsJS = document.getElementById("interactionsJS");
 
       // selesai insert page
       specialPanels = {};
       specialPanelsOpt = {};
-      waitForElement(comicsPage).then((elm) => {
-        console.log("all element load successfully");
-        hideLoading();
-      });
+      // waitForElement(comicsPage).then((elm) => {
+      //   console.log("all element load successfully");
+      //   hideLoading();
+      // });
+
+      hideLoading();
     });
 }
 
@@ -203,15 +203,20 @@ window.addEventListener("hashchange", (e) => {
     specialPanelsScenes.pop();
   });
 
-  if (window.location.hash === "" || window.location.hash === "#") {
+  // check current url
+  if (!window.location.hash) {
     selectButton.children[0].value = "prolog_1";
+    window.location.hash = "prolog_1";
+    currentPage = "prolog_1";
   } else {
+    const getPageNumberFromHash = listOfAllPages[currentPageNumber].innerText;
     selectButton.children[0].value = window.location.hash.replace("#", "");
     document.getElementsByTagName("title")[0].innerText =
-      siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
+      siteTitle + " / " + getPageNumberFromHash;
+    currentPage = getPageNumberFromHash;
   }
 
-  showLoading();
+  // showLoading();
 
   fetch("/comics/" + window.location.hash.replace("#", "") + ".html")
     .then((res) => {
@@ -219,7 +224,7 @@ window.addEventListener("hashchange", (e) => {
       if (res.status === 404) return (res = error404);
     })
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       // parse html data
       let comicPageHTML = new DOMParser().parseFromString(
         data,
@@ -231,6 +236,9 @@ window.addEventListener("hashchange", (e) => {
         comicsPage.firstChild.remove();
       }
 
+      // clear interactionsJS
+      interactionsJS.remove();
+
       // add childs from comics file
       for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
         let element = comicPageHTML.childNodes[index];
@@ -241,16 +249,20 @@ window.addEventListener("hashchange", (e) => {
       // add interactions scripts
       let interactionsScript = document.createElement("script");
       interactionsScript.src = "comics/interactions.js";
-      comicsPage.appendChild(interactionsScript);
+      interactionsScript.id = "interactionsJS";
+      frontendJS.insertAdjacentElement("afterend", interactionsScript);
+      interactionsJS = document.getElementById("interactionsJS");
+
+      // window.location.reload();
 
       // selesai insert page
       comicsPage.scrollIntoView();
       specialPanels = {};
       specialPanelsOpt = {};
-      waitForElement(comicsPage).then((elm) => {
-        console.log("all element load successfully");
-        hideLoading();
-      });
+      // waitForElement(comicsPage).then((elm) => {
+      //   console.log("all element load successfully");
+      //   hideLoading();
+      // });
     });
 });
 
@@ -258,27 +270,6 @@ window.addEventListener("hashchange", (e) => {
 function delay(time) {
   // in ms
   return new Promise((resolve) => setTimeout(resolve, time));
-}
-
-/********************* check URL function ************************/
-let currentPage = listOfAllPages[0].value;
-
-let currentPage_old = selectButton.children[0].value;
-
-/********************* navigate page function ************************/
-
-function goTo(pageID) {
-  let htmlExt = ".html";
-
-  if (routeURL) {
-    htmlExt = "";
-  }
-
-  if (pageID === "prolog_1") {
-    window.location.pathname = "/";
-  } else {
-    window.location.pathname = "/" + pageID + htmlExt;
-  }
 }
 
 /********************* page navigation listener ************************/

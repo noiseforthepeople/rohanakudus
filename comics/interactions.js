@@ -1,22 +1,49 @@
-/********************* create special panels object ***********************/
+/********************* remove empty object ************************/
+function removeEmpty(obj) {
+  return Object.fromEntries(
+    Object.entries(obj)
+      .filter(([_, v]) => v != null)
+      .map(([k, v]) => [k, v === Object(v) ? removeEmpty(v) : v])
+  );
+}
+/********************* create observer ************************/
+function createObserver(element, act, options) {
+  if (element === null) return console.log("no element to be observed");
+
+  const observer = new IntersectionObserver(act, options);
+  observer.observe(element);
+}
 
 /********************* (parallax) create scrollMagic controller ************************/
+
+// function countHeightPanel(element) {
+//   if (element === null) return console.log("no element existed");
+//   return element.getBoundingClientRect().height.toFixed(2);
+// }
 
 function createScene(element, act, options) {
   if (element === null)
     return console.log("no scrollMagic scene panel created");
 
   console.log(element.scrollHeight);
+  console.log("s");
+  console.log(element.getBoundingClientRect().height.toFixed(2));
 
   const scene = new ScrollMagic.Scene(options)
+    .on("add", function () {
+      this.duration(element.getBoundingClientRect().height.toFixed(2));
+    })
     .addTo(scrollMagicController)
     .addIndicators()
-    .on("progress", act)
-    .refresh();
+    .on("start", function () {
+      this.duration(element.getBoundingClientRect().height.toFixed(2));
+    })
+    .on("progress", act);
 
   specialPanelsScenes.push(scene);
 }
 
+/********************* create special panels object ***********************/
 /********************* start prolog1_001 *********************/
 specialPanels.prolog1_001 = document.querySelector(".sp-prolog1-001");
 specialPanelsOpt.prolog1_001 = { threshold: 0.5 };
@@ -223,8 +250,17 @@ specialPanels.chapter1pg2_002 = document.querySelector(".sp-chapter1pg2-002");
 
 specialPanelsOpt.chapter1pg2_002 = {
   triggerElement: specialPanels.chapter1pg2_002,
-  duration: countHeightPanel(specialPanels.chapter1pg2_002),
-  triggerHook: "0.2",
+  // duration: countHeightPanel(specialPanels.chapter1pg2_002),
+  // duration: "50%",
+  // duration: getComputedStyle(
+  //   specialPanels.chapter1pg2_002.children[1]
+  // ).height.replace("px", ""),
+  // duration: specialPanels.chapter1pg2_002
+  //   .getBoundingClientRect()
+  //   .height.toFixed(2),
+  duration: 50,
+  triggerHook: "0.3",
+  offset: "0",
   reverse: true,
 };
 
@@ -235,22 +271,22 @@ function chapter1pg2_002_act() {
   let scrollProgres = this.progress().toFixed(2);
   const theScene = this.triggerElement();
 
-  if (between(scrollProgres, 0, 0)) {
-    console.log("30-59%");
-
+  if (between(scrollProgres, 0, 0.9)) {
+    // this.duration(theScene.getBoundingClientRect().height.toFixed(2));
+    // console.log("0-9%");
     theScene.children[0].style.opacity = "1";
     theScene.children[1].style.opacity = "0";
     theScene.children[2].style.opacity = "0";
   }
-  if (between(scrollProgres, 0.1, 0.5)) {
-    console.log("30-59%");
+  if (between(scrollProgres, 0.1, 0.59)) {
+    // console.log("10-59%");
 
     theScene.children[0].style.opacity = "0";
     theScene.children[1].style.opacity = "1";
     theScene.children[2].style.opacity = "0";
   }
   if (between(scrollProgres, 0.51, 1)) {
-    console.log("60-100%");
+    // console.log("60-100%");
 
     theScene.children[0].style.opacity = "0";
     theScene.children[1].style.opacity = "0";
@@ -265,3 +301,7 @@ createScene(
   chapter1pg2_002_act,
   specialPanelsOpt.chapter1pg2_002
 );
+
+window.addEventListener("load", (event) => {
+  console.log("page is fully loaded");
+});

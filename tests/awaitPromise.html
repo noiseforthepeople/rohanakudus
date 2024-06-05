@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+
+<script>
+    async function fetchData(url){
+        let response = await fetch(url);
+        let data = await response.json();
+        data = JSON.stringify(data);
+        data = JSON.parse(data);
+        return data;
+       }
+       
+    let abc = fetchData("https://dummyjson.com/products").then(e => {return e.products}); // here the data will be return.
+</script>
+</html>
