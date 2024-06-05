@@ -194,14 +194,28 @@ else {
 
 let scrollMagicController = new ScrollMagic.Controller();
 
+function deleteAllScene() {
+  for (let index = 0; index < specialPanelsScenes.length; index++) {
+    // console.log(specialPanelsScenes[index]);
+    // specialPanelsScenes[index].remove();
+    specialPanelsScenes[index].destroy();
+    specialPanelsScenes[index].remove();
+  }
+  specialPanelsScenes = [];
+}
+
 window.addEventListener("hashchange", (e) => {
   // console.log(specialPanelsScenes);
 
-  specialPanelsScenes.forEach((scene) => {
-    scene.remove();
-    scene.destroy();
-    specialPanelsScenes.pop();
-  });
+  // specialPanelsScenes.forEach((scene) => {
+  //   console.log(scene);
+
+  //   scene.remove();
+  //   scene.destroy();
+  //   specialPanelsScenes.shift();
+  // });
+
+  deleteAllScene();
 
   // check current url
   if (!window.location.hash) {
@@ -428,3 +442,19 @@ allPagesContainer.addEventListener("click", (e) => {
     document.body.style.overflowY = "scroll";
   }
 });
+
+const lenis = new Lenis({
+  syncTouch: true,
+  duration: 3,
+});
+
+// lenis.on("scroll", (e) => {
+//   // console.log(e);
+// });
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);

@@ -402,3 +402,13 @@ createScene(
 );
 
 /********************* end chapter1pg2_003 *********************/
+
+// let locoscroll;
+
+// let locoscroll = new LocomotiveScroll({
+//   el: document.querySelector("#contents"),
+//   scrollbarContainer: document.querySelector("#textures"),
+//   // scrollFromAnywhere: true,
+//   smooth: true,
+//   // firefoxMultiplier: 10,
+// });
