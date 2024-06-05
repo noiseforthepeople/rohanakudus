@@ -18,3 +18,36 @@
     opacity: 0;
 }
 
+
+
+
+ .sp-chapter1pg2-003-6  {
+    opacity: 0;
+}
+
+
+
+
+.sp-chapter1pg2-003-3 {
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.sp-chapter1pg2-003-5 {
+    opacity:0;
+}
+
+.sp-chapter1pg2-003-2 {
+    transform: translateY(60%);
+}
+
+
+.sp-chapter1pg2-003-4 {
+    transform: translateY(50%);
+    margin-left: -1dvw;
+}
+
+
+.special-panel {
+    overflow: hidden;
+}

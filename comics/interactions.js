@@ -1,17 +1,40 @@
-/********************* remove empty object ************************/
-function removeEmpty(obj) {
-  return Object.fromEntries(
-    Object.entries(obj)
-      .filter(([_, v]) => v != null)
-      .map(([k, v]) => [k, v === Object(v) ? removeEmpty(v) : v])
-  );
-}
 /********************* create observer ************************/
 function createObserver(element, act, options) {
   if (element === null) return console.log("no element to be observed");
 
   const observer = new IntersectionObserver(act, options);
   observer.observe(element);
+}
+
+// window.addEventListener("load", (event) => {
+//   console.log("page is fully loaded");
+// });
+
+/*!
+ * Run a callback function after scrolling has stopped
+ * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * @param  {Function} callback The callback function to run after scrolling
+ * @param  {Integer}  refresh  How long to wait between scroll events [optional]
+ */
+function scrollStop(callback, refresh = 100) {
+  // Make sure a valid callback was provided
+  if (!callback || typeof callback !== "function") return;
+
+  // Setup scrolling variable
+  let isScrolling;
+
+  // Listen for scroll events
+  window.addEventListener(
+    "scroll",
+    function (event) {
+      // Clear our timeout throughout the scroll
+      window.clearTimeout(isScrolling);
+
+      // Set a timeout to run after scrolling ends
+      isScrolling = setTimeout(callback, refresh);
+    },
+    false
+  );
 }
 
 /********************* (parallax) create scrollMagic controller ************************/
@@ -25,13 +48,19 @@ function createScene(element, act, options) {
   if (element === null)
     return console.log("no scrollMagic scene panel created");
 
-  console.log(element.scrollHeight);
-  console.log("s");
-  console.log(element.getBoundingClientRect().height.toFixed(2));
+  // console.log(element.scrollHeight);
+  // console.log("s");
+  // console.log(element.getBoundingClientRect().height.toFixed(2));
 
   const scene = new ScrollMagic.Scene(options)
     .on("add", function () {
       this.duration(element.getBoundingClientRect().height.toFixed(2));
+      delay(500).then(() => {
+        this.duration(element.getBoundingClientRect().height.toFixed(2));
+
+        // console.log("baww");
+      });
+      //
     })
     .addTo(scrollMagicController)
     .addIndicators()
@@ -245,7 +274,7 @@ createObserver(
 );
 /******** end chapter1pg1_003 ********/
 
-/********************* start chapter1pg2_001 *********************/
+/********************* start chapter1pg2_002 *********************/
 specialPanels.chapter1pg2_002 = document.querySelector(".sp-chapter1pg2-002");
 
 specialPanelsOpt.chapter1pg2_002 = {
@@ -268,24 +297,24 @@ function chapter1pg2_002_act() {
   // triggerDOM.innerText = this.progress().toFixed(2);
   // triggerDOM.style.backgroundColor = "rgba(244, 244, 10," + this.progress().toFixed(2)+ ")";
 
-  let scrollProgres = this.progress().toFixed(2);
+  let scrollProgres = this.progress().toFixed(2) * 100;
   const theScene = this.triggerElement();
 
-  if (between(scrollProgres, 0, 0.9)) {
+  if (between(scrollProgres, 0, 9)) {
     // this.duration(theScene.getBoundingClientRect().height.toFixed(2));
     // console.log("0-9%");
     theScene.children[0].style.opacity = "1";
     theScene.children[1].style.opacity = "0";
     theScene.children[2].style.opacity = "0";
   }
-  if (between(scrollProgres, 0.1, 0.59)) {
+  if (between(scrollProgres, 10, 59)) {
     // console.log("10-59%");
 
     theScene.children[0].style.opacity = "0";
     theScene.children[1].style.opacity = "1";
     theScene.children[2].style.opacity = "0";
   }
-  if (between(scrollProgres, 0.51, 1)) {
+  if (between(scrollProgres, 60, 100)) {
     // console.log("60-100%");
 
     theScene.children[0].style.opacity = "0";
@@ -302,6 +331,74 @@ createScene(
   specialPanelsOpt.chapter1pg2_002
 );
 
-window.addEventListener("load", (event) => {
-  console.log("page is fully loaded");
-});
+/********************* end chapter1pg2_002 *********************/
+
+/********************* start chapter1pg2_003 *********************/
+specialPanels.chapter1pg2_003 = document.querySelector(".sp-chapter1pg2-003");
+
+specialPanelsOpt.chapter1pg2_003 = {
+  triggerElement: specialPanels.chapter1pg2_003,
+  duration: 50,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function chapter1pg2_003_act() {
+  // triggerDOM.innerText = this.progress().toFixed(2);
+  // triggerDOM.style.backgroundColor = "rgba(244, 244, 10," + this.progress().toFixed(2)+ ")";
+
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (between(scrollProgres, 0, 40)) {
+    theScene.children[1].style.transform = `translateY(${
+      60 - scrollProgres * 1.5
+    }%)`;
+
+    theScene.children[2].style.transform = `translateY(-${
+      50 - scrollProgres * 1.25
+    }%)`;
+
+    theScene.children[2].style.opacity = `${this.progress().toFixed(2) * 2.5} `;
+
+    // console.log(`${80 - this.progress().toFixed(2) * 150}`);
+  }
+
+  if (between(scrollProgres, 0, 70)) {
+    theScene.children[4].style.opacity = `${(scrollProgres - 40) / 100 / 0.3} `;
+  }
+
+  // hitung opacity
+  // 70% scroll ke 75% scroll jaraknya 5% = 5
+  // 5 / 100 (dari 100% scroll) = 0.05
+  if (between(scrollProgres, 70, 75)) {
+    // console.log(scrollProgres);
+
+    theScene.children[3].style.opacity = `
+    ${1 - (scrollProgres - 70) / 100 / 0.05} `;
+  }
+
+  if (between(scrollProgres, 75, 100)) {
+    // console.log(scrollProgres);
+
+    theScene.children[5].style.opacity = `
+    ${(scrollProgres - 75) / 100 / 0.25} `;
+  }
+
+  if (between(scrollProgres, 40, 60)) {
+    theScene.children[3].style.transform = `translateY(${
+      50 - (this.progress().toFixed(3) - 0.4) * 250
+    }%)`;
+  }
+}
+
+createScene(
+  specialPanels.chapter1pg2_003,
+  chapter1pg2_003_act,
+  specialPanelsOpt.chapter1pg2_003
+);
+
+/********************* end chapter1pg2_003 *********************/

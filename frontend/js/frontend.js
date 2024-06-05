@@ -161,8 +161,8 @@ else {
         "text/html"
       ).body;
 
-      console.log("----");
-      console.log(comicPageHTML.children[0]);
+      // console.log("----");
+      // console.log(comicPageHTML.children[0]);
 
       // add childs from comics file
       for (let index = 0; index < comicPageHTML.childNodes.length; index++) {

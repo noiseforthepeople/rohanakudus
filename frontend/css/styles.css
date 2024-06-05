@@ -323,7 +323,7 @@ gap: 3px;
 .allPagesList-Close:hover {
     border-bottom: none;
     background-color: var(--light-background-color);
-    border: 2px dotted var(--dark-text-color)
+    border: 2px dotted var(--dark-text-color);
 }
 
 
