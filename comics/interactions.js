@@ -431,9 +431,9 @@ function chapter1pg4_001_act() {
       0 - scrollProgres * 3.3333333
     }%)`;
     // panel 2
-    theScene.children[1].style.transform = `translateX(${
-      100 - scrollProgres * 3.3333333
-    }%)`;
+    // theScene.children[1].style.transform = `translateX(${
+    //   100 - scrollProgres * 3.3333333
+    // }%)`;
   }
 }
 
