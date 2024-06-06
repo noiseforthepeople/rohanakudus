@@ -63,7 +63,7 @@ function createScene(element, act, options) {
       //
     })
     .addTo(scrollMagicController)
-    // .addIndicators()
+    .addIndicators()
     .on("start", function () {
       this.duration(element.getBoundingClientRect().height.toFixed(2));
     })
@@ -407,13 +407,3 @@ createScene(
 );
 
 /********************* end chapter1pg2_003 *********************/
-
-// let locoscroll;
-
-// let locoscroll = new LocomotiveScroll({
-//   el: document.querySelector("#contents"),
-//   scrollbarContainer: document.querySelector("#textures"),
-//   // scrollFromAnywhere: true,
-//   smooth: true,
-//   // firefoxMultiplier: 10,
-// });
