@@ -1,3 +1,10 @@
+/***************************** all pages */
+.special-panel {
+    overflow: hidden;
+}
+
+
+/***************************** prolog1, chapter 1 page 1 */
 .sp-prolog1-001-2, .sp-prolog1-001-3,
 
 .sp-chapter1pg1-000-2, .sp-chapter1pg1-000-3,
@@ -19,14 +26,11 @@
 }
 
 
-
+/***************************** chapter 1 page 2 */
 
  .sp-chapter1pg2-003-6  {
     opacity: 0;
 }
-
-
-
 
 .sp-chapter1pg2-003-3 {
     transform: translateY(-50%);
@@ -41,7 +45,6 @@
     transform: translateY(60%);
 }
 
-
 .sp-chapter1pg2-003-4 {
     transform: translateY(35%);
     margin-left: -1dvw;
@@ -49,6 +52,28 @@
 }
 
 
-.special-panel {
-    overflow: hidden;
+
+
+/***************************** chapter 1 page 4 */
+.sp-chapter1pg4-001 img {
+display: inline;
+}
+
+/* to be -100% */
+.sp-chapter1pg4-001-1 {
+    transform: translateX(0%); 
+}
+
+/* to be -0% */
+.sp-chapter1pg4-001-2 {
+    transform: translateX(100%); 
+}
+
+
+.sp-chapter1pg4-003-2, .sp-chapter1pg4-003-3, .sp-chapter1pg4-003-4 {
+opacity: 0;
+}
+
+.sp-chapter1pg4-004-2, .sp-chapter1pg4-004-3, .sp-chapter1pg4-004-4 {
+opacity: 0;
 }

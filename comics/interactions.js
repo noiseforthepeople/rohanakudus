@@ -407,3 +407,124 @@ createScene(
 );
 
 /********************* end chapter1pg2_003 *********************/
+
+/********************* start chapter1pg4_001 *********************/
+specialPanels.chapter1pg4_001 = document.querySelector(".sp-chapter1pg4-001");
+
+specialPanelsOpt.chapter1pg4_001 = {
+  triggerElement: specialPanels.chapter1pg4_001,
+  duration: 50,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function chapter1pg4_001_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (between(scrollProgres, 0, 30)) {
+    // panel 1
+    theScene.children[0].style.transform = `translateX(${
+      0 - scrollProgres * 3.3333333
+    }%)`;
+    // panel 2
+    theScene.children[1].style.transform = `translateX(${
+      100 - scrollProgres * 3.3333333
+    }%)`;
+  }
+}
+
+createScene(
+  specialPanels.chapter1pg4_001,
+  chapter1pg4_001_act,
+  specialPanelsOpt.chapter1pg4_001
+);
+
+/********************* end chapter1pg4_001 *********************/
+
+/********************* start chapter1pg4_003 *********************/
+specialPanels.chapter1pg4_003 = document.querySelector(".sp-chapter1pg4-003");
+specialPanelsOpt.chapter1pg4_003 = { threshold: 0.5 };
+
+function chapter1pg4_003_act(entries) {
+  console.log(entries);
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_2s", true);
+        // element 2
+        delay(1000).then(() => {
+          e.target.children[1].style.opacity = "0";
+          e.target.children[1].classList.toggle("fadeOut_2s", true);
+
+          e.target.children[2].style.opacity = "1";
+          e.target.children[2].classList.toggle("fadeIn_2s", true);
+
+          delay(300).then(() => {
+            e.target.children[3].style.opacity = "1";
+            e.target.children[3].classList.toggle("fadeIn_2s", true);
+          });
+        });
+
+        // kalau udah muncul semua diunobserve
+        this.unobserve(e.target);
+        //
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg4_003,
+  chapter1pg4_003_act,
+  specialPanelsOpt.chapter1pg4_003
+);
+/******** end chapter1pg4_003 ********/
+
+/********************* start chapter1pg4_004 *********************/
+specialPanels.chapter1pg4_004 = document.querySelector(".sp-chapter1pg4-004");
+specialPanelsOpt.chapter1pg4_004 = { threshold: 0.5 };
+
+function chapter1pg4_004_act(entries) {
+  console.log(entries);
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+        // element 2
+        delay(800).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_2s", true);
+
+          delay(500).then(() => {
+            e.target.children[2].style.opacity = "1";
+            e.target.children[2].classList.toggle("fadeIn_2s", true);
+
+            delay(500).then(() => {
+              e.target.children[3].style.opacity = "1";
+              e.target.children[3].classList.toggle("fadeIn_2s", true);
+            });
+          });
+        });
+
+        // kalau udah muncul semua diunobserve
+        this.unobserve(e.target);
+        //
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg4_004,
+  chapter1pg4_004_act,
+  specialPanelsOpt.chapter1pg4_004
+);
+/******** end chapter1pg4_003 ********/
