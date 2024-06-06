@@ -63,7 +63,7 @@ function createScene(element, act, options) {
       //
     })
     .addTo(scrollMagicController)
-    .addIndicators()
+    // .addIndicators()
     .on("start", function () {
       this.duration(element.getBoundingClientRect().height.toFixed(2));
     })
@@ -354,44 +354,49 @@ function chapter1pg2_003_act() {
   const theScene = this.triggerElement();
 
   if (between(scrollProgres, 0, 40)) {
+    // rumah
     theScene.children[1].style.transform = `translateY(${
       60 - scrollProgres * 1.5
     }%)`;
 
+    // teks kali ini
     theScene.children[2].style.transform = `translateY(-${
       50 - scrollProgres * 1.25
     }%)`;
 
+    // teks kali ini
     theScene.children[2].style.opacity = `${this.progress().toFixed(2) * 2.5} `;
-
-    // console.log(`${80 - this.progress().toFixed(2) * 150}`);
   }
 
   if (between(scrollProgres, 0, 70)) {
+    // teks asahan
     theScene.children[4].style.opacity = `${(scrollProgres - 40) / 100 / 0.3} `;
+  }
+
+  // jaraknya 60-40 = 20
+  // 30/20 = 1.5
+  if (between(scrollProgres, 40, 60)) {
+    theScene.children[3].style.transform = `translateY(${
+      35 - (scrollProgres - 40) * 1.75
+    }%)`;
   }
 
   // hitung opacity
   // 70% scroll ke 75% scroll jaraknya 5% = 5
   // 5 / 100 (dari 100% scroll) = 0.05
-  if (between(scrollProgres, 70, 75)) {
+  if (between(scrollProgres, 0, 100)) {
     // console.log(scrollProgres);
 
     theScene.children[3].style.opacity = `
-    ${1 - (scrollProgres - 70) / 100 / 0.05} `;
+    ${1 - (scrollProgres - 80) / 100 / 0.2} `;
   }
 
-  if (between(scrollProgres, 75, 100)) {
+  if (between(scrollProgres, 0, 100)) {
     // console.log(scrollProgres);
 
+    // si rohana jalan
     theScene.children[5].style.opacity = `
     ${(scrollProgres - 75) / 100 / 0.25} `;
-  }
-
-  if (between(scrollProgres, 40, 60)) {
-    theScene.children[3].style.transform = `translateY(${
-      50 - (this.progress().toFixed(3) - 0.4) * 250
-    }%)`;
   }
 }
 

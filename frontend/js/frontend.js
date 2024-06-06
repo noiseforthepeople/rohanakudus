@@ -270,7 +270,8 @@ window.addEventListener("hashchange", (e) => {
       // window.location.reload();
 
       // selesai insert page
-      comicsPage.scrollIntoView();
+      // comicsPage.scrollIntoView();
+      bodyScroll.scrollTo("top", { duration: 0 });
       specialPanels = {};
       specialPanelsOpt = {};
       // waitForElement(comicsPage).then((elm) => {
@@ -419,6 +420,7 @@ function allPagesToggle() {
     allPagesList.classList.remove("animate__slideInUp");
     allPagesList.classList.add("animate__slideOutDown");
     document.body.style.overflowY = "scroll";
+    bodyScroll.scrollTo("top", { duration: 0 });
     delay(700).then(() => {
       allPagesList.classList.toggle("hide");
     });
@@ -443,9 +445,21 @@ allPagesContainer.addEventListener("click", (e) => {
   }
 });
 
-const lenis = new Lenis({
-  syncTouch: true,
-  duration: 3,
+const bodyScroll = new Lenis({
+  wrapper: window,
+  content: document.getElementById("contents"),
+  wheelMultiplier: 0.5,
+  touchMultiplier: 0.1,
+  touchInertiaMultiplier: 1,
+  // syncTouch: true,
+  // lerp: 0,
+  duration: 5,
+});
+
+const pagesListScroll = new Lenis({
+  wrapper: document.getElementById("contents-allPages"),
+  // syncTouch: true,
+  duration: 1,
 });
 
 // lenis.on("scroll", (e) => {
@@ -453,7 +467,8 @@ const lenis = new Lenis({
 // });
 
 function raf(time) {
-  lenis.raf(time);
+  bodyScroll.raf(time);
+  pagesListScroll.raf(time);
   requestAnimationFrame(raf);
 }
 

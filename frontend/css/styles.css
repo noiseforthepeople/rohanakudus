@@ -13,7 +13,7 @@
     --red-color: 187, 20, 54;
     --yellow-color: 254, 191, 15;    
 
-    overscroll-behavior: none;
+    /* overscroll-behavior: none; */
 
     scrollbar-color: rgba(var(--green-color), 1)  rgba(255, 255, 255, 0) ;
   }
@@ -38,7 +38,7 @@ body {
     color: var(--dark-text-color);
     background-color: var(--light-background-color);
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .layout {
@@ -52,6 +52,7 @@ body {
     grid-template-areas: 
     "left-navigation contents";
     gap: 0px 0px;
+
 
 }
 
