@@ -51,6 +51,64 @@
     opacity: 1;
 }
 
+.sp-chapter1pg2-004-3,
+.sp-chapter1pg2-004-4, .sp-chapter1pg2-004-5 {
+    opacity: 0;
+}
+
+
+
+.sp-chapter1pg2-005-4,
+.sp-chapter1pg2-005-5{
+    opacity: 0;
+}
+
+
+.sp-chapter1pg2-005-4,
+.sp-chapter1pg2-005-5{
+    opacity: 0;
+}
+
+.sp-chapter1pg2-006-2, 
+.sp-chapter1pg2-006-3, 
+.sp-chapter1pg2-006-4, 
+.sp-chapter1pg2-006-5, 
+.sp-chapter1pg2-006-6
+{
+    opacity: 0;
+}
+
+
+/***************************** chapter 1 page 3 */
+
+.sp-chapter1pg3-001-2, .sp-chapter1pg3-001-3
+{
+    opacity: 0;
+}
+
+/* panel 2 */
+
+/* 1 rohana */
+.sp-chapter1pg3-002-2 {
+    transform: translateY(70%);
+}
+
+/* 2 teks 1 */
+.sp-chapter1pg3-002-3 {
+    opacity: 0;
+}
+
+
+/* 3 ORANG RAME2 */
+.sp-chapter1pg3-002-4 {
+    transform: translateY(45%);
+}
+
+/* 4 teks 2 */
+.sp-chapter1pg3-002-5 {
+    opacity: 0;
+}
+
 
 
 

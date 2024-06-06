@@ -368,6 +368,7 @@ function chapter1pg2_003_act() {
     theScene.children[2].style.opacity = `${this.progress().toFixed(2) * 2.5} `;
   }
 
+  // 30 / 100
   if (between(scrollProgres, 0, 70)) {
     // teks asahan
     theScene.children[4].style.opacity = `${(scrollProgres - 40) / 100 / 0.3} `;
@@ -407,6 +408,226 @@ createScene(
 );
 
 /********************* end chapter1pg2_003 *********************/
+
+/********************* start chapter1pg2_004 *********************/
+specialPanels.chapter1pg2_004 = document.querySelector(".sp-chapter1pg2-004");
+specialPanelsOpt.chapter1pg2_004 = { threshold: 0.5 };
+
+function chapter1pg2_004_act(entries) {
+  console.log(entries);
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+        // element 2
+        delay(800).then(() => {
+          e.target.children[2].style.opacity = "1";
+          e.target.children[2].classList.toggle("fadeIn_2s", true);
+
+          delay(800).then(() => {
+            e.target.children[3].style.opacity = "1";
+            e.target.children[3].classList.toggle("fadeIn_2s", true);
+
+            delay(800).then(() => {
+              e.target.children[4].style.opacity = "1";
+              e.target.children[4].classList.toggle("fadeIn_2s", true);
+            });
+          });
+        });
+
+        // kalau udah muncul semua diunobserve
+        this.unobserve(e.target);
+        //
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg2_004,
+  chapter1pg2_004_act,
+  specialPanelsOpt.chapter1pg2_004
+);
+/******** end chapter1pg4_003 ********/
+
+/********************* start chapter1pg2_005 *********************/
+specialPanels.chapter1pg2_005 = document.querySelector(".sp-chapter1pg2-005");
+specialPanelsOpt.chapter1pg2_005 = { threshold: 0.5 };
+
+function chapter1pg2_005_act(entries) {
+  console.log(entries);
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+        // element 2
+        delay(1000).then(() => {
+          e.target.children[3].style.opacity = "1";
+          e.target.children[3].classList.toggle("fadeIn_2s", true);
+          e.target.children[4].style.opacity = "1";
+          e.target.children[4].classList.toggle("fadeIn_2s", true);
+        });
+
+        // kalau udah muncul semua diunobserve
+        this.unobserve(e.target);
+        //
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg2_005,
+  chapter1pg2_005_act,
+  specialPanelsOpt.chapter1pg2_005
+);
+/******** end chapter1pg2_005 ********/
+
+/********************* start chapter1pg2_006 *********************/
+specialPanels.chapter1pg2_006 = document.querySelector(".sp-chapter1pg2-006");
+specialPanelsOpt.chapter1pg2_006 = { threshold: 0.5 };
+
+function chapter1pg2_006_act(entries) {
+  // console.log(entries);
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+        // element 2
+        delay(1000).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_1s", true);
+
+          delay(1500).then(() => {
+            e.target.children[1].classList.toggle("fadeOut_2s", true);
+            e.target.children[1].style.opacity = "0";
+
+            delay(400).then(() => {
+              e.target.children[2].style.opacity = "1";
+              e.target.children[2].classList.toggle("fadeIn_1s", true);
+            });
+
+            delay(900).then(() => {
+              e.target.children[3].style.opacity = "1";
+              e.target.children[3].classList.toggle("fadeIn_1s", true);
+            });
+
+            delay(1300).then(() => {
+              e.target.children[4].style.opacity = "1";
+              e.target.children[4].classList.toggle("fadeIn_1s", true);
+            });
+
+            delay(1600).then(() => {
+              e.target.children[5].style.opacity = "1";
+              e.target.children[5].classList.toggle("fadeIn_1s", true);
+            });
+          });
+        });
+
+        // kalau udah muncul semua diunobserve
+        this.unobserve(e.target);
+        //
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg2_006,
+  chapter1pg2_006_act,
+  specialPanelsOpt.chapter1pg2_006
+);
+/******** end chapter1pg2_005 ********/
+
+/********************* start chapter1pg3_001 *********************/
+specialPanels.chapter1pg3_001 = document.querySelector(".sp-chapter1pg3-001");
+specialPanelsOpt.chapter1pg3_001 = { threshold: 0.5 };
+function chapter1pg3_001_act(entries) {
+  // console.log(entries);
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      // element 2
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      delay(2000).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_1s", true);
+      });
+
+      // kalau udah muncul semua diunobserve
+      this.unobserve(e.target);
+      //
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg3_001,
+  chapter1pg3_001_act,
+  specialPanelsOpt.chapter1pg3_001
+);
+/******** end chapter1pg3_001 ********/
+
+/********************* start chapter1pg3_002 *********************/
+specialPanels.chapter1pg3_002 = document.querySelector(".sp-chapter1pg3-002");
+
+specialPanelsOpt.chapter1pg3_002 = {
+  triggerElement: specialPanels.chapter1pg3_002,
+  duration: 50,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function chapter1pg3_002_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (between(scrollProgres, 0, 20)) {
+    // 1. rohana
+    theScene.children[1].style.transform = `translateY(${
+      70 - scrollProgres * 3.5
+    }%)`;
+  }
+
+  if (between(scrollProgres, 0, 50)) {
+    // 2. teks 1
+    // 30 / 100
+    theScene.children[4].style.opacity = `${(scrollProgres - 20) / 100 / 0.3} `;
+
+    // 3. orang rame
+    // 20 / 40
+    theScene.children[3].style.transform = `translateY(${
+      45 - (scrollProgres + 45) * 0.5
+    }%)`;
+  }
+
+  /// terakhir di sini
+
+  if (between(scrollProgres, 50, 100)) {
+    // 4. teks 2
+    // 30 / 100
+    theScene.children[2].style.opacity = `${(scrollProgres - 50) / 100 / 0.3} `;
+  }
+}
+
+createScene(
+  specialPanels.chapter1pg3_002,
+  chapter1pg3_002_act,
+  specialPanelsOpt.chapter1pg3_002
+);
+
+/********************* end chapter1pg4_001 *********************/
 
 /********************* start chapter1pg4_001 *********************/
 specialPanels.chapter1pg4_001 = document.querySelector(".sp-chapter1pg4-001");
