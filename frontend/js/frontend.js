@@ -22,9 +22,23 @@ let currentPage = listOfAllPages[0].value;
 
 window.addEventListener("keydown", (event) => {
   if (event.key == "ArrowLeft") {
+    event.preventDefault();
     prevButton.click();
-  } else if (event.key == "ArrowRight") {
+  }
+
+  if (event.key == "ArrowRight") {
+    event.preventDefault();
     nextButton.click();
+  }
+
+  if (event.key == "Home") {
+    event.preventDefault();
+    firstButton.click();
+  }
+
+  if (event.key == "End") {
+    event.preventDefault();
+    lastButton.click();
   }
 });
 

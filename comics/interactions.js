@@ -416,7 +416,7 @@ specialPanelsOpt.chapter1pg2_004 = { threshold: 0.5 };
 function chapter1pg2_004_act(entries) {
   console.log(entries);
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -458,7 +458,7 @@ specialPanelsOpt.chapter1pg2_005 = { threshold: 0.5 };
 function chapter1pg2_005_act(entries) {
   console.log(entries);
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -492,7 +492,7 @@ specialPanelsOpt.chapter1pg2_006 = { threshold: 0.5 };
 function chapter1pg2_006_act(entries) {
   // console.log(entries);
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -548,7 +548,7 @@ specialPanelsOpt.chapter1pg3_001 = { threshold: 0.5 };
 function chapter1pg3_001_act(entries) {
   // console.log(entries);
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       // element 2
@@ -575,6 +575,45 @@ createObserver(
   specialPanelsOpt.chapter1pg3_001
 );
 /******** end chapter1pg3_001 ********/
+
+/********************* start chapter1pg3_004 *********************/
+specialPanels.chapter1pg3_004 = document.querySelector(".sp-chapter1pg3-004");
+specialPanelsOpt.chapter1pg3_004 = { threshold: 0.5 };
+function chapter1pg3_004_act(entries) {
+  // console.log(entries);
+  entries.forEach((e) => {
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      // element 2
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      delay(2000).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_1s", true);
+      });
+
+      delay(3000).then(() => {
+        e.target.children[3].style.opacity = "1";
+        e.target.children[3].classList.toggle("fadeIn_1s", true);
+      });
+
+      // kalau udah muncul semua diunobserve
+      this.unobserve(e.target);
+      //
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg3_004,
+  chapter1pg3_004_act,
+  specialPanelsOpt.chapter1pg3_004
+);
+/******** end chapter1pg3_004 ********/
 
 /********************* start chapter1pg3_002 *********************/
 specialPanels.chapter1pg3_002 = document.querySelector(".sp-chapter1pg3-002");
@@ -612,7 +651,7 @@ function chapter1pg3_002_act() {
     }%)`;
   }
 
-  /// terakhir di sini
+  /// terakhir di sini 06/06/ 06.34
 
   if (between(scrollProgres, 50, 100)) {
     // 4. teks 2
@@ -671,7 +710,6 @@ specialPanels.chapter1pg4_003 = document.querySelector(".sp-chapter1pg4-003");
 specialPanelsOpt.chapter1pg4_003 = { threshold: 0.5 };
 
 function chapter1pg4_003_act(entries) {
-  console.log(entries);
   entries.forEach((e) => {
     console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
@@ -713,7 +751,6 @@ specialPanels.chapter1pg4_004 = document.querySelector(".sp-chapter1pg4-004");
 specialPanelsOpt.chapter1pg4_004 = { threshold: 0.5 };
 
 function chapter1pg4_004_act(entries) {
-  console.log(entries);
   entries.forEach((e) => {
     console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
@@ -749,3 +786,157 @@ createObserver(
   specialPanelsOpt.chapter1pg4_004
 );
 /******** end chapter1pg4_003 ********/
+
+/********************* start chapter1pg5_003 *********************/
+specialPanels.chapter1pg5_003 = document.querySelector(".sp-chapter1pg5-003");
+specialPanelsOpt.chapter1pg5_003 = { threshold: 0.5 };
+
+function chapter1pg5_003_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+
+        delay(500).then(() => {
+          e.target.children[2].style.opacity = "1";
+          e.target.children[2].classList.toggle("fadeIn_2s", true);
+
+          delay(400).then(() => {
+            e.target.children[1].style.opacity = "1";
+            e.target.children[1].classList.toggle("fadeIn_2s", true);
+          });
+        });
+
+        // element 2
+
+        delay(1000).then(() => {
+          e.target.children[4].style.opacity = "1";
+          e.target.children[4].classList.toggle("fadeIn_2s", true);
+
+          delay(400).then(() => {
+            e.target.children[3].style.opacity = "1";
+            e.target.children[3].classList.toggle("fadeIn_2s", true);
+          });
+        });
+
+        // element 3
+
+        delay(1500).then(() => {
+          e.target.children[6].style.opacity = "1";
+          e.target.children[6].classList.toggle("fadeIn_2s", true);
+          delay(400).then(() => {
+            e.target.children[5].style.opacity = "1";
+            e.target.children[5].classList.toggle("fadeIn_2s", true);
+          });
+        });
+
+        // element 4
+        delay(2200).then(() => {
+          e.target.children[8].style.opacity = "1";
+          e.target.children[8].classList.toggle("fadeIn_2s", true);
+
+          delay(400).then(() => {
+            e.target.children[7].style.opacity = "1";
+            e.target.children[7].classList.toggle("fadeIn_2s", true);
+          });
+        });
+
+        // element 5
+        delay(5000).then(() => {
+          e.target.children[2].classList.toggle("fadeIn_2s", false);
+          e.target.children[2].classList.toggle("fadeOut_1s", true);
+
+          e.target.children[4].classList.toggle("fadeIn_2s", false);
+          e.target.children[4].classList.toggle("fadeOut_1s", true);
+
+          e.target.children[6].classList.toggle("fadeIn_2s", false);
+          e.target.children[6].classList.toggle("fadeOut_1s", true);
+
+          e.target.children[8].classList.toggle("fadeIn_2s", false);
+          e.target.children[8].classList.toggle("fadeOut_1s", true);
+
+          delay(1000).then(() => {
+            e.target.children[2].style.opacity = "0";
+            e.target.children[4].style.opacity = "0";
+            e.target.children[6].style.opacity = "0";
+            e.target.children[8].style.opacity = "0";
+          });
+        });
+
+        delay(7000).then(() => {
+          e.target.children[9].classList.toggle("fadeIn_1s", true);
+
+          delay(1000).then(() => {
+            e.target.children[10].classList.toggle("fadeIn_1s", true);
+          });
+        });
+
+        // kalau udah muncul semua diunobserve
+        this.unobserve(e.target);
+        //
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg5_003,
+  chapter1pg5_003_act,
+  specialPanelsOpt.chapter1pg5_003
+);
+/******** end chapter1pg4_003 ********/
+
+/********************* start chapter1pg5_004 *********************/
+specialPanels.chapter1pg5_004 = document.querySelector(".sp-chapter1pg5-004");
+specialPanelsOpt.chapter1pg5_004 = { threshold: 0.5 };
+
+function chapter1pg5_004_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+
+        delay(1000).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_2s", true);
+        });
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg5_004,
+  chapter1pg5_004_act,
+  specialPanelsOpt.chapter1pg5_004
+);
+/******** end chapter1pg4_004 ********/
+
+/********************* start chapter1pg5_005 *********************/
+specialPanels.chapter1pg5_005 = document.querySelector(".sp-chapter1pg5-005");
+specialPanelsOpt.chapter1pg5_005 = { threshold: 0.5 };
+
+function chapter1pg5_005_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+
+        delay(1000).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_2s", true);
+        });
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter1pg5_005,
+  chapter1pg5_005_act,
+  specialPanelsOpt.chapter1pg5_005
+);
+/******** end chapter1pg4_005 ********/
