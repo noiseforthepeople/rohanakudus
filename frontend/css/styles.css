@@ -427,6 +427,43 @@ gap: 3px;
     background-color: rgb(175, 175, 175, 0)
 }
 
+
+.homepageContents {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 10% calc(40dvw - 100px);
+    margin-top: 10dvh;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.readComic {
+    font-size: 1.3em;
+    text-decoration: none;
+    padding:0.6dvh 0.3dvw;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 2dvh;
+    text-align: center;
+    cursor: pointer;
+    border: 2px dotted;
+    border-color: var(--light-text-color);
+    background-color: var(--light-text-color);
+    color: var(--dark-text-color);
+}
+
+.readComic:hover {
+    color: var(--dark-text-color);
+    border-color: var(--dark-background-color);
+    background-color: rgb(175, 175, 175, 0)
+}
+
+.homepage {
+    background-color: rgba(var(--yellow-color), 1) !important;
+}
 /********************* responsive ************************/
 
 
