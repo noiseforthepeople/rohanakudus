@@ -70,6 +70,16 @@ function waitForElement(selector) {
 
 /********************* fetch page function ************************/
 
+// function disableFirstandPrev() {
+//   firstButton.classList.add("disabledButton");
+//   prevButton.classList.add("disabledButton");
+// }
+
+// function disableLastandNext() {
+//   lastButton.classList.add("disabledButton");
+//   nextButton.classList.add("disabledButton");
+// }
+
 // loading
 function showLoading() {
   loadingBlock.classList.toggle("hide");
@@ -103,6 +113,28 @@ let specialPanels = {};
 let specialPanelsOpt = {};
 let specialPanelsScenes = [];
 
+let currentPageNumber = 0;
+
+function disableNavigationButton() {
+  console.log(currentPageNumber);
+  if (currentPageNumber === 0) {
+    lastButton.classList.remove("disabledButton");
+    nextButton.classList.remove("disabledButton");
+    firstButton.classList.add("disabledButton");
+    prevButton.classList.add("disabledButton");
+  } else if (currentPageNumber === listOfAllPages.length - 1) {
+    firstButton.classList.remove("disabledButton");
+    prevButton.classList.remove("disabledButton");
+    lastButton.classList.add("disabledButton");
+    nextButton.classList.add("disabledButton");
+  } else {
+    firstButton.classList.remove("disabledButton");
+    prevButton.classList.remove("disabledButton");
+    lastButton.classList.remove("disabledButton");
+    nextButton.classList.remove("disabledButton");
+  }
+}
+
 const error404 =
   '<div class="chapter-title">(404) konten tidak ditemukan / belum ada.</div>';
 
@@ -112,10 +144,9 @@ function detectPageNumber(hash) {
   );
 }
 
-let currentPageNumber = 0;
-
 // first page
 if (!currentHash) {
+  disableNavigationButton();
   // mulai insert page
   showLoading();
   selectButton.children[0].value = "prolog_1";
@@ -158,6 +189,7 @@ if (!currentHash) {
 // all pages
 else {
   currentPageNumber = detectPageNumber(currentHash);
+  disableNavigationButton();
   currentPage = window.location.hash.replace("#", "");
 
   // mulai insert page
@@ -219,6 +251,7 @@ function deleteAllScene() {
 }
 
 window.addEventListener("hashchange", (e) => {
+  disableNavigationButton();
   // console.log(specialPanelsScenes);
 
   // specialPanelsScenes.forEach((scene) => {
@@ -424,7 +457,12 @@ contentsAboutClose[1].addEventListener("click", () => {
 // pages list
 
 const allPagesList = document.getElementById("contents-allPages");
-function allPagesToggle() {
+function allPagesToggle(close) {
+  let scrollToWhere = "top";
+  if (close === "close") {
+    scrollToWhere = "bottom";
+  }
+
   if (allPagesList.classList.contains("hide")) {
     allPagesList.classList.add("animate__slideInUp");
     allPagesList.classList.remove("animate__slideOutDown");
@@ -434,16 +472,16 @@ function allPagesToggle() {
     allPagesList.classList.remove("animate__slideInUp");
     allPagesList.classList.add("animate__slideOutDown");
     document.body.style.overflowY = "scroll";
-    bodyScroll.scrollTo("top", { duration: 0 });
+    bodyScroll.scrollTo(scrollToWhere, { duration: 0 });
     delay(700).then(() => {
       allPagesList.classList.toggle("hide");
     });
   }
 }
 
-document
-  .querySelector(".allPagesList-Close")
-  .addEventListener("click", allPagesToggle);
+document.querySelector(".allPagesList-Close").addEventListener("click", () => {
+  allPagesToggle("close");
+});
 
 const allPagesContainer = document.getElementById("contents-allPages");
 

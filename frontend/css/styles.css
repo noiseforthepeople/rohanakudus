@@ -438,6 +438,20 @@ gap: 3px;
     align-items: center;
     justify-content: center;
     align-content: center;
+    /* background-color: white; */
+
+}
+
+.homepageMain {
+    background-image: url("../images/homepage.png");
+    background-position: center;
+    background-size: contain;
+    /* background-position-y: calc(10dvh + 1dvw); */
+    background-repeat: no-repeat;
+}
+
+.homepageMain p {
+    mix-blend-mode: color-burn;
 }
 
 .readComic {
@@ -627,4 +641,20 @@ gap: 3px;
     pointer-events:none;
 
     opacity: 0.8;
+}
+
+.disabledButton {
+    background-color: var(--light-text-color);
+    color: var(--dark-text-color);
+    opacity: 0.3;
+    cursor: not-allowed;
+    border: var(--dark-text-color);
+}
+
+.disabledButton:hover{
+    background-color: var(--light-text-color);
+    color: var(--dark-text-color);
+    opacity: 0.3;
+    cursor: not-allowed;
+    border: var(--dark-text-color);
 }
