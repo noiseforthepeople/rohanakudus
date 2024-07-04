@@ -74,7 +74,7 @@ body {
     align-items: center;
     gap:10px 0;
     position: fixed;
-    z-index: 1003;
+    z-index: 3001;
 }
 
 .left-navigation-buttons > * {

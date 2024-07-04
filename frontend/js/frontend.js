@@ -20,6 +20,10 @@ let currentPage = listOfAllPages[0].value;
 
 // let currentPage_old = selectButton.children[0].value;
 
+function checkLastPanelHeight() {
+  return document.querySelector(".main-comics > :last-child").clientHeight;
+}
+
 window.addEventListener("keydown", (event) => {
   if (event.key == "ArrowLeft") {
     event.preventDefault();
@@ -83,7 +87,7 @@ function waitForElement(selector) {
 // loading
 function showLoading() {
   loadingBlock.classList.toggle("hide");
-  loadingBlock.classList.add("fadeIn_05s");
+  // loadingBlock.classList.add("fadeIn_05s");
   loadingBlock.classList.remove("fadeOut_05s");
 }
 
@@ -159,30 +163,48 @@ if (!currentHash) {
         "text/html"
       ).body;
 
+      // console.log("----");
+      // console.log(comicPageHTML.children[0]);
+
       // add childs from comics file
       for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
         let element = comicPageHTML.childNodes[index];
         // console.log(element);
-
         comicsPage.appendChild(element);
+
+        if (index === comicPageHTML.childNodes.length - 1) {
+          console.log("terakhir");
+        }
       }
 
-      comicsPage.addEventListener("onload", function (e) {
-        console.log("loaded");
+      window.addEventListener("resize", () => {
+        console.log(
+          document.querySelector(".main-comics > :last-child").clientHeight
+        );
       });
 
-      // add interactions scripts
-      let interactionsScript = document.createElement("script");
-      interactionsScript.src = "comics/interactions.js";
-      interactionsScript.id = "interactionsJS";
-      frontendJS.insertAdjacentElement("afterend", interactionsScript);
-      interactionsJS = document.getElementById("interactionsJS");
+      // document.querySelector(".main-comics > :last-child");
 
-      // selesai insert page
-      specialPanels = {};
-      specialPanelsOpt = {};
+      // comicsPage.addEventListener("onload", function (e) {
+      //   console.log("loaded");
+      // });
 
-      hideLoading();
+      delay(500).then(() => {
+        console.log(checkLastPanelHeight());
+
+        // add interactions scripts
+        let interactionsScript = document.createElement("script");
+        interactionsScript.src = "comics/interactions.js";
+        interactionsScript.id = "interactionsJS";
+        frontendJS.insertAdjacentElement("afterend", interactionsScript);
+        interactionsJS = document.getElementById("interactionsJS");
+
+        // selesai insert page
+        specialPanels = {};
+        specialPanelsOpt = {};
+
+        hideLoading();
+      });
     });
 }
 
@@ -217,22 +239,26 @@ else {
         comicsPage.appendChild(element);
       }
 
-      // add interactions scripts
-      let interactionsScript = document.createElement("script");
-      interactionsScript.src = "comics/interactions.js";
-      interactionsScript.id = "interactionsJS";
-      frontendJS.insertAdjacentElement("afterend", interactionsScript);
-      interactionsJS = document.getElementById("interactionsJS");
+      delay(500).then(() => {
+        console.log(checkLastPanelHeight());
 
-      // selesai insert page
-      specialPanels = {};
-      specialPanelsOpt = {};
-      // waitForElement(comicsPage).then((elm) => {
-      //   console.log("all element load successfully");
-      //   hideLoading();
-      // });
+        // add interactions scripts
+        let interactionsScript = document.createElement("script");
+        interactionsScript.src = "comics/interactions.js";
+        interactionsScript.id = "interactionsJS";
+        frontendJS.insertAdjacentElement("afterend", interactionsScript);
+        interactionsJS = document.getElementById("interactionsJS");
 
-      hideLoading();
+        // selesai insert page
+        specialPanels = {};
+        specialPanelsOpt = {};
+        // waitForElement(comicsPage).then((elm) => {
+        //   console.log("all element load successfully");
+        //   hideLoading();
+        // });
+
+        hideLoading();
+      });
     });
 }
 
@@ -251,6 +277,7 @@ function deleteAllScene() {
 }
 
 window.addEventListener("hashchange", (e) => {
+  // console.log(document.readyState);
   disableNavigationButton();
   // console.log(specialPanelsScenes);
 
@@ -262,6 +289,7 @@ window.addEventListener("hashchange", (e) => {
   //   specialPanelsScenes.shift();
   // });
 
+  showLoading();
   deleteAllScene();
 
   // check current url
@@ -276,8 +304,6 @@ window.addEventListener("hashchange", (e) => {
       siteTitle + " / " + getPageNumberFromHash;
     currentPage = getPageNumberFromHash;
   }
-
-  // showLoading();
 
   fetch("/comics/" + window.location.hash.replace("#", "") + ".html")
     .then((res) => {
@@ -307,24 +333,25 @@ window.addEventListener("hashchange", (e) => {
         comicsPage.appendChild(element);
       }
 
-      // add interactions scripts
-      let interactionsScript = document.createElement("script");
-      interactionsScript.src = "comics/interactions.js";
-      interactionsScript.id = "interactionsJS";
-      frontendJS.insertAdjacentElement("afterend", interactionsScript);
-      interactionsJS = document.getElementById("interactionsJS");
+      delay(500).then(() => {
+        console.log(checkLastPanelHeight());
+        // add interactions scripts
+        let interactionsScript = document.createElement("script");
+        interactionsScript.src = "comics/interactions.js";
+        interactionsScript.id = "interactionsJS";
+        frontendJS.insertAdjacentElement("afterend", interactionsScript);
+        interactionsJS = document.getElementById("interactionsJS");
 
-      // window.location.reload();
+        // window.location.reload();
 
-      // selesai insert page
-      // comicsPage.scrollIntoView();
-      bodyScroll.scrollTo("top", { duration: 0 });
-      specialPanels = {};
-      specialPanelsOpt = {};
-      // waitForElement(comicsPage).then((elm) => {
-      //   console.log("all element load successfully");
-      //   hideLoading();
-      // });
+        // selesai insert page
+        // comicsPage.scrollIntoView();
+        bodyScroll.scrollTo("top", { duration: 0 });
+        specialPanels = {};
+        specialPanelsOpt = {};
+
+        hideLoading();
+      });
     });
 });
 
@@ -524,4 +551,4 @@ function raf(time) {
   requestAnimationFrame(raf);
 }
 
-requestAnimationFrame(raf);
+window.requestAnimationFrame(raf);
