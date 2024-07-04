@@ -43,7 +43,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 /********************* imageloader function ************************/
-function loaderDone(imagesLoaderVar) {
+function loaderDone() {
   addInteractionJS();
   hideLoading();
 
@@ -51,7 +51,7 @@ function loaderDone(imagesLoaderVar) {
     siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
 }
 
-function loaderProgress(imagesLoaderVar) {
+function loaderProgress() {
   document.title = "Loading. . . .";
 
   // console.log(this);
@@ -269,8 +269,8 @@ window.addEventListener("hashchange", (e) => {
       /********************* imageloader ************************/
       let imagesLoader = imagesLoaded(comicsPage);
 
-      imagesLoader.on("progress", loaderProgress(imagesLoader));
-      imagesLoader.on("done", loaderDone(imagesLoader));
+      imagesLoader.on("progress", loaderProgress);
+      imagesLoader.on("done", loaderDone);
 
       /********************* end imageLoader ************************/
 
