@@ -16,26 +16,26 @@ function createObserver(element, act, options) {
  * @param  {Function} callback The callback function to run after scrolling
  * @param  {Integer}  refresh  How long to wait between scroll events [optional]
  */
-function scrollStop(callback, refresh = 100) {
-  // Make sure a valid callback was provided
-  if (!callback || typeof callback !== "function") return;
+// function scrollStop(callback, refresh = 100) {
+//   // Make sure a valid callback was provided
+//   if (!callback || typeof callback !== "function") return;
 
-  // Setup scrolling variable
-  let isScrolling;
+//   // Setup scrolling variable
+//   let isScrolling;
 
-  // Listen for scroll events
-  window.addEventListener(
-    "scroll",
-    function (event) {
-      // Clear our timeout throughout the scroll
-      window.clearTimeout(isScrolling);
+//   // Listen for scroll events
+//   window.addEventListener(
+//     "scroll",
+//     function (event) {
+//       // Clear our timeout throughout the scroll
+//       window.clearTimeout(isScrolling);
 
-      // Set a timeout to run after scrolling ends
-      isScrolling = setTimeout(callback, refresh);
-    },
-    false
-  );
-}
+//       // Set a timeout to run after scrolling ends
+//       isScrolling = setTimeout(callback, refresh);
+//     },
+//     false
+//   );
+// }
 
 /********************* (parallax) create scrollMagic controller ************************/
 

@@ -18,8 +18,6 @@ let interactionsJS;
 /********************* check URL function ************************/
 let currentPage = listOfAllPages[0].value;
 
-// let currentPage_old = selectButton.children[0].value;
-
 /********************* keyboard navigation ************************/
 
 window.addEventListener("keydown", (event) => {
@@ -45,22 +43,20 @@ window.addEventListener("keydown", (event) => {
 });
 
 /********************* imageloader function ************************/
-function loaderDone() {
-  // document.querySelector("#container p").innerText = "done";
+function loaderDone(imagesLoaderVar) {
   addInteractionJS();
   hideLoading();
 
   document.title =
     siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
-
-  // setTimeout(() => {
-  //   document.title = "idle";
-  // }, 1000);
 }
 
-function loaderProgress() {
-  // document.querySelector("#container p").innerText = "done";
+function loaderProgress(imagesLoaderVar) {
   document.title = "Loading. . . .";
+
+  // console.log(this);
+  // console.log("vvv");
+  // console.log(imagesLoaderVar.images);
 }
 
 /********************* (parallax) misc function ************************/
@@ -76,50 +72,20 @@ function addInteractionJS() {
   interactionsJS = document.getElementById("interactionsJS");
 }
 
-// function waitForElement(selector) {
-//   return new Promise((resolve) => {
-//     if (selector) {
-//       return resolve(selector);
-//     }
-
-//     const observer = new MutationObserver((mutations) => {
-//       if (selector) {
-//         observer.disconnect();
-//         resolve(selector);
-//       }
-//     });
-
-//     // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
-//     observer.observe(document.body, {
-//       childList: true,
-//       subtree: true,
-//     });
-//   });
-// }
-
-/********************* fetch page function ************************/
-
-// function disableFirstandPrev() {
-//   firstButton.classList.add("disabledButton");
-//   prevButton.classList.add("disabledButton");
-// }
-
-// function disableLastandNext() {
-//   lastButton.classList.add("disabledButton");
-//   nextButton.classList.add("disabledButton");
-// }
-
 // loading
 function showLoading() {
   loadingBlock.classList.toggle("hide");
   // loadingBlock.classList.add("fadeIn_05s");
   loadingBlock.classList.remove("fadeOut_05s");
+
+  document.body.classList.toggle("no-scroll");
 }
 
 function hideLoading() {
   loadingBlock.classList.remove("fadeIn_05s");
   loadingBlock.classList.add("fadeOut_05s");
   delay(500).then(() => {
+    document.body.classList.toggle("no-scroll");
     loadingBlock.classList.toggle("hide");
   });
 }
@@ -149,10 +115,6 @@ let specialPanelsOpt = {};
 let specialPanelsScenes = [];
 
 let currentPageNumber = 0;
-
-// function checkLastPanelHeight() {
-//   return document.querySelector(".main-comics > :last-child").clientHeight;
-// }
 
 /********************* disable navigation button ************************/
 
@@ -186,6 +148,7 @@ function detectPageNumber(hash) {
 
 // first page
 if (!currentHash) {
+  //
   document.title =
     siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
   disableNavigationButton();
@@ -248,50 +211,6 @@ else {
       specialPanelsOpt = {};
     }
   );
-
-  // fetch()
-  //   .then((res) => {
-  //     if (res.status === 200) return res.text();
-  //     if (res.status === 404) return (res = error404);
-  //   })
-  //   .then((data) => {
-  //     // parse html data
-  //     let comicPageHTML = new DOMParser().parseFromString(
-  //       data,
-  //       "text/html"
-  //     ).body;
-
-  //     // console.log("----");
-  //     // console.log(comicPageHTML.children[0]);
-
-  //     // add childs from comics file
-  //     for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
-  //       let element = comicPageHTML.childNodes[index];
-  //       // console.log(element);
-  //       comicsPage.appendChild(element);
-  //     }
-
-  //     // delay(500).then(() => {
-  //     //   console.log(checkLastPanelHeight());
-
-  //     //   // add interactions scripts
-  //     //   let interactionsScript = document.createElement("script");
-  //     //   interactionsScript.src = "comics/interactions.js";
-  //     //   interactionsScript.id = "interactionsJS";
-  //     //   frontendJS.insertAdjacentElement("afterend", interactionsScript);
-  //     //   interactionsJS = document.getElementById("interactionsJS");
-
-  //     //   // selesai insert page
-  //     //   specialPanels = {};
-  //     //   specialPanelsOpt = {};
-  //     //   // waitForElement(comicsPage).then((elm) => {
-  //     //   //   console.log("all element load successfully");
-  //     //   //   hideLoading();
-  //     //   // });
-
-  //     //   hideLoading();
-  //     // });
-  //   });
 }
 
 /********************* url hash change listener ************************/
@@ -309,26 +228,10 @@ function deleteAllScene() {
 }
 
 window.addEventListener("hashchange", (e) => {
-  console.log(document.readyState);
   disableNavigationButton();
-  // console.log(specialPanelsScenes);
-
-  // specialPanelsScenes.forEach((scene) => {
-  //   console.log(scene);
-
-  //   scene.remove();
-  //   scene.destroy();
-  //   specialPanelsScenes.shift();
-  // });
 
   showLoading();
   deleteAllScene();
-
-  // window.location.reload();
-  // window.top.location.href = "comic.html" + window.location.hash;
-  // history.replaceState({}, "replace page", window.location.hash);
-
-  // hideLoading();
 
   // check current url
   if (!window.location.hash) {
@@ -363,32 +266,14 @@ window.addEventListener("hashchange", (e) => {
         console.log(data);
       }
 
-      // let tempIMG = document.createElement('img');
-      // tempIMG.class = "comic-item"
-      // tempIMG.src = "comics/404.jpg"
-
-      // for (let index = 0; index < data.length; index++) {
-      //   let element = data[index];
-      //   // console.log(element);
-      //   comicsPage.appendChild(element);
-      // }
-
-      // delay(500).then(() => {
-      // console.log(checkLastPanelHeight());
-      // add interactions scripts
-
       /********************* imageloader ************************/
       let imagesLoader = imagesLoaded(comicsPage);
 
-      imagesLoader.on("progress", loaderProgress);
-      imagesLoader.on("done", loaderDone);
+      imagesLoader.on("progress", loaderProgress(imagesLoader));
+      imagesLoader.on("done", loaderDone(imagesLoader));
 
       /********************* end imageLoader ************************/
 
-      // window.location.reload();
-      // addInteractionJS();
-      // selesai insert page
-      // comicsPage.scrollIntoView();
       bodyScroll.scrollTo("top", { duration: 0 });
       specialPanels = {};
       specialPanelsOpt = {};
@@ -396,92 +281,8 @@ window.addEventListener("hashchange", (e) => {
       document.title =
         siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
       disableNavigationButton();
-      // hideLoading();
-      // });
     }
   );
-  // // sini
-
-  //
-
-  // fetchPage("/comics/" + window.location.hash.replace("#", "") + ".html").then(
-  //   (data) => {
-  //     //
-  //     while (comicsPage.firstChild) {
-  //       comicsPage.firstChild.remove();
-  //     }
-
-  //     //
-  //     while (data[0]) {
-  //       comicsPage.append(data[0]);
-  //       console.log(data);
-  //     }
-
-  //     bodyScroll.scrollTo("top", { duration: 0 });
-
-  //     interactionsJS.remove();
-
-  //     let interactionsScript = document.createElement("script");
-  //     interactionsScript.src = "comics/interactions.js";
-  //     interactionsScript.id = "interactionsJS";
-  //     frontendJS.insertAdjacentElement("afterend", interactionsScript);
-  //     interactionsJS = document.getElementById("interactionsJS");
-
-  //     specialPanels = {};
-  //     specialPanelsOpt = {};
-  //   }
-  // );
-
-  // fetch("/comics/" + window.location.hash.replace("#", "") + ".html")
-  //   .then((res) => {
-  //     if (res.status === 200) return res.text();
-  //     if (res.status === 404) return (res = error404);
-  //   })
-  //   .then((data) => {
-  //     // console.log(data);
-  //     // parse html data
-  //     let comicPageHTML = new DOMParser().parseFromString(
-  //       data,
-  //       "text/html"
-  //     ).body;
-
-  //     // clear all existing childs
-  //     while (comicsPage.firstChild) {
-  //       comicsPage.firstChild.remove();
-  //     }
-
-  //     // clear interactionsJS
-  //     interactionsJS.remove();
-
-  //     // // add childs from comics file
-  //     // for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
-  //     //   let element = comicPageHTML.childNodes[index];
-  //     //   // console.log(element);
-  //     //   comicsPage.appendChild(element);
-  //     // }
-
-  //     bodyScroll.scrollTo("top", { duration: 0 });
-
-  //     // delay(500).then(() => {
-  //     //   console.log(checkLastPanelHeight());
-  //     //   // add interactions scripts
-  //     //   let interactionsScript = document.createElement("script");
-  //     //   interactionsScript.src = "comics/interactions.js";
-  //     //   interactionsScript.id = "interactionsJS";
-  //     //   frontendJS.insertAdjacentElement("afterend", interactionsScript);
-  //     //   interactionsJS = document.getElementById("interactionsJS");
-
-  //     //   // window.location.reload();
-
-  //     //   // selesai insert page
-  //     //   // comicsPage.scrollIntoView();
-
-  //     //   specialPanels = {};
-  //     //   specialPanelsOpt = {};
-
-  //     //   hideLoading();
-  //     // });
-  //   });
 });
 
 /********************* delay function ************************/
@@ -669,10 +470,6 @@ const pagesListScroll = new Lenis({
   // syncTouch: true,
   duration: 1,
 });
-
-// lenis.on("scroll", (e) => {
-//   // console.log(e);
-// });
 
 function raf(time) {
   bodyScroll.raf(time);

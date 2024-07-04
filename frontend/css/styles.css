@@ -618,7 +618,9 @@ gap: 3px;
     z-index: 3000;
 }
 
-
+.no-scroll {
+    overflow: hidden;
+ }
 
 
 
@@ -658,3 +660,5 @@ gap: 3px;
     cursor: not-allowed;
     border: var(--dark-text-color);
 }
+
+
