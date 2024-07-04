@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+<img class="img" src="https://picsum.photos/200/300?1">
+<img class="img" src="https://picsum.photos/200/300?3">
+<img class="img" src="https://picsum.photos/200/300?2">
+
+    </div>
+    <p>idle</p>
+<a href="#" id="reset">reset</a>
+<a href="#" id="add">add</a>
+</body>
+
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script>
+  function rando() { return Math.ceil( Math.random() * 1000 )};
+
+reset.addEventListener("click", () => {
+    while(container.firstChild) {
+        container.firstChild.remove()
+    }
+})
+
+add.addEventListener("click", () => {
+
+
+    let img = document.createElement('img');
+
+    let src =
+    `https://picsum.photos/200/300/?${rando()}`;
+
+    img.src = src;
+
+    container.append( img );
+})
+
+    function loaderProgres() {
+        document.querySelector("p").innerText = "progres"
+    }
+
+
+    function loaderDone() {
+                document.querySelector("p").innerText = "done"
+
+                setTimeout(() => {
+                                    document.querySelector("p").innerText = "idle"
+                }, 1000);
+
+    }
+
+
+     let imgLoad = imagesLoaded( container )
+
+     imgLoad.on( 'progress', loaderProgres );
+     imgLoad.on( 'done', loaderDone );
+</script>
+</html>

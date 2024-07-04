@@ -20,9 +20,7 @@ let currentPage = listOfAllPages[0].value;
 
 // let currentPage_old = selectButton.children[0].value;
 
-function checkLastPanelHeight() {
-  return document.querySelector(".main-comics > :last-child").clientHeight;
-}
+/********************* keyboard navigation ************************/
 
 window.addEventListener("keydown", (event) => {
   if (event.key == "ArrowLeft") {
@@ -46,31 +44,58 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+/********************* imageloader function ************************/
+function loaderDone() {
+  // document.querySelector("#container p").innerText = "done";
+  addInteractionJS();
+  hideLoading();
+
+  document.title =
+    siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
+
+  // setTimeout(() => {
+  //   document.title = "idle";
+  // }, 1000);
+}
+
+function loaderProgress() {
+  // document.querySelector("#container p").innerText = "done";
+  document.title = "Loading. . . .";
+}
+
 /********************* (parallax) misc function ************************/
 function between(x, min, max) {
   return x >= min && x <= max;
 }
 
-function waitForElement(selector) {
-  return new Promise((resolve) => {
-    if (selector) {
-      return resolve(selector);
-    }
-
-    const observer = new MutationObserver((mutations) => {
-      if (selector) {
-        observer.disconnect();
-        resolve(selector);
-      }
-    });
-
-    // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-  });
+function addInteractionJS() {
+  let interactionsScript = document.createElement("script");
+  interactionsScript.src = "comics/interactions.js";
+  interactionsScript.id = "interactionsJS";
+  frontendJS.insertAdjacentElement("afterend", interactionsScript);
+  interactionsJS = document.getElementById("interactionsJS");
 }
+
+// function waitForElement(selector) {
+//   return new Promise((resolve) => {
+//     if (selector) {
+//       return resolve(selector);
+//     }
+
+//     const observer = new MutationObserver((mutations) => {
+//       if (selector) {
+//         observer.disconnect();
+//         resolve(selector);
+//       }
+//     });
+
+//     // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
+//     observer.observe(document.body, {
+//       childList: true,
+//       subtree: true,
+//     });
+//   });
+// }
 
 /********************* fetch page function ************************/
 
@@ -100,14 +125,20 @@ function hideLoading() {
 }
 
 // fetch
+
+const error404 =
+  '<div class="chapter-title">(404) konten tidak ditemukan / belum ada.</div>';
+
 function fetchPage(pageURL) {
-  // showLoading();
-  fetch(window.location.origin + "/" + pageURL)
-    .then((res) => res.text())
+  return fetch(pageURL)
+    .then((res) => {
+      if (res.status === 200) return res.text();
+      if (res.status === 404) return (res = error404);
+    })
     .then((data) => {
-      //   document.write(data);
-      console.log(data);
-      // hideLoading();
+      // console.log(data);
+      // parse html data
+      return new DOMParser().parseFromString(data, "text/html").body.children;
     });
 }
 
@@ -118,6 +149,12 @@ let specialPanelsOpt = {};
 let specialPanelsScenes = [];
 
 let currentPageNumber = 0;
+
+// function checkLastPanelHeight() {
+//   return document.querySelector(".main-comics > :last-child").clientHeight;
+// }
+
+/********************* disable navigation button ************************/
 
 function disableNavigationButton() {
   console.log(currentPageNumber);
@@ -139,8 +176,7 @@ function disableNavigationButton() {
   }
 }
 
-const error404 =
-  '<div class="chapter-title">(404) konten tidak ditemukan / belum ada.</div>';
+/********************* initializing contents ************************/
 
 function detectPageNumber(hash) {
   return [...listOfAllPages].findIndex(
@@ -150,62 +186,32 @@ function detectPageNumber(hash) {
 
 // first page
 if (!currentHash) {
+  document.title =
+    siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
   disableNavigationButton();
   // mulai insert page
   showLoading();
   selectButton.children[0].value = "prolog_1";
-  fetch("/comics/prolog_1.html")
-    .then((res) => res.text())
-    .then((data) => {
-      // parse html data
-      let comicPageHTML = new DOMParser().parseFromString(
-        data,
-        "text/html"
-      ).body;
 
-      // console.log("----");
-      // console.log(comicPageHTML.children[0]);
+  fetchPage("/comics/prolog_1.html").then((data) => {
+    while (data[0]) {
+      comicsPage.append(data[0]);
+      console.log(data);
+    }
 
-      // add childs from comics file
-      for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
-        let element = comicPageHTML.childNodes[index];
-        // console.log(element);
-        comicsPage.appendChild(element);
+    /********************* imageloader ************************/
+    let imagesLoader = imagesLoaded(comicsPage);
 
-        if (index === comicPageHTML.childNodes.length - 1) {
-          console.log("terakhir");
-        }
-      }
+    imagesLoader.on("progress", loaderProgress);
+    imagesLoader.on("done", loaderDone);
 
-      window.addEventListener("resize", () => {
-        console.log(
-          document.querySelector(".main-comics > :last-child").clientHeight
-        );
-      });
+    /********************* end imageLoader ************************/
 
-      // document.querySelector(".main-comics > :last-child");
+    // addInteractionJS();
 
-      // comicsPage.addEventListener("onload", function (e) {
-      //   console.log("loaded");
-      // });
-
-      delay(500).then(() => {
-        console.log(checkLastPanelHeight());
-
-        // add interactions scripts
-        let interactionsScript = document.createElement("script");
-        interactionsScript.src = "comics/interactions.js";
-        interactionsScript.id = "interactionsJS";
-        frontendJS.insertAdjacentElement("afterend", interactionsScript);
-        interactionsJS = document.getElementById("interactionsJS");
-
-        // selesai insert page
-        specialPanels = {};
-        specialPanelsOpt = {};
-
-        hideLoading();
-      });
-    });
+    specialPanels = {};
+    specialPanelsOpt = {};
+  });
 }
 
 // all pages
@@ -214,52 +220,78 @@ else {
   disableNavigationButton();
   currentPage = window.location.hash.replace("#", "");
 
+  document.title =
+    siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
+
   // mulai insert page
   showLoading();
   selectButton.children[0].value = window.location.hash.replace("#", "");
-  fetch("/comics/" + window.location.hash.replace("#", "") + ".html")
-    .then((res) => {
-      if (res.status === 200) return res.text();
-      if (res.status === 404) return (res = error404);
-    })
-    .then((data) => {
-      // parse html data
-      let comicPageHTML = new DOMParser().parseFromString(
-        data,
-        "text/html"
-      ).body;
 
-      // console.log("----");
-      // console.log(comicPageHTML.children[0]);
-
-      // add childs from comics file
-      for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
-        let element = comicPageHTML.childNodes[index];
-        // console.log(element);
-        comicsPage.appendChild(element);
+  fetchPage("/comics/" + window.location.hash.replace("#", "") + ".html").then(
+    (data) => {
+      while (data[0]) {
+        comicsPage.append(data[0]);
+        console.log(data);
       }
 
-      delay(500).then(() => {
-        console.log(checkLastPanelHeight());
+      /********************* imageloader ************************/
+      let imagesLoader = imagesLoaded(comicsPage);
 
-        // add interactions scripts
-        let interactionsScript = document.createElement("script");
-        interactionsScript.src = "comics/interactions.js";
-        interactionsScript.id = "interactionsJS";
-        frontendJS.insertAdjacentElement("afterend", interactionsScript);
-        interactionsJS = document.getElementById("interactionsJS");
+      imagesLoader.on("progress", loaderProgress);
+      imagesLoader.on("done", loaderDone);
 
-        // selesai insert page
-        specialPanels = {};
-        specialPanelsOpt = {};
-        // waitForElement(comicsPage).then((elm) => {
-        //   console.log("all element load successfully");
-        //   hideLoading();
-        // });
+      /********************* end imageLoader ************************/
 
-        hideLoading();
-      });
-    });
+      // addInteractionJS();
+
+      specialPanels = {};
+      specialPanelsOpt = {};
+    }
+  );
+
+  // fetch()
+  //   .then((res) => {
+  //     if (res.status === 200) return res.text();
+  //     if (res.status === 404) return (res = error404);
+  //   })
+  //   .then((data) => {
+  //     // parse html data
+  //     let comicPageHTML = new DOMParser().parseFromString(
+  //       data,
+  //       "text/html"
+  //     ).body;
+
+  //     // console.log("----");
+  //     // console.log(comicPageHTML.children[0]);
+
+  //     // add childs from comics file
+  //     for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
+  //       let element = comicPageHTML.childNodes[index];
+  //       // console.log(element);
+  //       comicsPage.appendChild(element);
+  //     }
+
+  //     // delay(500).then(() => {
+  //     //   console.log(checkLastPanelHeight());
+
+  //     //   // add interactions scripts
+  //     //   let interactionsScript = document.createElement("script");
+  //     //   interactionsScript.src = "comics/interactions.js";
+  //     //   interactionsScript.id = "interactionsJS";
+  //     //   frontendJS.insertAdjacentElement("afterend", interactionsScript);
+  //     //   interactionsJS = document.getElementById("interactionsJS");
+
+  //     //   // selesai insert page
+  //     //   specialPanels = {};
+  //     //   specialPanelsOpt = {};
+  //     //   // waitForElement(comicsPage).then((elm) => {
+  //     //   //   console.log("all element load successfully");
+  //     //   //   hideLoading();
+  //     //   // });
+
+  //     //   hideLoading();
+  //     // });
+  //   });
 }
 
 /********************* url hash change listener ************************/
@@ -277,7 +309,7 @@ function deleteAllScene() {
 }
 
 window.addEventListener("hashchange", (e) => {
-  // console.log(document.readyState);
+  console.log(document.readyState);
   disableNavigationButton();
   // console.log(specialPanelsScenes);
 
@@ -292,6 +324,12 @@ window.addEventListener("hashchange", (e) => {
   showLoading();
   deleteAllScene();
 
+  // window.location.reload();
+  // window.top.location.href = "comic.html" + window.location.hash;
+  // history.replaceState({}, "replace page", window.location.hash);
+
+  // hideLoading();
+
   // check current url
   if (!window.location.hash) {
     selectButton.children[0].value = "prolog_1";
@@ -300,23 +338,15 @@ window.addEventListener("hashchange", (e) => {
   } else {
     const getPageNumberFromHash = listOfAllPages[currentPageNumber].innerText;
     selectButton.children[0].value = window.location.hash.replace("#", "");
-    document.getElementsByTagName("title")[0].innerText =
-      siteTitle + " / " + getPageNumberFromHash;
+    document.title = siteTitle + " / " + getPageNumberFromHash;
     currentPage = getPageNumberFromHash;
   }
 
-  fetch("/comics/" + window.location.hash.replace("#", "") + ".html")
-    .then((res) => {
-      if (res.status === 200) return res.text();
-      if (res.status === 404) return (res = error404);
-    })
-    .then((data) => {
+  // sini
+  fetchPage("/comics/" + window.location.hash.replace("#", "") + ".html").then(
+    (data) => {
       // console.log(data);
       // parse html data
-      let comicPageHTML = new DOMParser().parseFromString(
-        data,
-        "text/html"
-      ).body;
 
       // clear all existing childs
       while (comicsPage.firstChild) {
@@ -327,32 +357,131 @@ window.addEventListener("hashchange", (e) => {
       interactionsJS.remove();
 
       // add childs from comics file
-      for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
-        let element = comicPageHTML.childNodes[index];
-        // console.log(element);
-        comicsPage.appendChild(element);
+
+      while (data[0]) {
+        comicsPage.append(data[0]);
+        console.log(data);
       }
 
-      delay(500).then(() => {
-        console.log(checkLastPanelHeight());
-        // add interactions scripts
-        let interactionsScript = document.createElement("script");
-        interactionsScript.src = "comics/interactions.js";
-        interactionsScript.id = "interactionsJS";
-        frontendJS.insertAdjacentElement("afterend", interactionsScript);
-        interactionsJS = document.getElementById("interactionsJS");
+      // let tempIMG = document.createElement('img');
+      // tempIMG.class = "comic-item"
+      // tempIMG.src = "comics/404.jpg"
 
-        // window.location.reload();
+      // for (let index = 0; index < data.length; index++) {
+      //   let element = data[index];
+      //   // console.log(element);
+      //   comicsPage.appendChild(element);
+      // }
 
-        // selesai insert page
-        // comicsPage.scrollIntoView();
-        bodyScroll.scrollTo("top", { duration: 0 });
-        specialPanels = {};
-        specialPanelsOpt = {};
+      // delay(500).then(() => {
+      // console.log(checkLastPanelHeight());
+      // add interactions scripts
 
-        hideLoading();
-      });
-    });
+      /********************* imageloader ************************/
+      let imagesLoader = imagesLoaded(comicsPage);
+
+      imagesLoader.on("progress", loaderProgress);
+      imagesLoader.on("done", loaderDone);
+
+      /********************* end imageLoader ************************/
+
+      // window.location.reload();
+      // addInteractionJS();
+      // selesai insert page
+      // comicsPage.scrollIntoView();
+      bodyScroll.scrollTo("top", { duration: 0 });
+      specialPanels = {};
+      specialPanelsOpt = {};
+
+      document.title =
+        siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
+      disableNavigationButton();
+      // hideLoading();
+      // });
+    }
+  );
+  // // sini
+
+  //
+
+  // fetchPage("/comics/" + window.location.hash.replace("#", "") + ".html").then(
+  //   (data) => {
+  //     //
+  //     while (comicsPage.firstChild) {
+  //       comicsPage.firstChild.remove();
+  //     }
+
+  //     //
+  //     while (data[0]) {
+  //       comicsPage.append(data[0]);
+  //       console.log(data);
+  //     }
+
+  //     bodyScroll.scrollTo("top", { duration: 0 });
+
+  //     interactionsJS.remove();
+
+  //     let interactionsScript = document.createElement("script");
+  //     interactionsScript.src = "comics/interactions.js";
+  //     interactionsScript.id = "interactionsJS";
+  //     frontendJS.insertAdjacentElement("afterend", interactionsScript);
+  //     interactionsJS = document.getElementById("interactionsJS");
+
+  //     specialPanels = {};
+  //     specialPanelsOpt = {};
+  //   }
+  // );
+
+  // fetch("/comics/" + window.location.hash.replace("#", "") + ".html")
+  //   .then((res) => {
+  //     if (res.status === 200) return res.text();
+  //     if (res.status === 404) return (res = error404);
+  //   })
+  //   .then((data) => {
+  //     // console.log(data);
+  //     // parse html data
+  //     let comicPageHTML = new DOMParser().parseFromString(
+  //       data,
+  //       "text/html"
+  //     ).body;
+
+  //     // clear all existing childs
+  //     while (comicsPage.firstChild) {
+  //       comicsPage.firstChild.remove();
+  //     }
+
+  //     // clear interactionsJS
+  //     interactionsJS.remove();
+
+  //     // // add childs from comics file
+  //     // for (let index = 0; index < comicPageHTML.childNodes.length; index++) {
+  //     //   let element = comicPageHTML.childNodes[index];
+  //     //   // console.log(element);
+  //     //   comicsPage.appendChild(element);
+  //     // }
+
+  //     bodyScroll.scrollTo("top", { duration: 0 });
+
+  //     // delay(500).then(() => {
+  //     //   console.log(checkLastPanelHeight());
+  //     //   // add interactions scripts
+  //     //   let interactionsScript = document.createElement("script");
+  //     //   interactionsScript.src = "comics/interactions.js";
+  //     //   interactionsScript.id = "interactionsJS";
+  //     //   frontendJS.insertAdjacentElement("afterend", interactionsScript);
+  //     //   interactionsJS = document.getElementById("interactionsJS");
+
+  //     //   // window.location.reload();
+
+  //     //   // selesai insert page
+  //     //   // comicsPage.scrollIntoView();
+
+  //     //   specialPanels = {};
+  //     //   specialPanelsOpt = {};
+
+  //     //   hideLoading();
+  //     // });
+  //   });
 });
 
 /********************* delay function ************************/
