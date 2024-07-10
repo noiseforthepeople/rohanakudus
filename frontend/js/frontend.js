@@ -363,7 +363,29 @@ function soundsToggle() {
     alert("suara dinyalakan.");
   }
 }
-leftButtons[0].addEventListener("click", soundsToggle);
+
+const aboutGlossarium = document.getElementById("contents-aboutGlossarium");
+
+function glossariumToggle() {
+  if (aboutGlossarium.classList.contains("hide")) {
+    aboutGlossarium.classList.add("animate__slideInLeft");
+    aboutGlossarium.classList.remove("animate__slideOutLeft");
+    aboutGlossarium.classList.toggle("hide");
+    document.body.style.overflowY = "hidden";
+  } else {
+    aboutGlossarium.classList.remove("animate__slideInLeft");
+    aboutGlossarium.classList.add("animate__slideOutLeft");
+    document.body.style.overflowY = "scroll";
+    delay(700).then(() => {
+      aboutGlossarium.classList.toggle("hide");
+    });
+  }
+}
+
+leftButtons[0].addEventListener("click", glossariumToggle);
+contentsAboutClose[2].addEventListener("click", () => {
+  glossariumToggle();
+});
 
 // about comic
 const aboutComicPage = document.getElementById("contents-aboutComics");

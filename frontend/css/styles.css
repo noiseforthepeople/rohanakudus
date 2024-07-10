@@ -4,7 +4,7 @@
 
 :root {
     --light-text-color: #cacaca;
-    --dark-background-color: #666666;
+    --dark-background-color: #303030;
 
     --dark-text-color: #353535;
     --light-background-color: #FEF4EA;
@@ -27,6 +27,8 @@
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+
+    /* border:1px solid rgba(255, 255, 255, 0.253); */
 
 }
 
@@ -84,7 +86,7 @@ body {
     padding: 10px;
     /* border: 1px dotted black; */
     border-radius: 50%;
-    border: 1px solid var(--light-background-color);
+    /* border: 1px solid var(--light-background-color); */
     cursor: pointer;
 }
 
@@ -98,16 +100,32 @@ body {
     margin-bottom: 40px;
 }
 
-.left-navigation-sound {
-    background-color: rgba(var(--green-color), 1);
+.left-navigation-glossarium {
+    background-color: rgba(var(--yellow-color), 1);
+    background-image: url("/frontend/images/glosarium.png");
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+
+
 }
 
 .left-navigation-aboutComic {
     background-color: rgba(var(--red-color), 1);
+    background-image: url("/frontend/images/tentang komik.png");
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+
 }
 
 .left-navigation-author {
-    background-color: rgba(var(--yellow-color), 1);
+    background-color: rgba(var(--green-color), 1);
+    background-image: url("/frontend/images/tentangilustrator.png");
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+
 }
 
 /********************* contents ************************/
@@ -260,8 +278,27 @@ select#chapter-select {
 
 /********************* modal pages ************************/
 
+
+.aboutGlossarium {
+
+    background-color: rgba(var(--yellow-color), 1);
+    color: rgba(var(--red-color), 1);
+    display: flex;
+    gap:10px;
+    padding: 0dvh 15dvw;
+    
+}
+
+.aboutGlossarium .contents-about-close:hover {
+    color: var(--dark-text-color);
+    border-color: var(--dark-background-color);
+    background-color: rgb(175, 175, 175, 0)
+}
+
+
+
 .aboutComic {
-    background-color: #BB1436;
+    background-color: rgba(var(--red-color), 1);
     color: var(--light-text-color);
     display: flex;
     gap:10px;
@@ -270,9 +307,9 @@ select#chapter-select {
 
 
 .aboutAuthors {
-    background-color: #FEBF0F;
+    background-color: rgba(var(--green-color), 1);
     color: var(--dark-text-color);
-    display: flex;
+    /* display: flex; */
     gap:10px;
     padding: 0dvh 15dvw;
 }
@@ -351,11 +388,11 @@ gap: 3px;
     /* border-bottom: 1px dotted var(--dark-background-color); */
 }
 
-#contents-aboutComics, #contents-aboutAuthors, #contents-allPages {
+#contents-aboutComics, #contents-aboutAuthors, #contents-allPages, #contents-aboutGlossarium {
     width: 100dvw;
     height: 100dvh;
     position: fixed;
-    z-index: 2001;
+    z-index: 3002;
     flex-direction: column;
     flex-wrap: nowrap;
     animation-duration: 0.7s;
@@ -364,38 +401,131 @@ gap: 3px;
 }
 
 .contents-about-layout {
-    width: 100%;
+    width: 116%;
     margin: 0 auto;
-    margin-bottom:10px;
-    padding-bottom: 2dvh;
-    padding-top: 10dvh;
+    margin-left: -6dvw;
+    padding-top: calc(2dvw + 10%);
     padding-left: 0;
     padding-right: 0;
+    font-weight: 500;
     /* background-color: #000000; */
+    display: grid;
+    grid-template-areas: 
+    "image-header"
+    "contents-text";
+
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    grid-template-columns: 100%;
+
+    column-gap: 4dvw;
+    row-gap:5px;
+    
+    margin-bottom: 20px;
 }
+
+.contents-about-text {
+    grid-area: contents-text;
+    max-width: 100%;
+}
+
+.contents-about-imageheader {
+    grid-area: image-header;
+    max-width: 55dvw;
+    min-width: 250px;
+}
+
+.contents-about-imageheader img {
+    object-fit: cover;
+}
+
+.contents-about-text h1 {
+    font-size: calc(1.1dvw + 2em);
+}
+
+.contents-about-text p {
+    font-size: calc(0.3dvw + 0.8em);
+    font-weight: 600;
+}
+
+.contents-about-links {
+    font-size: calc(0.3dvw + 60%);
+    font-weight: 800;
+    padding: calc(1dvw + 1em) 0 2dvh 0;
+    color: rgba(var(--red-color), 1);
+}
+
+.contents-about-links-list {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 3px;
+    white-space:nowrap;
+    margin-top: 8px;
+    align-items: center;
+    align-content: center;
+}
+
+.contents-about-links-list img {
+    max-width: 1.5em;
+    object-fit: contain;
+    /* min-width: 0.3em; */
+    /* height: auto; */
+    display: inline;
+    margin-right: 4px;
+}
+
+.contents-about-links-list > * {
+    align-self: center;
+    max-height: 20px;
+    display: flex;
+
+    /* justify-items: baseline;
+    align-content: baseline; */
+    padding:1px;
+    /* background-color: var(--light-background-color); */
+    cursor: pointer;
+}
+
+.contents-about-links-list > *:hover {
+border-bottom:2px dotted var(--dark-background-color);
+}
+
+.contents-about-text {
+
+
+
+}
+
 
 .contents-about-close {
     margin: 0 auto;
-    width: 100%;
+    width: fit-content;
     height: 4%;
     /* background-color: red; */
     display: flex;
     justify-content: flex-start;
     align-items:center;
     font-weight: 800;
-    font-size: 1em;
+    font-size: calc(0.3dvw + 1em);
     cursor: pointer;
     
     border: 2px dotted;
 
-    padding: 1.3em;
+    padding: 0.7em 1.5em 0.7em 1.5em;
 
-    border-color: var(--light-text-color);
-    background-color: var(--light-text-color);
+    border-color:  var(--dark-text-color);
+    color: var(--light-text-color);
 
-    color: var(--dark-text-color);
+    border-radius: 12px;
+
+    background-color: var(--dark-background-color);
 
     transition: all 100ms ease-in-out;
+
+    margin-bottom: 3dvh;
 }
 
 .contents-about-close:hover {
@@ -408,7 +538,7 @@ gap: 3px;
 
 .contents-about-images {
     display: block;
-    width: 14em;
+    max-width: 100%; 
     margin-bottom: 15px;
 }
 
@@ -425,6 +555,58 @@ gap: 3px;
     color: var(--dark-text-color);
     border-color: var(--dark-background-color);
     background-color: rgb(175, 175, 175, 0)
+}
+
+
+.contents-glossarium-layout {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: calc(2dvw + 10%);
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: 500;
+    /* background-color: #000000; */
+    display: flex;
+    flex-direction: column;
+
+    justify-content: start;
+    justify-items: start;
+    align-items: start;
+
+    column-gap: 4dvw;
+    row-gap:5px;
+    
+    margin-bottom: 10dvw;
+}
+
+.glossariumTitle {
+    width: 100%;
+}
+
+.glossariumTitle h1 {
+    font-size: calc(1.1dvw + 2em);
+}
+
+.glossariumTable {
+    width: 100%;
+}
+
+table, th, td {
+    border: none;
+    text-align: left;
+    padding:0.3dvh 0dvw;
+    vertical-align: top;
+}
+
+.glossariumTable table {
+    width: 100%;
+    font-size: calc(1dvw + 0.8em);
+    font-weight: 500;
+}
+
+.glossariumTable th {
+    min-width: 10px;
+
 }
 
 
@@ -478,10 +660,15 @@ gap: 3px;
 .homepage {
     background-color: rgba(var(--yellow-color), 1) !important;
 }
+
+.separator {
+    border-bottom:0.3px solid var(--light-text-color);
+    margin: 10px 0;
+}
 /********************* responsive ************************/
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 700px) {
 
     .left-navigation-buttons {
         width: 7dvw;
@@ -499,19 +686,25 @@ gap: 3px;
         justify-content: center;
      }
 
-     .contents-about-layout, .contents-about-close {
+     .contents-about-layout {
+        margin-left: 0; 
         width: 80%;
+     }
+
+
+     .contents-glossarium-layout {
+        width: 60%;
      }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
 
     .left-navigation-buttons {
         width: 6dvw;
     }
 
     .main-comics, .chapter-title, .comic-item, .end-of-page-buttons {
-        width: 70%;
+        width: 60%;
      }
 
      .select#chapter-select {
@@ -523,8 +716,16 @@ gap: 3px;
      }
 
      
-     .contents-about-layout, .contents-about-close {
+     .contents-about-layout {
+        margin-left: 6dvw;
         width: 70%;
+        grid-template-areas: 
+        "image-header contents-text";
+        grid-template-columns: 1.3fr 2fr;
+     }
+
+     .contents-glossarium-layout {
+        width: 45%;
      }
 }
 
@@ -546,8 +747,16 @@ gap: 3px;
      }
 
      
-     .contents-about-layout, .contents-about-close {
-        width: 40%;
+     .contents-about-layout {
+        margin-left: 0;
+        grid-template-areas: 
+        "image-header contents-text";
+        width: 90%;
+        grid-template-columns: 1.3fr 2fr;
+     }
+
+     .contents-glossarium-layout {
+        width: 45%;
      }
 }
 
@@ -619,7 +828,8 @@ gap: 3px;
 }
 
 .no-scroll {
-    overflow: hidden;
+    overflow: hidden !important;
+    touch-action: none;
  }
 
 
@@ -661,4 +871,6 @@ gap: 3px;
     border: var(--dark-text-color);
 }
 
-
+.italic {
+    font-style: italic;
+}
