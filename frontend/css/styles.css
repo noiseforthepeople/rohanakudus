@@ -755,7 +755,7 @@ table, th, td {
 
     width: calc(10em + 10dvw);
     height: calc(10em + 10dvw);
-    position: absolute;
+    position: fixed;
     
     /* background-color: white; */
 }
