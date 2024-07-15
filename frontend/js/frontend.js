@@ -60,6 +60,11 @@ window.addEventListener("keydown", (event) => {
     event.preventDefault();
     bodyScroll.scrollTo("bottom", { duration: 2 });
   }
+
+  if (event.code == "Period") {
+    event.preventDefault();
+    allPagesToggle();
+  }
 });
 
 /********************* imageloader function ************************/
