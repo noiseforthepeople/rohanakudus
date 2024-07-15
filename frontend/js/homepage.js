@@ -8,10 +8,10 @@ document.querySelector(".readComic").addEventListener("click", () => {
 });
 
 document.querySelector(".continueReadComic").addEventListener("click", () => {
-  if (this.location.hostname !== "https://komikroehanakoeddoes.com") {
-    this.location.replace("/comic.html");
-  } else {
+  if (this.location.hostname === "komikroehanakoeddoes.com") {
     this.location.replace("/comic");
+  } else {
+    this.location.replace("/comic.html");
   }
 });
 
