@@ -8,7 +8,7 @@ document.querySelector(".readComic").addEventListener("click", () => {
 });
 
 document.querySelector(".continueReadComic").addEventListener("click", () => {
-  if (this.location.hostname === "127.0.0.1") {
+  if (this.location.hostname !== "https://komikroehanakoeddoes.com") {
     this.location.replace("/comic.html");
   } else {
     this.location.replace("/comic");

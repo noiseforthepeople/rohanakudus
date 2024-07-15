@@ -40,6 +40,26 @@ window.addEventListener("keydown", (event) => {
     event.preventDefault();
     lastButton.click();
   }
+
+  if (event.code == "KeyZ") {
+    event.preventDefault();
+    leftButtons[0].click();
+  }
+
+  if (event.code == "KeyX") {
+    event.preventDefault();
+    leftButtons[1].click();
+  }
+
+  if (event.code == "KeyC") {
+    event.preventDefault();
+    leftButtons[2].click();
+  }
+
+  if (event.code == "Slash") {
+    event.preventDefault();
+    bodyScroll.scrollTo("bottom", { duration: 2 });
+  }
 });
 
 /********************* imageloader function ************************/

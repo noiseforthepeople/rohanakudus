@@ -13,9 +13,22 @@
     --red-color: 187, 20, 54;
     --yellow-color: 254, 191, 15;    
 
-    /* overscroll-behavior: none; */
+    overscroll-behavior: none;
 
     scrollbar-color: rgba(var(--green-color), 1)  rgba(255, 255, 255, 0) ;
+  }
+
+
+  @font-face {
+    font-family: 'open-arrow';
+    src: url('/frontend/fonts/OpenArrow-Regular.eot') format('embedded-opentype'),
+         url('/frontend/fonts/OpenArrow-Regular.woff2') format('woff2'),
+         url('/frontend/fonts/OpenArrow-Regular.woff') format('woff'),
+         url('/frontend/fonts/OpenArrow-Regular.otf') format('opentype'),
+         url('/frontend/fonts/OpenArrow-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    unicode-range: U+2190-21ff;
   }
 
 
@@ -89,7 +102,7 @@ body {
     padding: 10px;
     /* border: 1px dotted black; */
     border-radius: 50%;
-    /* border: 1px solid var(--light-background-color); */
+    border: 2px solid var(--light-background-color);
     cursor: pointer;
 }
 
@@ -212,7 +225,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-content: center;
     align-items: center;
     gap:0 5px;
@@ -223,11 +236,14 @@ body {
 .end-of-page-buttons > * {
 /* background-color: var(--dark-background-color); */
 color: var(--light-background-color);
-padding: 5px 7px;
+/* padding: 5px 7px; */
 /* border: 1px dotted black; */
 border-radius: 12px;
 cursor: pointer;
 font-size: 0.9em;
+display: flex;
+justify-content: center;
+
 }
 
 
@@ -243,22 +259,26 @@ font-size: 0.9em;
     background-color: #000000;
     border: 2px solid #000000;
     font-weight: 800;
+    padding: 0.85ch 1% 0.85ch 1%;
+    width: 7ch;
 }
 
 .end-of-page-prev, .end-of-page-next {
     background-color:#BB1436;
     border: 2px solid #bb1436;
     font-weight: 800;
+    padding: 0.85ch 1% 0.85ch 1%;
+    width: 4ch;
+    font-family: 'open-arrow', Helvetica, sans-serif;
 }
 
 .end-of-page-select {
 /* background-color: red; */
-padding-top: 1px;
-padding-bottom: 1px;
-padding-left: 0.3dvw;
-padding-right: 0.3dvw;
+    padding: 0.5ch 1% 0.5ch 1%;
 border: 2px solid #bb1436;
 background-color:   var(--light-background-color);
+max-width: 30ch;
+min-width: 20ch;
 /* border-radius: 12px; */
     /* background-color: ; */
 }
@@ -295,7 +315,7 @@ select#chapter-select {
 .aboutGlossarium .contents-about-close:hover {
     color: var(--dark-text-color);
     border-color: var(--dark-background-color);
-    background-color: rgb(175, 175, 175, 0)
+    background-color: rgb(175, 175, 175, 0);
 }
 
 
@@ -343,10 +363,18 @@ gap: 3px;
     min-height: 4dvh;
     padding: 0 1dvw;
     display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0 auto;
+}
+
+.allPagesList-Close {
+    display: block;
+    text-align: center;
 }
 
 .allPagesList-Buttons:hover {
@@ -355,16 +383,20 @@ gap: 3px;
 
 .allPagesList-Close {
     margin-top: 30px;
-    background-color: var(--light-text-color);
+    background-color: var(--dark-background-color);
+    color: var(--light-text-color);
     width: 80%;
     padding: 17px 0px;
-    border: 2px solid var(--light-text-color);
+    border: 2px solid var(--dark-background-color);
+    border-radius: 12px;
+    font-weight: 500;
 }
 
 .allPagesList-Close:hover {
     border-bottom: none;
     background-color: var(--light-background-color);
     border: 2px dotted var(--dark-text-color);
+    color: var(--dark-text-color);
 }
 
 
@@ -379,14 +411,14 @@ gap: 3px;
 
 .allPagesList-Buttons {
     /* background-color: wheat; */
-    color: black;
+    /* color: black; */
     cursor: pointer;
 }
 
 .allPagesList-Title {
     /* background-color: var(--dark-text-color); */
     width: 100%;
-    color: black;
+    color: var(--dark-text-color);
     font-weight: 600;
     /* border-bottom: 1px dotted var(--dark-background-color); */
 }
@@ -492,7 +524,7 @@ gap: 3px;
 
     /* justify-items: baseline;
     align-content: baseline; */
-    padding:1px;
+    /* padding:1px; */
     /* background-color: var(--light-background-color); */
     cursor: pointer;
 }
@@ -500,12 +532,18 @@ gap: 3px;
 .contents-about-links-list > *:hover {
     mix-blend-mode:luminosity; }
 
+    .contents-about-links-list > *:hover a{
+        text-decoration:underline; }
+
 
 .contents-about-links-list a {
-    font-size: calc(0.3dvw + 60%);
+    font-size: calc(0.3em + 60%);
     font-weight: 800;
     color: rgba(var(--red-color), 1);
     text-decoration: none;
+    padding:2% 0px;
+    /* background-color: wheat; */
+    margin-right: 1dvh;
 }
 
 .contents-about-links-list a:hover {
@@ -529,7 +567,7 @@ gap: 3px;
     display: flex;
     justify-content: flex-start;
     align-items:center;
-    font-weight: 800;
+    font-weight: 500;
     font-size: calc(0.3dvw + 1em);
     cursor: pointer;
     
@@ -547,6 +585,14 @@ gap: 3px;
     transition: all 100ms ease-in-out;
 
     margin-bottom: 3dvh;
+
+
+}
+
+span.arrow {
+    font-family: 'open-arrow', Helvetica, sans-serif;
+    display: inline;
+    padding-top:3%;
 }
 
 .contents-about-close:hover {
@@ -597,7 +643,7 @@ gap: 3px;
     column-gap: 4dvw;
     row-gap:5px;
     
-    margin-bottom: 10dvw;
+    margin-bottom: 5dvh;
 }
 
 .glossariumTitle {
@@ -621,7 +667,7 @@ table, th, td {
 
 .glossariumTable table {
     width: 100%;
-    font-size: calc(1dvw + 0.8em);
+    font-size: calc(1dvw + 0.9em);
     font-weight: 500;
 }
 
@@ -659,8 +705,8 @@ table, th, td {
     "homepageLogo"
     "homepageCharacter";
 
-    column-gap: 0dvw;
-    row-gap:0px;
+    column-gap: 20px;
+    row-gap:20px;
     /* grid-template-columns: 1fr; */
     grid-template-rows: 1fr 2fr;
 }
@@ -832,6 +878,7 @@ table, th, td {
      .contents-glossarium-layout {
         width: 60%;
      }
+
 }
 
 @media screen and (min-width: 900px) {
@@ -868,10 +915,14 @@ table, th, td {
      .homepageMainImage {
         grid-template-areas: 
         "homepageLogo homepageCharacter";
-        column-gap: 0dvw;
-        row-gap:0px;
-        grid-template-columns: 2fr 1fr;
+        column-gap: 20px;
+        row-gap:20px;
+        grid-template-columns: 60% 1fr;
         grid-template-rows: 1fr;
+    }
+
+    .glossariumTable table {
+        font-size: calc(1dvw + 0.7em);
     }
 
 }
@@ -909,10 +960,19 @@ table, th, td {
      .homepageMainImage {
         grid-template-areas: 
         "homepageLogo homepageCharacter";
-        column-gap: 0dvw;
+        column-gap: 0px;
         row-gap:0px;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: 1fr;
+        grid-template-columns: 60% 1fr;
+        grid-template-rows: 56vh;
+    }
+
+    .glossariumTable table {
+        font-size: calc(1dvw + 0.4em);
+    }
+
+
+    .contents-about-links-list a {
+        padding:0px 0px;
     }
 
 }
