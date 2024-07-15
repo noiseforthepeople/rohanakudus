@@ -32,8 +32,6 @@
   }
 
 
-
-
 * {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -57,7 +55,7 @@ body {
     color: var(--dark-text-color);
     background-color: var(--light-background-color);
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: visible;
 }
 
 .layout {
@@ -177,8 +175,20 @@ body {
     gap:10px 00px;
 
     z-index: 1000;
-    pointer-events:none;
+    /* pointer-events:none; */
 }
+
+
+.main-comics img {
+    pointer-events: none;
+    }
+    
+.main-comics img.glossariumHints {
+        pointer-events: all;
+    }
+    
+
+
 
 .main-comics .chapter-title {
 
@@ -1099,3 +1109,4 @@ table, th, td {
     background-color: #835e40;
     color: var(--light-text-color);
   }
+

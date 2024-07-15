@@ -869,6 +869,7 @@ function chapter1pg5_003_act(entries) {
 
           delay(1000).then(() => {
             e.target.children[10].classList.toggle("fadeIn_1s", true);
+            e.target.children[11].classList.toggle("fadeIn_1s", true);
           });
         });
 
