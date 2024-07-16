@@ -41,8 +41,8 @@
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-
-    /* border:1px solid rgba(255, 255, 255, 0.253); */
+/* 
+    border:1px solid rgba(255, 255, 255, 0.253); */
 
 }
 
@@ -73,6 +73,74 @@ body {
 
 }
 
+
+
+  dialog::backdrop {
+    /* background-color: rgba(var(--red-color), 0.6); */
+    backdrop-filter: blur(5px);
+    /* mix-blend-mode:soft-light; */
+  }
+
+  dialog:focus {
+    /* background-color: rgba(var(--red-color), 0.6); */
+   border: none;
+    /* mix-blend-mode:soft-light; */
+  }
+
+
+#mulaiBaca {
+
+    border-radius: calc(5px * var(--ratio));
+    padding: 5% 8%;
+    width: 90%;
+    height: fit-content;
+    background-color: var(--light-background-color);
+
+    font-weight: 500;
+    transition: all 300ms ease-in-out;
+
+    margin: 0 auto;
+
+    border-radius: 12px;
+    border: none;
+    
+    position: relative;
+    top: 50%;
+}
+
+#mulaiBaca .mulaiBacaPilihan {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0px 10px;
+    /* background-color: red; */
+    padding: 5px;
+}
+
+.mulaiBacaPilihan > * {
+    background-color: rgba(var(--red-color), 1);
+    color: var(--light-background-color);
+    width: 7ch;
+    padding: 2% 0px;
+    border: 2px solid rgba(var(--red-color), 1);
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.mulaiBacaPilihan #acceptMulaiBaca {
+
+    color: var(--light-background-color);
+    background-color: var(--dark-background-color);
+    border: 2px solid var(--dark-background-color);
+}
+
+.mulaiBacaPilihan > *:hover {
+    color: var(--dark-background-color) !important;
+    background-color: var(--light-background-color) !important;
+    border: 2px dotted var(--dark-background-color) !important;
+}
 
 /********************* left navigation buttons ************************/
 
@@ -718,7 +786,7 @@ table, th, td {
     "homepageCharacter";
 
     column-gap: 10dvw;
-    padding:0dvh 1dvw;
+    /* padding:0dvh 1dvw; */
     row-gap:20px;
     /* grid-template-columns: 1fr; */
     grid-template-rows: 1fr 2fr;
@@ -891,6 +959,7 @@ table, th, td {
      .contents-glossarium-layout {
         width: 60%;
      }
+     
 
 }
 
@@ -938,6 +1007,12 @@ table, th, td {
         font-size: calc(1dvw + 0.7em);
     }
 
+    #mulaiBaca {
+        width: 30%;
+        padding: 3% 3%;
+}
+
+
 }
 
 @media screen and (min-width: 1200px) {
@@ -973,11 +1048,14 @@ table, th, td {
      .homepageMainImage {
         grid-template-areas: 
         "homepageLogo homepageCharacter";
-        column-gap: 0px;
-        row-gap:0px;
+        column-gap: 20px;
+        row-gap:20px;
         grid-template-columns: 60% 1fr;
         grid-template-rows: 56vh;
     }
+
+    .homepageCharacter, .homepageCharacterMoving { 
+        background-position: left; }
 
     .glossariumTable table {
         font-size: calc(1dvw + 0.4em);
@@ -988,6 +1066,10 @@ table, th, td {
         padding:0px 0px;
     }
 
+
+    #mulaiBaca {
+        width: 30%;
+        padding: 2% 2%;
 }
 
 

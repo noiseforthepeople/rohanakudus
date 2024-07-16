@@ -181,6 +181,8 @@ if (!currentHash) {
   showLoading();
   selectButton.children[0].value = "prolog_1";
 
+  saveLastPage();
+
   fetchPage("/comics/prolog_1.html").then((data) => {
     while (data[0]) {
       comicsPage.append(data[0]);
@@ -207,6 +209,8 @@ else {
   currentPageNumber = detectPageNumber(currentHash);
   disableNavigationButton();
   currentPage = window.location.hash.replace("#", "");
+
+  saveLastPage();
 
   document.title =
     siteTitle + " / " + listOfAllPages[currentPageNumber].innerText;
@@ -269,6 +273,10 @@ window.addEventListener("hashchange", (e) => {
     document.title = siteTitle + " / " + getPageNumberFromHash;
     currentPage = getPageNumberFromHash;
   }
+
+  currentHash = listOfAllPages[currentPageNumber].value;
+
+  saveLastPage();
 
   // sini
   fetchPage("/comics/" + window.location.hash.replace("#", "") + ".html").then(
@@ -501,6 +509,13 @@ allPagesContainer.addEventListener("click", (e) => {
   }
 });
 
+// localstorage save progress
+function saveLastPage() {
+  const last = localStorage.RoehanaKoeddoes_progress;
+  localStorage.RoehanaKoeddoes_progress = currentHash;
+}
+
+// lenis
 const bodyScroll = new Lenis({
   wrapper: window,
   content: document.getElementById("contents"),
