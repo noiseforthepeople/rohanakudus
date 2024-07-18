@@ -229,17 +229,41 @@ opacity: 0;
     }    
 
 /***************************** chapter 2 page 1 */
+.sp-chapter2pg1-000-3 {
+mix-blend-mode: multiply;
+}
+
+.sp-chapter2pg1-000-2, .sp-chapter2pg1-000-3 {
+    opacity: 0;
+}
+
+.sp-chapter2pg1-001-2, .sp-chapter2pg1-002-2 {
+    opacity: 0;
+}
+
+
+/***************************** chapter 2 page 2 */
+    
+    .sp-chapter2pg2-004-2, .sp-chapter2pg2-004-3,
+    .sp-chapter2pg2-004-4, .sp-chapter2pg2-004-5 {
+        opacity: 0;
+    }
+    
+    .sp-chapter2pg2-005-2, .sp-chapter2pg2-005-3,
+    .sp-chapter2pg2-005-4 {
+        opacity: 0;
+    }
 
 
 /***************************** chapter 2 page 3 */
 
 .sp-chapter2pg3-002-5{
-    opacity: 1;
+    opacity: 0;
     z-index: 1000;
     width:1.1dvw !important;
     position: absolute;
-    left: 79.2%;
-    top: 22.2%;   
+    left: 78.4%;
+    top: 20.2%;   
     cursor: help;
     transition: all 200ms ease-in-out;
     }
@@ -252,9 +276,10 @@ opacity: 0;
     opacity: 0;
     width:18% !important;
     /* 30 */
-    left: 79.5%;
-    top: 23.6%;
+    left: 78.4%;
+    top: 22%;
     transition: all 200ms ease-in-out;
+    display: none;
     }
     
 
@@ -262,6 +287,176 @@ opacity: 0;
     .sp-chapter2pg3-002-5:hover ~ .sp-chapter2pg3-002-6 {
         opacity: 1 !important;
     }    
+
+    /* 10 */
+    .sp-chapter2pg3-002-3 {
+
+        width: 45% !important;
+        left:10%;
+        top:10%;
+
+        transform: translateX(-130%);
+    }
+
+    
+        /* 10 */
+    .sp-chapter2pg3-002-4 {
+        /* transform: translateX(50%); */
+        /* width: 10% !important; */
+
+        width: 45% !important;
+        left:46%;
+        top:17%;
+        transform: translateX(120%);
+    }
+
+        /* 10 */
+    .sp-chapter2pg3-002-7 {
+        transform: translateX(-130%);
+        width: 45% !important;
+        left:10%;
+        top:24%;
+        
+    }
+
+        /* 10 */
+    .sp-chapter2pg3-002-8 {
+        transform: translateX(120%);
+
+                
+        width: 45% !important;
+        left:48%;
+        top:30%;
+    }
+
+        /* 10 */
+    .sp-chapter2pg3-002-9 {
+        transform: translateX(-120%);
+
+        width: 54% !important;
+        left:10%;
+        top:37%;
+    }
+
+        /* 10 */
+    .sp-chapter2pg3-002-10 {
+        /* transform: translateX(-90%); */
+        
+        /* transform: translate(-90%);  */
+        width: 67% !important;
+        left:16.6%;
+        top:48%;
+        scale: 0;
+    }
+
+    .sp-chapter2pg3-002-10-forSpace {
+        /* transform: translateX(-90%); */
+        
+        /* transform: translate(-90%);  */
+        width: 67% !important;
+        left:16.6%;
+        top:48%;
+        opacity: 0;
+    }
+
+    /* 20 */
+
+    .sp-chapter2pg3-002-11-forSpace {
+        /* transform: translateY(180%); */
+
+        width: 80% !important;
+        left:10%;
+        bottom: 21.4%;
+        opacity: 0;
+    }
+
+    .sp-chapter2pg3-002-11 {
+        transform: translateY(230%);
+
+        width: 80% !important;
+        left:10%;
+        bottom: 21.4%;
+    }
+
+        /* 20 */
+
+        .sp-chapter2pg3-002-12-forSpace {
+            /* transform: translateY(90%); */
+            width: 90% !important;
+            left:5%;
+            bottom:0;
+            opacity: 0;
+        }
+
+    .sp-chapter2pg3-002-12 {
+        transform: translateY(100%);
+        width: 90% !important;
+        left:5%;
+        bottom:0;
+    }
+
+
+    #sp-chapter2pg3-003-2 {
+        width: 40%;
+        left:10%;
+        bottom:5%;
+    }
+
+    .sp-chapter2pg3-003-4 {
+        width: 26.6% !important;
+        left:7%;
+        top:0;
+        transform: translateY(-100%);
+    }
+    
+    .sp-chapter2pg3-003-5 {
+        width: 63% !important;
+        left:24.2%;
+        top:0;
+        transform: translateY(-100%);
+    }
+
+    .sp-chapter2pg3-003-6 {
+        width: 63% !important;
+        right: 0;
+        top:10%;
+        transform: translateY(-130%);
+    }
+
+
+    .sp-chapter2pg3-003-2-forSpace {
+        width: 100%;
+        height: 20%;
+        border: 2px solid green;
+        position: absolute;
+    }
+
+    .sp-chapter2pg3-003-4-forSpace {
+        width: 100%;
+        height: 20%;
+        border: 2px solid yellow;
+        position: absolute;
+        top:9%
+    }
+
+    .sp-chapter2pg3-003-5-forSpace {
+        width: 100%;
+        height: 20%;
+        border: 2px solid yellow;
+        position: absolute;
+        top:20%
+    }
+
+    .sp-chapter2pg3-003-6-forSpace {
+        width: 100%;
+        height: 20%;
+        border: 2px solid yellow;
+        position: absolute;
+        top:30%
+    }
+
+
+
 
 
     /***************************** chapter 2 page 4 */
@@ -324,3 +519,18 @@ opacity: 0;
             .sp-chapter2pg4-004-9:hover ~ .sp-chapter2pg4-004-10 {
                 opacity: 1 !important;
             }    
+
+
+
+
+
+
+
+
+/* hide all border */
+
+
+
+            .special-panel > * {
+                border: none !important;
+            }

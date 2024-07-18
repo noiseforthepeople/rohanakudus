@@ -294,7 +294,9 @@ body {
 }
 
 
-.special-panel .special-item {
+
+/* .special-panel, */
+.special-item {
     width: 100%;
     height: auto;
     display: block;
@@ -1090,6 +1092,19 @@ table, th, td {
    opacity: 1
 }
 
+
+.fadeOut_075s{
+    animation: fadeOut; /* referring directly to the animation's @keyframe declaration */
+   animation-duration: 0.75s; /* don't forget to set a duration! */
+   opacity: 0;
+   }
+
+.fadeIn_075s{
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+   animation-duration: 0.75s; /* don't forget to set a duration! */
+   opacity: 1
+}
+
 .fadeOut_1s{
     animation: fadeOut; /* referring directly to the animation's @keyframe declaration */
    animation-duration: 1s; /* don't forget to set a duration! */
@@ -1125,7 +1140,7 @@ table, th, td {
 /********************* hide ************************/
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 

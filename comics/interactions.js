@@ -44,7 +44,14 @@ function createObserver(element, act, options) {
 //   return element.getBoundingClientRect().height.toFixed(2);
 // }
 
-function createScene(element, act, options) {
+function createScene(
+  element,
+  actProgress,
+  options,
+  actStart,
+  actEnd,
+  actLeave
+) {
   if (element === null)
     return console.log("no scrollMagic scene panel created");
 
@@ -64,10 +71,14 @@ function createScene(element, act, options) {
     })
     .addTo(scrollMagicController)
     .addIndicators()
-    .on("start", function () {
-      this.duration(element.getBoundingClientRect().height.toFixed(2));
-    })
-    .on("progress", act);
+    .on(
+      "start",
+      actStart
+      // function () { this.duration(element.getBoundingClientRect().height.toFixed(2));}
+    )
+    .on("end", actEnd)
+    .on("progress", actProgress)
+    .on("leave", actLeave);
 
   specialPanelsScenes.push(scene);
 }
@@ -941,3 +952,643 @@ createObserver(
   specialPanelsOpt.chapter1pg5_005
 );
 /******** end chapter1pg4_005 ********/
+
+/********************* start chapter2pg1_000 *********************/
+
+specialPanels.chapter2pg1_000 = document.querySelector(".sp-chapter2pg1-000");
+specialPanelsOpt.chapter2pg1_000 = { threshold: 0.2 };
+
+function chapter2pg1_000_act(entries) {
+  entries.forEach((e) => {
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_05s", true);
+      });
+
+      // element 2
+      delay(1500).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_05s", true);
+      });
+
+      // kalau udah muncul semua diunobserve
+      this.unobserve(e.target);
+      //
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg1_000,
+  chapter2pg1_000_act,
+  specialPanelsOpt.chapter2pg1_000
+);
+
+/******** end chapter2pg1_000 ********/
+
+/********************* start chapter2pg1_001 *********************/
+
+specialPanels.chapter2pg1_001 = document.querySelector(".sp-chapter2pg1-001");
+specialPanelsOpt.chapter2pg1_001 = { threshold: 0.2 };
+
+function chapter2pg1_001_act(entries) {
+  entries.forEach((e) => {
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      // kalau udah muncul semua diunobserve
+      this.unobserve(e.target);
+      //
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg1_001,
+  chapter2pg1_001_act,
+  specialPanelsOpt.chapter2pg1_001
+);
+
+/******** end chapter2pg1_001 ********/
+
+/********************* start chapter2pg1_002 *********************/
+
+specialPanels.chapter2pg1_002 = document.querySelector(".sp-chapter2pg1-002");
+specialPanelsOpt.chapter2pg1_002 = { threshold: 0.2 };
+
+function chapter2pg1_002_act(entries) {
+  entries.forEach((e) => {
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      // kalau udah muncul semua diunobserve
+      this.unobserve(e.target);
+      //
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg1_002,
+  chapter2pg1_002_act,
+  specialPanelsOpt.chapter2pg1_002
+);
+
+/******** end chapter2pg1_002 ********/
+
+/********************* start chapter2pg2_004 *********************/
+
+specialPanels.chapter2pg2_004 = document.querySelector(".sp-chapter2pg2-004");
+specialPanelsOpt.chapter2pg2_004 = { threshold: 0.2 };
+
+function chapter2pg2_004_act(entries) {
+  entries.forEach((e) => {
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_05s", true);
+      });
+
+      // element 2
+      delay(1500).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_05s", true);
+
+        delay(200).then(() => {
+          e.target.children[2].classList.toggle("fadeIn_05s", false);
+          e.target.children[2].classList.add("animate__animated");
+          e.target.children[2].classList.add("animate__flash");
+          e.target.children[2].classList.add("animate__slow");
+          e.target.children[2].classList.add("animate__infinite");
+        });
+      });
+
+      // element 3
+      delay(2000).then(() => {
+        e.target.children[3].style.opacity = "1";
+        e.target.children[3].classList.toggle("fadeIn_05s", true);
+      });
+
+      // element 3
+      delay(2500).then(() => {
+        e.target.children[4].style.opacity = "1";
+        e.target.children[4].classList.toggle("fadeIn_05s", true);
+
+        delay(200).then(() => {
+          e.target.children[4].classList.toggle("fadeIn_05s", false);
+          e.target.children[4].classList.add("animate__animated");
+          e.target.children[4].classList.add("animate__pulse");
+          e.target.children[4].classList.add("animate__fast");
+          e.target.children[4].classList.add("animate__infinite");
+        });
+      });
+
+      // kalau udah muncul semua diunobserve
+      this.unobserve(e.target);
+      //
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg2_004,
+  chapter2pg2_004_act,
+  specialPanelsOpt.chapter2pg2_004
+);
+
+/******** end chapter2pg1_004 ********/
+
+/********************* start chapter2pg2_005 *********************/
+
+specialPanels.chapter2pg2_005 = document.querySelector(".sp-chapter2pg2-005");
+specialPanelsOpt.chapter2pg2_005 = { threshold: 0.2 };
+
+function chapter2pg2_005_act(entries) {
+  entries.forEach((e) => {
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_05s", true);
+      });
+
+      // element 2
+      delay(2000).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_075", true);
+      });
+
+      // element 3
+      delay(2750).then(() => {
+        e.target.children[3].style.opacity = "1";
+        e.target.children[3].classList.toggle("fadeIn_05s", true);
+      });
+
+      // kalau udah muncul semua diunobserve
+      this.unobserve(e.target);
+      //
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg2_005,
+  chapter2pg2_005_act,
+  specialPanelsOpt.chapter2pg2_005
+);
+
+/******** end chapter2pg2_005 ********/
+
+/********************* start chapter2pg3_002 *********************/
+specialPanels.sp_chapter2pg3_002_3 = document.querySelector(
+  ".sp-chapter2pg3-002-3"
+);
+
+specialPanelsOpt.sp_chapter2pg3_002_3 = {
+  triggerElement: specialPanels.sp_chapter2pg3_002_3,
+  duration: 50,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_002_3_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.style.transform = `translateX(${-130 + scrollProgres * 1.3}%)`;
+
+  // console.log(scrollProgres);
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_002_3,
+  sp_chapter2pg3_002_3_act,
+  specialPanelsOpt.sp_chapter2pg3_002_3
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_002_4 = document.querySelector(
+  ".sp-chapter2pg3-002-4"
+);
+
+specialPanelsOpt.sp_chapter2pg3_002_4 = {
+  triggerElement: specialPanels.sp_chapter2pg3_002_4,
+  duration: 50,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_002_4_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.style.transform = `translateX(${120 - scrollProgres * 1.2}%)`;
+
+  // console.log(scene);
+
+  if (scene.scrollDirection === "REVERSE" && scene.progress > 0.9) {
+    theScene.nextElementSibling.style.opacity = 0;
+    theScene.nextElementSibling.style.display = "none";
+  }
+}
+
+function sp_chapter2pg3_002_4_actEnd() {
+  // let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transiton = "all 200ms ease-in-out";
+  theScene.nextElementSibling.style.opacity = 1;
+  theScene.nextElementSibling.style.display = "block";
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_002_4,
+  sp_chapter2pg3_002_4_act,
+  specialPanelsOpt.sp_chapter2pg3_002_4,
+  undefined,
+  sp_chapter2pg3_002_4_actEnd
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_002_7 = document.querySelector(
+  ".sp-chapter2pg3-002-7"
+);
+
+specialPanelsOpt.sp_chapter2pg3_002_7 = {
+  triggerElement: specialPanels.sp_chapter2pg3_002_7,
+  duration: 50,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_002_7_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.style.transform = `translateX(${-130 + scrollProgres * 1.3}%)`;
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_002_7,
+  sp_chapter2pg3_002_7_act,
+  specialPanelsOpt.sp_chapter2pg3_002_7
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_002_8 = document.querySelector(
+  ".sp-chapter2pg3-002-8"
+);
+
+specialPanelsOpt.sp_chapter2pg3_002_8 = {
+  triggerElement: specialPanels.sp_chapter2pg3_002_8,
+  duration: 50,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_002_8_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.style.transform = `translateX(${120 - scrollProgres * 1.2}%)`;
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_002_8,
+  sp_chapter2pg3_002_8_act,
+  specialPanelsOpt.sp_chapter2pg3_002_8
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_002_9 = document.querySelector(
+  ".sp-chapter2pg3-002-9"
+);
+
+specialPanelsOpt.sp_chapter2pg3_002_9 = {
+  triggerElement: specialPanels.sp_chapter2pg3_002_9,
+  duration: 50,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_002_9_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.style.transform = `translateX(${-120 + scrollProgres * 1.2}%)`;
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_002_9,
+  sp_chapter2pg3_002_9_act,
+  specialPanelsOpt.sp_chapter2pg3_002_9
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_002_10 = document.querySelector(
+  ".sp-chapter2pg3-002-10-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg3_002_10 = {
+  triggerElement: specialPanels.sp_chapter2pg3_002_10,
+  duration: 50,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_002_10_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (between(scrollProgres, 0, 50)) {
+    theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+  }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_002_10,
+  sp_chapter2pg3_002_10_act,
+  specialPanelsOpt.sp_chapter2pg3_002_10
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_002_11 = document.querySelector(
+  ".sp-chapter2pg3-002-11-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg3_002_11 = {
+  triggerElement: specialPanels.sp_chapter2pg3_002_11,
+  duration: 50,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_002_11_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    230 - scrollProgres * 2.3
+  }%)`;
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_002_11,
+  sp_chapter2pg3_002_11_act,
+  specialPanelsOpt.sp_chapter2pg3_002_11
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_002_12 = document.querySelector(
+  ".sp-chapter2pg3-002-12-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg3_002_12 = {
+  triggerElement: specialPanels.sp_chapter2pg3_002_12,
+  duration: 50,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_002_12_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (between(scrollProgres, 0, 30)) {
+    // theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+
+    theScene.nextElementSibling.style.transform = `translateY(${
+      100 - scrollProgres * 3.333333
+    }%)`;
+  }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_002_12,
+  sp_chapter2pg3_002_12_act,
+  specialPanelsOpt.sp_chapter2pg3_002_12
+);
+
+/** end panel */
+
+/********************* end chapter1pg4_001 *********************/
+
+specialPanels.sp_chapter2pg3_003_2 = document.querySelector(
+  ".sp-chapter2pg3-003-2-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg3_003_2 = {
+  triggerElement: specialPanels.sp_chapter2pg3_003_2,
+  duration: 100,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_003_2_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  console.log(theScene.nextElementSibling);
+
+  theScene.nextElementSibling.style.width = 40 - scrollProgres / 10 + "%";
+
+  // if (between(scrollProgres, 0, 30)) {
+  //   // theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+
+  //   theScene.nextElementSibling.style.transform = `translateY(${
+  //     100 - scrollProgres * 3.333333
+  //   }%)`;
+  // }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_003_2,
+  sp_chapter2pg3_003_2_act,
+  specialPanelsOpt.sp_chapter2pg3_003_2
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_003_4 = document.querySelector(
+  ".sp-chapter2pg3-003-4-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg3_003_4 = {
+  triggerElement: specialPanels.sp_chapter2pg3_003_4,
+  duration: 100,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_003_4_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  console.log(theScene.nextElementSibling);
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    -100 + scrollProgres
+  }%)`;
+
+  // if (between(scrollProgres, 0, 30)) {
+  //   // theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+
+  //   theScene.nextElementSibling.style.transform = `translateY(${
+  //     100 - scrollProgres * 3.333333
+  //   }%)`;
+  // }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_003_4,
+  sp_chapter2pg3_003_4_act,
+  specialPanelsOpt.sp_chapter2pg3_003_4
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_003_5 = document.querySelector(
+  ".sp-chapter2pg3-003-5-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg3_003_5 = {
+  triggerElement: specialPanels.sp_chapter2pg3_003_5,
+  duration: 100,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_003_5_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  console.log(theScene.nextElementSibling);
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    -100 + scrollProgres
+  }%)`;
+
+  // if (between(scrollProgres, 0, 30)) {
+  //   // theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+
+  //   theScene.nextElementSibling.style.transform = `translateY(${
+  //     100 - scrollProgres * 3.333333
+  //   }%)`;
+  // }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_003_5,
+  sp_chapter2pg3_003_5_act,
+  specialPanelsOpt.sp_chapter2pg3_003_5
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg3_003_6 = document.querySelector(
+  ".sp-chapter2pg3-003-6-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg3_003_6 = {
+  triggerElement: specialPanels.sp_chapter2pg3_003_6,
+  duration: 100,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg3_003_6_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  console.log(theScene.nextElementSibling);
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    -130 + scrollProgres * 1.3
+  }%)`;
+
+  // if (between(scrollProgres, 0, 30)) {
+  //   // theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+
+  //   theScene.nextElementSibling.style.transform = `translateY(${
+  //     100 - scrollProgres * 3.333333
+  //   }%)`;
+  // }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg3_003_6,
+  sp_chapter2pg3_003_6_act,
+  specialPanelsOpt.sp_chapter2pg3_003_6
+);
+
+/** end panel */
+
+/********************* start x *********************/
+
+/******** end x ********/
