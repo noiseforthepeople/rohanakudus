@@ -144,7 +144,7 @@ let currentPageNumber = 0;
 /********************* disable navigation button ************************/
 
 function disableNavigationButton() {
-  console.log(currentPageNumber);
+  // console.log(currentPageNumber);
   if (currentPageNumber === 0) {
     lastButton.classList.remove("disabledButton");
     nextButton.classList.remove("disabledButton");
@@ -186,7 +186,7 @@ if (!currentHash) {
   fetchPage("/comics/prolog_1.html").then((data) => {
     while (data[0]) {
       comicsPage.append(data[0]);
-      console.log(data);
+      //console.log(data);
     }
 
     /********************* imageloader ************************/
@@ -223,7 +223,7 @@ else {
     (data) => {
       while (data[0]) {
         comicsPage.append(data[0]);
-        console.log(data);
+        //console.log(data);
       }
 
       /********************* imageloader ************************/
@@ -296,7 +296,7 @@ window.addEventListener("hashchange", (e) => {
 
       while (data[0]) {
         comicsPage.append(data[0]);
-        console.log(data);
+        // console.log(data);
       }
 
       /********************* imageloader ************************/

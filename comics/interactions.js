@@ -1,6 +1,6 @@
 /********************* create observer ************************/
 function createObserver(element, act, options) {
-  if (element === null) return console.log("no element to be observed");
+  if (element === null) return; //console.log("no element to be observed");
 
   const observer = new IntersectionObserver(act, options);
   observer.observe(element);
@@ -52,8 +52,7 @@ function createScene(
   actEnd,
   actLeave
 ) {
-  if (element === null)
-    return console.log("no scrollMagic scene panel created");
+  if (element === null) return; // console.log("no scrollMagic scene panel created");
 
   // console.log(element.scrollHeight);
   // console.log("s");
@@ -70,7 +69,7 @@ function createScene(
       //
     })
     .addTo(scrollMagicController)
-    .addIndicators() // remove this when released
+    // .addIndicators() // remove this when released
     .on(
       "start",
       actStart
@@ -90,7 +89,7 @@ specialPanelsOpt.prolog1_001 = { threshold: 0.5 };
 
 function prolog1_001_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -425,7 +424,7 @@ specialPanels.chapter1pg2_004 = document.querySelector(".sp-chapter1pg2-004");
 specialPanelsOpt.chapter1pg2_004 = { threshold: 0.5 };
 
 function chapter1pg2_004_act(entries) {
-  console.log(entries);
+  // console.log(entries);
   entries.forEach((e) => {
     // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
@@ -467,7 +466,7 @@ specialPanels.chapter1pg2_005 = document.querySelector(".sp-chapter1pg2-005");
 specialPanelsOpt.chapter1pg2_005 = { threshold: 0.5 };
 
 function chapter1pg2_005_act(entries) {
-  console.log(entries);
+  // console.log(entries);
   entries.forEach((e) => {
     // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
@@ -722,7 +721,7 @@ specialPanelsOpt.chapter1pg4_003 = { threshold: 0.5 };
 
 function chapter1pg4_003_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -763,7 +762,7 @@ specialPanelsOpt.chapter1pg4_004 = { threshold: 0.5 };
 
 function chapter1pg4_004_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    //  console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -804,7 +803,7 @@ specialPanelsOpt.chapter1pg5_003 = { threshold: 0.9 };
 
 function chapter1pg5_003_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -905,7 +904,7 @@ specialPanelsOpt.chapter1pg5_004 = { threshold: 0.5 };
 
 function chapter1pg5_004_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -932,7 +931,7 @@ specialPanelsOpt.chapter1pg5_005 = { threshold: 0.5 };
 
 function chapter1pg5_005_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -1445,7 +1444,7 @@ function sp_chapter2pg3_003_2_act() {
   // console.log(scrollProgres);
   const theScene = this.triggerElement();
 
-  console.log(theScene.nextElementSibling);
+  // console.log(theScene.nextElementSibling);
 
   theScene.nextElementSibling.style.width = 40 - scrollProgres / 10 + "%";
 
@@ -1484,7 +1483,7 @@ function sp_chapter2pg3_003_4_act() {
   // console.log(scrollProgres);
   const theScene = this.triggerElement();
 
-  console.log(theScene.nextElementSibling);
+  //console.log(theScene.nextElementSibling);
 
   theScene.nextElementSibling.style.transform = `translateY(${
     -100 + scrollProgres
@@ -1525,7 +1524,7 @@ function sp_chapter2pg3_003_5_act() {
   // console.log(scrollProgres);
   const theScene = this.triggerElement();
 
-  console.log(theScene.nextElementSibling);
+  //console.log(theScene.nextElementSibling);
 
   theScene.nextElementSibling.style.transform = `translateY(${
     -100 + scrollProgres
@@ -1566,7 +1565,7 @@ function sp_chapter2pg3_003_6_act() {
   // console.log(scrollProgres);
   const theScene = this.triggerElement();
 
-  console.log(theScene.nextElementSibling);
+  //console.log(theScene.nextElementSibling);
 
   theScene.nextElementSibling.style.transform = `translateY(${
     -130 + scrollProgres * 1.3
@@ -1708,7 +1707,7 @@ specialPanelsOpt.chapter2pg4_003 = { threshold: 0.5 };
 
 function chapter2pg4_003_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    //console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -1746,11 +1745,11 @@ createObserver(
 /** end panel */
 
 specialPanels.chapter2pg4_004 = document.querySelector(".sp-chapter2pg4-004");
-specialPanelsOpt.chapter2pg4_004 = { threshold: 0.5 };
+specialPanelsOpt.chapter2pg4_004 = { threshold: 0.4 };
 
 function chapter2pg4_004_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -1764,7 +1763,7 @@ function chapter2pg4_004_act(entries) {
           e.target.children[3].classList.toggle("fadeIn_1s", true);
         });
 
-        delay(1200).then(() => {
+        delay(2000).then(() => {
           e.target.children[7].style.opacity = "1";
           e.target.children[7].classList.toggle("fadeIn_1s", true);
           e.target.children[8].style.display = "block";
@@ -2155,7 +2154,7 @@ function sp_chapter2pg5_001_10_act(scene) {
 function sp_chapter2pg5_001_10_actStart(scene) {
   const theScene = this.triggerElement();
 
-  console.log(scene.state);
+  //  console.log(scene.state);
 }
 
 createScene(
@@ -2171,7 +2170,7 @@ specialPanelsOpt.chapter2pg5_002 = { threshold: 0.5 };
 
 function chapter2pg5_002_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -2219,7 +2218,7 @@ function sp_chapter2pg5_004_3_act(scene) {
     45 - scrollProgres * 0.45
   }%)`;
 
-  console.log(theScene.nextElementSibling);
+  // console.log(theScene.nextElementSibling);
 
   // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
   // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
@@ -2254,7 +2253,7 @@ function sp_chapter2pg5_004_4_act(scene) {
     45 - scrollProgres * 0.4
   }%)`;
 
-  console.log(theScene.nextElementSibling);
+  // console.log(theScene.nextElementSibling);
 
   // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
   // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
@@ -2276,7 +2275,7 @@ specialPanelsOpt.chapter2pg6_001 = { threshold: 0.1 };
 
 function chapter2pg6_001_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(500).then(() => {
@@ -2305,7 +2304,7 @@ specialPanelsOpt.chapter2pg6_003 = { threshold: 0.5 };
 
 function chapter2pg6_003_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -2313,7 +2312,7 @@ function chapter2pg6_003_act(entries) {
           e.target.children[1].style.opacity = "1";
           e.target.children[1].classList.toggle("fadeIn_1s", true);
 
-          console.log("asas");
+          //   console.log("asas");
         });
       }
     }
@@ -2333,7 +2332,7 @@ specialPanelsOpt.chapter2pg6_004 = { threshold: 0.5 };
 
 function chapter2pg6_004_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       if (e.intersectionRatio < 1) {
         // element 1
@@ -2383,7 +2382,7 @@ function sp_chapter2pg6_005_2_act(scene) {
     0 + scrollProgres * 0.15
   }%)`;
 
-  console.log(theScene.nextElementSibling);
+  // console.log(theScene.nextElementSibling);
 
   // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
   // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
@@ -2478,7 +2477,7 @@ function sp_chapter2pg6_005_3_act(scene) {
   //   -45 + scrollProgres * 0.45
   // }%)`;
 
-  console.log(theScene.nextElementSibling);
+  // console.log(theScene.nextElementSibling);
 
   // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
   // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
@@ -2703,7 +2702,7 @@ specialPanelsOpt.chapter3pg2_002 = { threshold: 1 };
 
 function chapter3pg2_002_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(1000).then(() => {
@@ -2723,11 +2722,11 @@ createObserver(
 /** end panel */
 
 specialPanels.chapter3pg2_005 = document.querySelector(".sp-chapter3pg2-005");
-specialPanelsOpt.chapter3pg2_005 = { threshold: 1 };
+specialPanelsOpt.chapter3pg2_005 = { threshold: 0.8 };
 
 function chapter3pg2_005_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(100).then(() => {
@@ -2759,11 +2758,11 @@ createObserver(
 
 /********************* start .sp-chapter3pg3 *********************/
 specialPanels.chapter3pg3_001 = document.querySelector(".sp-chapter3pg3-001");
-specialPanelsOpt.chapter3pg3_001 = { threshold: 1 };
+specialPanelsOpt.chapter3pg3_001 = { threshold: 0.7 };
 
 function chapter3pg3_001_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    //  console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(500).then(() => {
@@ -2787,11 +2786,11 @@ createObserver(
 /** end panel */
 
 specialPanels.chapter3pg3_004 = document.querySelector(".sp-chapter3pg3-004");
-specialPanelsOpt.chapter3pg3_004 = { threshold: 1 };
+specialPanelsOpt.chapter3pg3_004 = { threshold: 0.7 };
 
 function chapter3pg3_004_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    //  console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(500).then(() => {
@@ -2994,7 +2993,7 @@ specialPanelsOpt.chapter3pg4_001 = { threshold: 1 };
 
 function chapter3pg4_001_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(500).then(() => {
@@ -3018,11 +3017,11 @@ createObserver(
 /** end panel */
 
 specialPanels.chapter3pg4_002 = document.querySelector(".sp-chapter3pg4-002");
-specialPanelsOpt.chapter3pg4_002 = { threshold: 1 };
+specialPanelsOpt.chapter3pg4_002 = { threshold: 0.7 };
 
 function chapter3pg4_002_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(500).then(() => {
@@ -3046,11 +3045,11 @@ createObserver(
 /** end panel */
 
 specialPanels.chapter3pg4_004 = document.querySelector(".sp-chapter3pg4-004");
-specialPanelsOpt.chapter3pg4_004 = { threshold: 0.5 };
+specialPanelsOpt.chapter3pg4_004 = { threshold: 0.3 };
 
 function chapter3pg4_004_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    //  console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(500).then(() => {
@@ -3089,11 +3088,11 @@ createObserver(
 /** end panel */
 
 specialPanels.chapter3pg4_005 = document.querySelector(".sp-chapter3pg4-005");
-specialPanelsOpt.chapter3pg4_005 = { threshold: 0.5 };
+specialPanelsOpt.chapter3pg4_005 = { threshold: 0.3 };
 
 function chapter3pg4_005_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    // console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(500).then(() => {
@@ -3136,11 +3135,11 @@ createObserver(
 /********************* start sp-chapter3pg5 *********************/
 
 specialPanels.chapter3pg5_003 = document.querySelector(".sp-chapter3pg5-003");
-specialPanelsOpt.chapter3pg5_003 = { threshold: 0.9 };
+specialPanelsOpt.chapter3pg5_003 = { threshold: 0.5 };
 
 function chapter3pg5_003_act(entries) {
   entries.forEach((e) => {
-    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    //  console.log(e.intersectionRatio + " " + e.isIntersecting);
     if (e.isIntersecting) {
       // element 1
       delay(500).then(() => {

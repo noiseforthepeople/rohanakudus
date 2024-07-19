@@ -556,7 +556,7 @@ opacity: 0;
 
 .sp-chapter2pg4-002-3-forSpace {
     width: 100%;
-    height: 20%;
+    height: 50%;
     border: 2px solid yellow;
     position: absolute;
     top:0%
@@ -567,7 +567,7 @@ opacity: 0;
     height: 20%;
     border: 2px solid yellow;
     position: absolute;
-    top:20%
+    top:50%
 }
 
 .sp-chapter2pg4-003-2, .sp-chapter2pg4-003-3,
@@ -665,12 +665,12 @@ opacity: 0;
         position: absolute;
         margin-top: 2%;
         border: 2px solid red;
-        top: 10%;
+        top: 25%;
 
     }
     .sp-chapter2pg5-004-4-forSpace {
         width: 100%;
-        height: 10%;
+        height: 25%;
         position: absolute;
         margin-top: 2%;
         border: 2px solid green;
@@ -860,7 +860,7 @@ opacity: 0;
 
 .sp-chapter3pg4-003-3-forSpace {
     width: 100%;
-    height: 15%;
+    height: 30%;
     position: absolute;
     border: 2px solid yellow;
     top: 0%;
@@ -875,10 +875,10 @@ opacity: 0;
 
 .sp-chapter3pg4-003-4-forSpace {
     width: 100%;
-    height: 15%;
+    height: 20%;
     position: absolute;
     border: 2px solid yellow;
-    top: 12%;
+    top: 30%;
 }
 
 .sp-chapter3pg4-003-4 {
@@ -892,7 +892,7 @@ opacity: 0;
     height: 15%;
     position: absolute;
     border: 2px solid yellow;
-    top: 27%;
+    top: 50%;
 }
 
 
@@ -958,6 +958,6 @@ margin-top: -2%;
 
 
 
-            /* .special-panel > * {
+            .special-panel > * {
                 border: none !important;
-            } */
+            }
