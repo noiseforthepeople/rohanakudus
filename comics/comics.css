@@ -461,7 +461,12 @@ mix-blend-mode: multiply;
 
     /***************************** chapter 2 page 4 */
 
-    .sp-chapter2pg4-004-4{
+    .sp-chapter2pg4-004-3, 
+    .sp-chapter2pg4-004-8 {
+        opacity: 0;
+    }
+
+    #sp-chapter2pg4-004-4{
         opacity: 1;
         z-index: 1000;
         width:1.1dvw !important;
@@ -470,28 +475,31 @@ mix-blend-mode: multiply;
         top: 12.4%;
         cursor: help;
         transition: all 200ms ease-in-out;
+
+        display: none;
         }
     
-    .sp-chapter2pg4-004-4:hover {
+    #sp-chapter2pg4-004-4:hover {
         transform: scale(0.8);
         }
     
-    .sp-chapter2pg4-004-5{
+    #sp-chapter2pg4-004-5{
         opacity: 0;
         width:30% !important;
         left: 68.7%;
         top: 14.4%;
         transition: all 200ms ease-in-out;
+        display: none;
         }
         
     
             
-        .sp-chapter2pg4-004-4:hover ~ .sp-chapter2pg4-004-5 {
+        #sp-chapter2pg4-004-4:hover ~ #sp-chapter2pg4-004-5 {
             opacity: 1 !important;
         }    
 
 
-        .sp-chapter2pg4-004-9{
+        #sp-chapter2pg4-004-9{
             opacity: 1;
             z-index: 1000;
             width:1.1dvw !important;
@@ -500,29 +508,448 @@ mix-blend-mode: multiply;
             top: 80.5%;
             cursor: help;
             transition: all 200ms ease-in-out;
+            display: none;
             }
         
-        .sp-chapter2pg4-004-9:hover {
+        #sp-chapter2pg4-004-9:hover {
             transform: scale(0.8);
             }
         
-        .sp-chapter2pg4-004-10{
+        #sp-chapter2pg4-004-10{
             opacity: 0;
             width:30% !important;
             left: 48.66%;
             top: 82.5%;
             transition: all 200ms ease-in-out;
+            display: none;
             }
             
         
                 
-            .sp-chapter2pg4-004-9:hover ~ .sp-chapter2pg4-004-10 {
+            #sp-chapter2pg4-004-9:hover ~ #sp-chapter2pg4-004-10 {
                 opacity: 1 !important;
             }    
 
 
 
+.sp-chapter2pg4-002-3 {
+    width: 23% !important;
+    left: calc((100% - 23%)/2);
+    bottom: 17%;
+    transform: translateY(150%);
+}
 
+
+.sp-chapter2pg4-002-4 {
+    width: 85% !important;
+    left: calc((100% - 85%)/2);
+    bottom: 9%;
+    transform: translateY(120%);
+}
+
+
+.sp-chapter2pg4-002-2 {
+opacity: 0;
+}
+
+
+
+.sp-chapter2pg4-002-3-forSpace {
+    width: 100%;
+    height: 20%;
+    border: 2px solid yellow;
+    position: absolute;
+    top:0%
+}
+
+.sp-chapter2pg4-002-4-forSpace {
+    width: 100%;
+    height: 20%;
+    border: 2px solid yellow;
+    position: absolute;
+    top:20%
+}
+
+.sp-chapter2pg4-003-2, .sp-chapter2pg4-003-3,
+.sp-chapter2pg4-003-4, .sp-chapter2pg4-003-5 {
+    opacity: 0;
+}   
+
+
+    /***************************** chapter 2 page 5 */
+
+
+    .sp-chapter2pg5-001-4-forSpace,
+    .sp-chapter2pg5-001-5-forSpace,
+    .sp-chapter2pg5-001-6-forSpace,
+    .sp-chapter2pg5-001-7-forSpace,
+    .sp-chapter2pg5-001-8-forSpace,
+    .sp-chapter2pg5-001-9-forSpace,
+    .sp-chapter2pg5-001-10-forSpace {
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        margin-top: 2%;
+        /* opacity: 1 !important; */
+
+        /* background-color: rgba(243, 243, 243, 0.473); */
+    }
+
+    .sp-chapter2pg5-001-4-forSpace {
+        top:0%;
+        border: 2px solid yellow;
+        height: 5%;
+    }
+
+    .sp-chapter2pg5-001-5-forSpace {
+        top:5%;
+        border: 2px solid green;
+    }
+
+    .sp-chapter2pg5-001-6-forSpace {
+        top:15%;
+        border: 2px solid blue;
+    }
+
+    .sp-chapter2pg5-001-7-forSpace {
+        top:25%;
+        border: 2px solid wheat;
+    }
+
+    .sp-chapter2pg5-001-8-forSpace {
+        top:35%;
+        border: 2px solid violet;
+    }
+
+    .sp-chapter2pg5-001-9-forSpace {
+        top:45%;
+        border: 2px solid turquoise;
+    }
+
+    .sp-chapter2pg5-001-10-forSpace {
+        top:55%;
+        border: 2px solid gray;
+    }
+
+    /* .sp-chapter2pg5-001 > *{
+        opacity: 0;
+    } */
+
+
+/* 
+    .sp-chapter2pg5-001 > *:nth-child(1), *:nth-child(2), *:nth-child(3){
+        opacity: 1;
+    } */
+
+    
+    .sp-chapter2pg5-001-4,
+    .sp-chapter2pg5-001-5,
+    .sp-chapter2pg5-001-6,
+    .sp-chapter2pg5-001-7,
+    .sp-chapter2pg5-001-8,
+    .sp-chapter2pg5-001-9,
+    .sp-chapter2pg5-001-10,
+    .sp-chapter2pg5-001-11 {
+        opacity: 0;
+    }
+
+
+    .sp-chapter2pg5-002-2,
+    .sp-chapter2pg5-002-3 {
+        opacity: 0;
+    }
+
+    .sp-chapter2pg5-004-3-forSpace {
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        margin-top: 2%;
+        border: 2px solid red;
+        top: 10%;
+
+    }
+    .sp-chapter2pg5-004-4-forSpace {
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        margin-top: 2%;
+        border: 2px solid green;
+        top: 0%
+    }
+
+    .sp-chapter2pg5-004-3 {
+        transform: translateY(45%);
+    }
+
+    .sp-chapter2pg5-004-4 {
+        transform: translateY(40%);
+    }
+
+    .sp-chapter2pg6-001-2,
+    .sp-chapter2pg6-001-3,
+    .sp-chapter2pg6-003-2,
+    .sp-chapter2pg6-004-2,
+    .sp-chapter2pg6-004-3 {
+        opacity: 0;
+    }
+
+    .sp-chapter2pg6-005-2 {
+        transform: translateX(-45%);
+    }
+
+    .sp-chapter2pg6-005-4 {
+        /* from 0 to 15% */
+        transform: translateX(0%);
+    }
+
+    .sp-chapter2pg6-005-3,
+    .sp-chapter2pg6-005-5 {
+        opacity: 0;
+    }
+
+
+    .sp-chapter2pg6-005-2-forSpace {
+        width: 100%;
+        height: 30%;
+        position: absolute;
+        margin-top: 2%;
+        border: 2px solid green;
+        top: 0%
+    }
+
+    
+    .sp-chapter2pg6-005-3-forSpace {
+        width: 100%;
+        height: 40%;
+        position: absolute;
+        margin-top: 2%;
+        border: 2px solid green;
+        top: 20%
+    }
+
+
+        /***************************** chapter 3 page 1 */
+
+    .sp-chapter3pg1-002-3 {
+        transform: translateX(-60%);
+    }
+
+    .sp-chapter3pg1-003-3 {
+        transform: translateX(-35%);
+    }
+
+    .sp-chapter3pg1-003-4 {
+        transform: translateX(35%);
+    }
+
+    .sp-chapter3pg1-003-5 {
+        transform: translateX(-30%);
+    }
+
+    .sp-chapter3pg1-003-6 {
+        transform: translateX(30%);
+    }
+
+    .sp-chapter3pg1-003-7 {
+        transform: translateY(40%);
+    }
+
+    .sp-chapter3pg1-003-3-forSpace,
+    .sp-chapter3pg1-003-4-forSpace,
+    .sp-chapter3pg1-003-5-forSpace,
+    .sp-chapter3pg1-003-6-forSpace,
+    .sp-chapter3pg1-003-7-forSpace {
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        border: 2px solid yellow;
+    }
+
+    .sp-chapter3pg1-003-3-forSpace {
+    top:0;
+    }
+
+    .sp-chapter3pg1-003-4-forSpace {
+        top:10%;
+        }
+
+        .sp-chapter3pg1-003-5-forSpace {
+            top:20%;
+            }
+
+            .sp-chapter3pg1-003-6-forSpace {
+                top:30%;
+                }
+
+                .sp-chapter3pg1-003-7-forSpace {
+                    top:40%;
+                    }
+
+
+         /***************************** chapter 3 page 2 */                   
+    .sp-chapter3pg2-002-2, .sp-chapter3pg2-005-3 {
+        opacity: 0;
+    }
+
+
+             /***************************** chapter 3 page 3 */  
+
+    .sp-chapter3pg3-001-2 {
+        opacity: 0;
+    }
+
+    .sp-chapter3pg3-002-2-forSpace {
+        width: 100%;
+        height: 25%;
+        position: absolute;
+        border: 2px solid yellow;
+    }
+
+    .sp-chapter3pg3-002-2 {
+        opacity: 0;
+    }
+
+    .sp-chapter3pg3-002-3 {
+        transform: translateX(50%);
+    }
+
+    
+    .sp-chapter3pg3-002-4-forSpace {
+        width: 100%;
+        height: 15%;
+        position: absolute;
+        border: 2px solid yellow;
+        top: 25%;
+    }
+
+    .sp-chapter3pg3-002-4 {
+        transform: translateX(-50%);
+    }
+
+    .sp-chapter3pg3-002-5 {
+        transform: translateX(50%);
+    }
+
+
+    .sp-chapter3pg3-004-2 {
+        opacity: 0;
+    }
+
+                 /***************************** chapter 3 page 4 */  
+
+.sp-chapter3pg4-001-2 {
+    opacity: 0;
+}
+
+.sp-chapter3pg4-002-2 {
+    opacity: 0;
+}
+
+
+.sp-chapter3pg4-004-2, .sp-chapter3pg4-004-3,
+.sp-chapter3pg4-004-4, .sp-chapter3pg4-004-5 {
+    opacity: 0;
+}
+
+
+.sp-chapter3pg4-005-2, .sp-chapter3pg4-005-3,
+.sp-chapter3pg4-005-4, .sp-chapter3pg4-005-5 {
+    opacity: 0;
+}
+
+
+.sp-chapter3pg4-003-3-forSpace {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    border: 2px solid yellow;
+    top: 0%;
+}
+
+
+.sp-chapter3pg4-003-3 {
+    transform: translateX(-50%);
+}
+
+
+
+.sp-chapter3pg4-003-4-forSpace {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    border: 2px solid yellow;
+    top: 12%;
+}
+
+.sp-chapter3pg4-003-4 {
+    transform: translateX(50%);
+}
+
+
+
+.sp-chapter3pg4-003-5-forSpace {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    border: 2px solid yellow;
+    top: 27%;
+}
+
+
+.sp-chapter3pg4-003-5 {
+    transform: translateY(40%);
+}
+
+
+                 /***************************** chapter 3 page 5 */  
+
+.sp-chapter3pg5-001-2-forSpace,                 
+.sp-chapter3pg5-001-3-forSpace,
+.sp-chapter3pg5-001-4-forSpace,
+.sp-chapter3pg5-001-5-forSpace,
+.sp-chapter3pg5-001-6-forSpace {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    border: 2px solid yellow;
+}
+
+.sp-chapter3pg5-001-3-forSpace {
+    top:5%
+}
+
+.sp-chapter3pg5-001-4-forSpace {
+    top:10%
+}
+
+.sp-chapter3pg5-001-5-forSpace {
+    top:15%
+}
+
+.sp-chapter3pg5-001-6-forSpace {
+    top:40%
+}
+
+
+.sp-chapter3pg5-001-2,
+.sp-chapter3pg5-001-3,
+.sp-chapter3pg5-001-4,
+.sp-chapter3pg5-001-5,
+.sp-chapter3pg5-001-6 {
+    opacity: 0;
+}
+
+.sp-chapter3pg5-003 {
+margin-top: -2%;
+}
+
+.sp-chapter3pg5-002-2 {
+    opacity: 0;
+}
+
+.sp-chapter3pg5-003-2 {
+    opacity: 0;
+}
 
 
 
@@ -531,6 +958,6 @@ mix-blend-mode: multiply;
 
 
 
-            .special-panel > * {
+            /* .special-panel > * {
                 border: none !important;
-            }
+            } */

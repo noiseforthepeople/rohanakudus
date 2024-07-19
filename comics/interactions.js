@@ -70,7 +70,7 @@ function createScene(
       //
     })
     .addTo(scrollMagicController)
-    .addIndicators()
+    .addIndicators() // remove this when released
     .on(
       "start",
       actStart
@@ -800,7 +800,7 @@ createObserver(
 
 /********************* start chapter1pg5_003 *********************/
 specialPanels.chapter1pg5_003 = document.querySelector(".sp-chapter1pg5-003");
-specialPanelsOpt.chapter1pg5_003 = { threshold: 0.5 };
+specialPanelsOpt.chapter1pg5_003 = { threshold: 0.9 };
 
 function chapter1pg5_003_act(entries) {
   entries.forEach((e) => {
@@ -1588,6 +1588,1765 @@ createScene(
 );
 
 /** end panel */
+
+/********************* start .sp-chapter2pg4-002 *********************/
+
+specialPanels.sp_chapter2pg4_002_3 = document.querySelector(
+  ".sp-chapter2pg4-002-3-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg4_002_3 = {
+  triggerElement: specialPanels.sp_chapter2pg4_002_3,
+  duration: 100,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg4_002_3_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // console.log(theScene.nextElementSibling);
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    150 - scrollProgres * 1.5
+  }%)`;
+
+  // if (between(scrollProgres, 0, 30)) {
+  //   // theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+
+  //   theScene.nextElementSibling.style.transform = `translateY(${
+  //     100 - scrollProgres * 3.333333
+  //   }%)`;
+  // }
+
+  if (scene.scrollDirection === "REVERSE" && scene.progress > 0.9) {
+    theScene.previousElementSibling.classList.add("fadeOut_1s");
+    theScene.previousElementSibling.classList.remove("fadeIn_2s");
+    theScene.previousElementSibling.style.opacity = 0;
+  }
+}
+
+function sp_chapter2pg4_002_3_actStart(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // console.log(theScene.nextElementSibling);
+
+  if (scene.scrollDirection === "FORWARD") {
+    theScene.previousElementSibling.style.opacity = "1";
+    theScene.previousElementSibling.classList.remove("fadeOut_1s");
+    theScene.previousElementSibling.classList.add("fadeIn_2s");
+  }
+
+  // if (between(scrollProgres, 0, 30)) {
+  //   // theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+
+  //   theScene.nextElementSibling.style.transform = `translateY(${
+  //     100 - scrollProgres * 3.333333
+  //   }%)`;
+  // }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg4_002_3,
+  sp_chapter2pg4_002_3_act,
+  specialPanelsOpt.sp_chapter2pg4_002_3,
+  sp_chapter2pg4_002_3_actStart
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg4_002_4 = document.querySelector(
+  ".sp-chapter2pg4-002-4-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg4_002_4 = {
+  triggerElement: specialPanels.sp_chapter2pg4_002_4,
+  duration: 100,
+  triggerHook: "0.4",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg4_002_4_act() {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // console.log(theScene.nextElementSibling);
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    120 - scrollProgres * 1.2
+  }%)`;
+
+  // if (between(scrollProgres, 0, 30)) {
+  //   // theScene.nextElementSibling.style.scale = 0 + scrollProgres / 50;
+
+  //   theScene.nextElementSibling.style.transform = `translateY(${
+  //     100 - scrollProgres * 3.333333
+  //   }%)`;
+  // }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg4_002_4,
+  sp_chapter2pg4_002_4_act,
+  specialPanelsOpt.sp_chapter2pg4_002_4
+);
+
+/** end panel */
+
+specialPanels.chapter2pg4_003 = document.querySelector(".sp-chapter2pg4-003");
+specialPanelsOpt.chapter2pg4_003 = { threshold: 0.5 };
+
+function chapter2pg4_003_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+
+        delay(1000).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_1s", true);
+        });
+
+        delay(1700).then(() => {
+          e.target.children[2].style.opacity = "1";
+          e.target.children[2].classList.toggle("fadeIn_1s", true);
+        });
+
+        delay(2400).then(() => {
+          e.target.children[4].style.opacity = "1";
+          e.target.children[4].classList.toggle("fadeIn_1s", true);
+        });
+
+        delay(3100).then(() => {
+          e.target.children[3].style.opacity = "1";
+          e.target.children[3].classList.toggle("fadeIn_1s", true);
+        });
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg4_003,
+  chapter2pg4_003_act,
+  specialPanelsOpt.chapter2pg4_003
+);
+
+/** end panel */
+
+specialPanels.chapter2pg4_004 = document.querySelector(".sp-chapter2pg4-004");
+specialPanelsOpt.chapter2pg4_004 = { threshold: 0.5 };
+
+function chapter2pg4_004_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+
+        delay(300).then(() => {
+          e.target.children[2].style.opacity = "1";
+          e.target.children[2].classList.toggle("fadeIn_1s", true);
+          e.target.children[3].style.display = "block";
+          e.target.children[4].style.display = "block";
+          e.target.children[3].style.opacity = "1";
+          e.target.children[3].classList.toggle("fadeIn_1s", true);
+        });
+
+        delay(1200).then(() => {
+          e.target.children[7].style.opacity = "1";
+          e.target.children[7].classList.toggle("fadeIn_1s", true);
+          e.target.children[8].style.display = "block";
+          e.target.children[9].style.display = "block";
+          e.target.children[8].style.opacity = "1";
+          e.target.children[8].classList.toggle("fadeIn_1s", true);
+        });
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg4_004,
+  chapter2pg4_004_act,
+  specialPanelsOpt.chapter2pg4_004
+);
+
+/** end panel */
+
+/******** end .sp-chapter2pg4-002 ********/
+
+/********************* start .sp-chapter2pg5 *********************/
+
+specialPanels.sp_chapter2pg5_001_4 = document.querySelector(
+  ".sp-chapter2pg5-001-4-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_001_4 = {
+  triggerElement: specialPanels.sp_chapter2pg5_001_4,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_001_4_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+
+  // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (scene.state === "DURING") {
+    // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+    theScene.nextElementSibling.classList.add("fadeIn_1s");
+  }
+
+  if (scene.state === "AFTER") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+
+  if (scene.state === "BEFORE") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_001_4,
+  sp_chapter2pg5_001_4_act,
+  specialPanelsOpt.sp_chapter2pg5_001_4
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg5_001_5 = document.querySelector(
+  ".sp-chapter2pg5-001-5-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_001_5 = {
+  triggerElement: specialPanels.sp_chapter2pg5_001_5,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_001_5_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+
+  if (scene.state === "DURING") {
+    // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+    theScene.nextElementSibling.classList.add("fadeIn_1s");
+  }
+
+  if (scene.state === "AFTER") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+
+  if (scene.state === "BEFORE") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_001_5,
+  sp_chapter2pg5_001_5_act,
+  specialPanelsOpt.sp_chapter2pg5_001_5
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg5_001_6 = document.querySelector(
+  ".sp-chapter2pg5-001-6-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_001_6 = {
+  triggerElement: specialPanels.sp_chapter2pg5_001_6,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_001_6_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+
+  if (scene.state === "DURING") {
+    // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+    theScene.nextElementSibling.classList.add("fadeIn_1s");
+  }
+
+  if (scene.state === "AFTER") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+
+  if (scene.state === "BEFORE") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_001_6,
+  sp_chapter2pg5_001_6_act,
+  specialPanelsOpt.sp_chapter2pg5_001_6
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg5_001_7 = document.querySelector(
+  ".sp-chapter2pg5-001-7-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_001_7 = {
+  triggerElement: specialPanels.sp_chapter2pg5_001_7,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_001_7_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+
+  if (scene.state === "DURING") {
+    // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+    theScene.nextElementSibling.classList.add("fadeIn_1s");
+  }
+
+  if (scene.state === "AFTER") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+
+  if (scene.state === "BEFORE") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_001_7,
+  sp_chapter2pg5_001_7_act,
+  specialPanelsOpt.sp_chapter2pg5_001_7
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg5_001_8 = document.querySelector(
+  ".sp-chapter2pg5-001-8-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_001_8 = {
+  triggerElement: specialPanels.sp_chapter2pg5_001_8,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_001_8_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+
+  if (scene.state === "DURING") {
+    // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+    theScene.nextElementSibling.classList.add("fadeIn_1s");
+  }
+
+  if (scene.state === "AFTER") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+
+  if (scene.state === "BEFORE") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_001_8,
+  sp_chapter2pg5_001_8_act,
+  specialPanelsOpt.sp_chapter2pg5_001_8
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg5_001_9 = document.querySelector(
+  ".sp-chapter2pg5-001-9-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_001_9 = {
+  triggerElement: specialPanels.sp_chapter2pg5_001_9,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_001_9_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+
+  if (scene.state === "DURING") {
+    // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+    theScene.nextElementSibling.classList.add("fadeIn_1s");
+  }
+
+  if (scene.state === "AFTER") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+
+  if (scene.state === "BEFORE") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    });
+  }
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_001_9,
+  sp_chapter2pg5_001_9_act,
+  specialPanelsOpt.sp_chapter2pg5_001_9
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg5_001_10 = document.querySelector(
+  ".sp-chapter2pg5-001-10-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_001_10 = {
+  triggerElement: specialPanels.sp_chapter2pg5_001_10,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_001_10_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+
+  if (scene.state === "DURING") {
+    // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+    theScene.nextElementSibling.classList.add("fadeIn_1s");
+
+    delay(200).then(() => {
+      theScene.nextElementSibling.nextElementSibling.classList.add("fadeIn_1s");
+    });
+  }
+
+  if (scene.state === "AFTER") {
+    // delay(100).then(() => {
+    //   theScene.nextElementSibling.classList.add("fadeOut_1s");
+    //   theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    //   delay(200).then(() => {
+    //     theScene.nextElementSibling.nextElementSibling.classList.add(
+    //       "fadeOut_1s"
+    //     );
+    //     theScene.nextElementSibling.nextElementSibling.classList.remove(
+    //       "fadeIn_1s"
+    //     );
+    //   });
+    // });
+  }
+
+  if (scene.state === "BEFORE") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_1s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+      delay(200).then(() => {
+        theScene.nextElementSibling.nextElementSibling.classList.add(
+          "fadeOut_1s"
+        );
+        theScene.nextElementSibling.nextElementSibling.classList.remove(
+          "fadeIn_1s"
+        );
+      });
+    });
+  }
+
+  if (scene.state === "REVERSE" && scene.progress > 0.9) {
+    // theScene.nextElementSibling.style.opacity = 0;
+    // theScene.nextElementSibling.style.display = "none";
+    // delay(100).then(() => {
+    //   theScene.nextElementSibling.classList.add("fadeOut_1s");
+    //   theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    //   delay(200).then(() => {
+    //     theScene.nextElementSibling.nextElementSibling.classList.add(
+    //       "fadeOut_1s"
+    //     );
+    //     theScene.nextElementSibling.nextElementSibling.classList.remove(
+    //       "fadeIn_1s"
+    //     );
+    //   });
+    // });
+  }
+}
+
+function sp_chapter2pg5_001_10_actStart(scene) {
+  const theScene = this.triggerElement();
+
+  console.log(scene.state);
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_001_10,
+  sp_chapter2pg5_001_10_act,
+  specialPanelsOpt.sp_chapter2pg5_001_10,
+  sp_chapter2pg5_001_10_actStart
+);
+
+/** end panel */
+specialPanels.chapter2pg5_002 = document.querySelector(".sp-chapter2pg5-002");
+specialPanelsOpt.chapter2pg5_002 = { threshold: 0.5 };
+
+function chapter2pg5_002_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+        delay(1000).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_1s", true);
+        });
+        delay(1500).then(() => {
+          e.target.children[2].style.opacity = "1";
+          // e.target.children[2].classList.toggle("fadeIn_1s", true);
+          e.target.children[2].classList.toggle("animate__animated", true);
+          e.target.children[2].classList.toggle("animate__jackInTheBox", true);
+        });
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg5_002,
+  chapter2pg5_002_act,
+  specialPanelsOpt.chapter2pg5_002
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg5_004_3 = document.querySelector(
+  ".sp-chapter2pg5-004-3-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_004_3 = {
+  triggerElement: specialPanels.sp_chapter2pg5_004_3,
+  duration: 100,
+  triggerHook: "0.2",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_004_3_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    45 - scrollProgres * 0.45
+  }%)`;
+
+  console.log(theScene.nextElementSibling);
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_004_3,
+  sp_chapter2pg5_004_3_act,
+  specialPanelsOpt.sp_chapter2pg5_004_3
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg5_004_4 = document.querySelector(
+  ".sp-chapter2pg5-004-4-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg5_004_4 = {
+  triggerElement: specialPanels.sp_chapter2pg5_004_4,
+  duration: 100,
+  triggerHook: "0.2",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg5_004_4_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    45 - scrollProgres * 0.4
+  }%)`;
+
+  console.log(theScene.nextElementSibling);
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter2pg5_004_4,
+  sp_chapter2pg5_004_4_act,
+  specialPanelsOpt.sp_chapter2pg5_004_4
+);
+
+/** end panel */
+/******** end .sp-chapter2pg5 ********/
+
+/********************* start .sp-chapter2pg6 *********************/
+
+specialPanels.chapter2pg6_001 = document.querySelector(".sp-chapter2pg6-001");
+specialPanelsOpt.chapter2pg6_001 = { threshold: 0.1 };
+
+function chapter2pg6_001_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(500).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      delay(1000).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_1s", true);
+      });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg6_001,
+  chapter2pg6_001_act,
+  specialPanelsOpt.chapter2pg6_001
+);
+
+/** end panel */
+
+specialPanels.chapter2pg6_003 = document.querySelector(".sp-chapter2pg6-003");
+specialPanelsOpt.chapter2pg6_003 = { threshold: 0.5 };
+
+function chapter2pg6_003_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+        delay(1000).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_1s", true);
+
+          console.log("asas");
+        });
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg6_003,
+  chapter2pg6_003_act,
+  specialPanelsOpt.chapter2pg6_003
+);
+
+/** end panel */
+
+specialPanels.chapter2pg6_004 = document.querySelector(".sp-chapter2pg6-004");
+specialPanelsOpt.chapter2pg6_004 = { threshold: 0.5 };
+
+function chapter2pg6_004_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      if (e.intersectionRatio < 1) {
+        // element 1
+        delay(1000).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_1s", true);
+        });
+
+        delay(1500).then(() => {
+          e.target.children[2].style.opacity = "1";
+          e.target.children[2].classList.toggle("fadeIn_1s", true);
+        });
+      }
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter2pg6_004,
+  chapter2pg6_004_act,
+  specialPanelsOpt.chapter2pg6_004
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg6_005_2 = document.querySelector(
+  ".sp-chapter2pg6-005-2-forSpace "
+);
+
+specialPanelsOpt.sp_chapter2pg6_005_2 = {
+  triggerElement: specialPanels.sp_chapter2pg6_005_2,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg6_005_2_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateX(${
+    -45 + scrollProgres * 0.45
+  }%)`;
+  theScene.nextElementSibling.nextElementSibling.style.transform = `translateX(${
+    0 + scrollProgres * 0.15
+  }%)`;
+
+  console.log(theScene.nextElementSibling);
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter2pg6_005_2,
+  sp_chapter2pg6_005_2_act,
+  specialPanelsOpt.sp_chapter2pg6_005_2
+);
+
+/** end panel */
+
+specialPanels.sp_chapter2pg6_005_3 = document.querySelector(
+  ".sp-chapter2pg6-005-3-forSpace"
+);
+
+specialPanelsOpt.sp_chapter2pg6_005_3 = {
+  triggerElement: specialPanels.sp_chapter2pg6_005_3,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter2pg6_005_3_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (scene.state === "DURING") {
+    // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+    theScene.nextElementSibling.classList.add("fadeIn_1s");
+
+    if (scene.scrollDirection === "REVERSE") {
+      theScene.nextElementSibling.nextElementSibling.classList.add("fadeIn_1s");
+    } else {
+      delay(200).then(() => {
+        theScene.nextElementSibling.nextElementSibling.classList.add(
+          "fadeIn_1s"
+        );
+      });
+    }
+  }
+
+  if (scene.state === "AFTER") {
+    // delay(100).then(() => {
+    //   theScene.nextElementSibling.classList.add("fadeOut_1s");
+    //   theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    //   delay(200).then(() => {
+    //     theScene.nextElementSibling.nextElementSibling.classList.add(
+    //       "fadeOut_1s"
+    //     );
+    //     theScene.nextElementSibling.nextElementSibling.classList.remove(
+    //       "fadeIn_1s"
+    //     );
+    //   });
+    // });
+  }
+
+  if (scene.state === "BEFORE") {
+    delay(100).then(() => {
+      theScene.nextElementSibling.classList.add("fadeOut_05s");
+      theScene.nextElementSibling.classList.remove("fadeIn_1s");
+      theScene.nextElementSibling.nextElementSibling.classList.add(
+        "fadeOut_05s"
+      );
+      theScene.nextElementSibling.nextElementSibling.classList.remove(
+        "fadeIn_1s"
+      );
+    });
+  }
+
+  if (scene.state === "REVERSE" && scene.progress > 0.9) {
+    // theScene.nextElementSibling.style.opacity = 0;
+    // theScene.nextElementSibling.style.display = "none";
+    // delay(100).then(() => {
+    //   theScene.nextElementSibling.classList.add("fadeOut_1s");
+    //   theScene.nextElementSibling.classList.remove("fadeIn_1s");
+    //   delay(200).then(() => {
+    //     theScene.nextElementSibling.nextElementSibling.classList.add(
+    //       "fadeOut_1s"
+    //     );
+    //     theScene.nextElementSibling.nextElementSibling.classList.remove(
+    //       "fadeIn_1s"
+    //     );
+    //   });
+    // });
+  }
+
+  // theScene.nextElementSibling.style.transform = `translateX(${
+  //   -45 + scrollProgres * 0.45
+  // }%)`;
+
+  console.log(theScene.nextElementSibling);
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter2pg6_005_3,
+  sp_chapter2pg6_005_3_act,
+  specialPanelsOpt.sp_chapter2pg6_005_3
+);
+
+/** end panel */
+
+/******** end .sp-chapter2pg6 ********/
+
+/********************* start .sp-chapter3pg1 *********************/
+
+specialPanels.sp_chapter3pg1_002_3 = document.querySelector(
+  ".sp-chapter3pg1-002-3"
+);
+
+specialPanelsOpt.sp_chapter3pg1_002_3 = {
+  triggerElement: specialPanels.sp_chapter3pg1_002_3,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg1_002_3_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (between(scrollProgres, 0, 50)) {
+    theScene.style.transform = `translateX(${-60 + scrollProgres * 1.2}%)`;
+  }
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg1_002_3,
+  sp_chapter3pg1_002_3_act,
+  specialPanelsOpt.sp_chapter3pg1_002_3
+);
+
+/** end panel */
+
+specialPanels.sp_chapter3pg1_003_3 = document.querySelector(
+  ".sp-chapter3pg1-003-3-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg1_003_3 = {
+  triggerElement: specialPanels.sp_chapter3pg1_003_3,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg1_003_3_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateX(${
+    -35 + scrollProgres * 0.35
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg1_003_3,
+  sp_chapter3pg1_003_3_act,
+  specialPanelsOpt.sp_chapter3pg1_003_3
+);
+
+/** end panel */
+
+specialPanels.sp_chapter3pg1_003_4 = document.querySelector(
+  ".sp-chapter3pg1-003-4-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg1_003_4 = {
+  triggerElement: specialPanels.sp_chapter3pg1_003_4,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg1_003_4_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateX(${
+    35 - scrollProgres * 0.35
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg1_003_4,
+  sp_chapter3pg1_003_4_act,
+  specialPanelsOpt.sp_chapter3pg1_003_4
+);
+
+/** end panel */
+
+specialPanels.sp_chapter3pg1_003_5 = document.querySelector(
+  ".sp-chapter3pg1-003-5-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg1_003_5 = {
+  triggerElement: specialPanels.sp_chapter3pg1_003_5,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg1_003_5_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateX(${
+    -30 + scrollProgres * 0.3
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg1_003_5,
+  sp_chapter3pg1_003_5_act,
+  specialPanelsOpt.sp_chapter3pg1_003_5
+);
+
+/** end panel */
+
+specialPanels.sp_chapter3pg1_003_6 = document.querySelector(
+  ".sp-chapter3pg1-003-6-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg1_003_6 = {
+  triggerElement: specialPanels.sp_chapter3pg1_003_6,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg1_003_6_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateX(${
+    30 - scrollProgres * 0.3
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg1_003_6,
+  sp_chapter3pg1_003_6_act,
+  specialPanelsOpt.sp_chapter3pg1_003_6
+);
+
+/** end panel */
+
+specialPanels.sp_chapter3pg1_003_7 = document.querySelector(
+  ".sp-chapter3pg1-003-7-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg1_003_7 = {
+  triggerElement: specialPanels.sp_chapter3pg1_003_7,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg1_003_7_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    40 - scrollProgres * 0.4
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg1_003_7,
+  sp_chapter3pg1_003_7_act,
+  specialPanelsOpt.sp_chapter3pg1_003_7
+);
+
+/** end panel */
+
+/******** end .sp-chapter3pg1 ********/
+
+/********************* start .sp-chapter3pg2 *********************/
+
+specialPanels.chapter3pg2_002 = document.querySelector(".sp-chapter3pg2-002");
+specialPanelsOpt.chapter3pg2_002 = { threshold: 1 };
+
+function chapter3pg2_002_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(1000).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg2_002,
+  chapter3pg2_002_act,
+  specialPanelsOpt.chapter3pg2_002
+);
+
+/** end panel */
+
+specialPanels.chapter3pg2_005 = document.querySelector(".sp-chapter3pg2-005");
+specialPanelsOpt.chapter3pg2_005 = { threshold: 1 };
+
+function chapter3pg2_005_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(100).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_2s", true);
+        e.target.children[1].classList.toggle("fadeOut_2s", true);
+        delay(2000).then(() => {
+          e.target.children[1].style.opacity = "0";
+        });
+      });
+
+      // delay(1000).then(() => {
+      //   e.target.children[2].style.opacity = "1";
+      //   e.target.children[2].classList.toggle("fadeIn_1s", true);
+      // });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg2_005,
+  chapter3pg2_005_act,
+  specialPanelsOpt.chapter3pg2_005
+);
+
+/** end panel */
+
+/******** end .sp-chapter3pg2 ********/
+
+/********************* start .sp-chapter3pg3 *********************/
+specialPanels.chapter3pg3_001 = document.querySelector(".sp-chapter3pg3-001");
+specialPanelsOpt.chapter3pg3_001 = { threshold: 1 };
+
+function chapter3pg3_001_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(500).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      // delay(1000).then(() => {
+      //   e.target.children[2].style.opacity = "1";
+      //   e.target.children[2].classList.toggle("fadeIn_1s", true);
+      // });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg3_001,
+  chapter3pg3_001_act,
+  specialPanelsOpt.chapter3pg3_001
+);
+/** end panel */
+
+specialPanels.chapter3pg3_004 = document.querySelector(".sp-chapter3pg3-004");
+specialPanelsOpt.chapter3pg3_004 = { threshold: 1 };
+
+function chapter3pg3_004_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(500).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      // delay(1000).then(() => {
+      //   e.target.children[2].style.opacity = "1";
+      //   e.target.children[2].classList.toggle("fadeIn_1s", true);
+      // });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg3_004,
+  chapter3pg3_004_act,
+  specialPanelsOpt.chapter3pg3_004
+);
+/** end panel */
+
+specialPanels.sp_chapter3pg3_002_2 = document.querySelector(
+  ".sp-chapter3pg3-002-2-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg3_002_2 = {
+  triggerElement: specialPanels.sp_chapter3pg3_002_2,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg3_002_2_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.opacity = 0 + scrollProgres * 0.01;
+
+  theScene.nextElementSibling.nextElementSibling.style.transform = `translateX(${
+    50 - scrollProgres * 0.5
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg3_002_2,
+  sp_chapter3pg3_002_2_act,
+  specialPanelsOpt.sp_chapter3pg3_002_2
+);
+
+/** end panel */
+
+specialPanels.sp_chapter3pg3_002_4 = document.querySelector(
+  ".sp-chapter3pg3-002-4-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg3_002_4 = {
+  triggerElement: specialPanels.sp_chapter3pg3_002_4,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg3_002_4_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.nextElementSibling.style.transform = `translateX(${
+    50 - scrollProgres * 0.5
+  }%)`;
+
+  theScene.nextElementSibling.style.transform = `translateX(${
+    -50 + scrollProgres * 0.5
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg3_002_4,
+  sp_chapter3pg3_002_4_act,
+  specialPanelsOpt.sp_chapter3pg3_002_4
+);
+
+/** end panel */
+
+/******** end .sp-chapter3pg3 ********/
+
+/********************* start sp-chapter3pg4 *********************/
+
+specialPanels.sp_chapter3pg4_003_3 = document.querySelector(
+  ".sp-chapter3pg4-003-3-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg4_003_3 = {
+  triggerElement: specialPanels.sp_chapter3pg4_003_3,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg4_003_3_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateX(${
+    -50 + scrollProgres * 0.5
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg4_003_3,
+  sp_chapter3pg4_003_3_act,
+  specialPanelsOpt.sp_chapter3pg4_003_3
+);
+
+/** end panel */
+
+specialPanels.sp_chapter3pg4_003_4 = document.querySelector(
+  ".sp-chapter3pg4-003-4-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg4_003_4 = {
+  triggerElement: specialPanels.sp_chapter3pg4_003_4,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg4_003_4_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateX(${
+    50 - scrollProgres * 0.5
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg4_003_4,
+  sp_chapter3pg4_003_4_act,
+  specialPanelsOpt.sp_chapter3pg4_003_4
+);
+
+/** end panel */
+
+specialPanels.sp_chapter3pg4_003_5 = document.querySelector(
+  ".sp-chapter3pg4-003-5-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg4_003_5 = {
+  triggerElement: specialPanels.sp_chapter3pg4_003_5,
+  duration: 100,
+  triggerHook: "0.5",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg4_003_5_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.transform = `translateY(${
+    40 - scrollProgres * 0.4
+  }%)`;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg4_003_5,
+  sp_chapter3pg4_003_5_act,
+  specialPanelsOpt.sp_chapter3pg4_003_5
+);
+
+/** end panel */
+
+specialPanels.chapter3pg4_001 = document.querySelector(".sp-chapter3pg4-001");
+specialPanelsOpt.chapter3pg4_001 = { threshold: 1 };
+
+function chapter3pg4_001_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(500).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      // delay(1000).then(() => {
+      //   e.target.children[2].style.opacity = "1";
+      //   e.target.children[2].classList.toggle("fadeIn_1s", true);
+      // });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg4_001,
+  chapter3pg4_001_act,
+  specialPanelsOpt.chapter3pg4_001
+);
+/** end panel */
+
+specialPanels.chapter3pg4_002 = document.querySelector(".sp-chapter3pg4-002");
+specialPanelsOpt.chapter3pg4_002 = { threshold: 1 };
+
+function chapter3pg4_002_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(500).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_1s", true);
+      });
+
+      // delay(1000).then(() => {
+      //   e.target.children[2].style.opacity = "1";
+      //   e.target.children[2].classList.toggle("fadeIn_1s", true);
+      // });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg4_002,
+  chapter3pg4_002_act,
+  specialPanelsOpt.chapter3pg4_002
+);
+/** end panel */
+
+specialPanels.chapter3pg4_004 = document.querySelector(".sp-chapter3pg4-004");
+specialPanelsOpt.chapter3pg4_004 = { threshold: 0.5 };
+
+function chapter3pg4_004_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(500).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_1s", true);
+
+        delay(500).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_1s", true);
+        });
+      });
+
+      delay(2000).then(() => {
+        e.target.children[4].style.opacity = "1";
+        e.target.children[4].classList.toggle("fadeIn_1s", true);
+
+        delay(500).then(() => {
+          e.target.children[3].style.opacity = "1";
+          e.target.children[3].classList.toggle("fadeIn_1s", true);
+        });
+      });
+
+      // delay(1000).then(() => {
+      //   e.target.children[2].style.opacity = "1";
+      //   e.target.children[2].classList.toggle("fadeIn_1s", true);
+      // });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg4_004,
+  chapter3pg4_004_act,
+  specialPanelsOpt.chapter3pg4_004
+);
+/** end panel */
+
+specialPanels.chapter3pg4_005 = document.querySelector(".sp-chapter3pg4-005");
+specialPanelsOpt.chapter3pg4_005 = { threshold: 0.5 };
+
+function chapter3pg4_005_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(500).then(() => {
+        e.target.children[2].style.opacity = "1";
+        e.target.children[2].classList.toggle("fadeIn_1s", true);
+
+        delay(500).then(() => {
+          e.target.children[1].style.opacity = "1";
+          e.target.children[1].classList.toggle("fadeIn_1s", true);
+        });
+      });
+
+      delay(2000).then(() => {
+        e.target.children[4].style.opacity = "1";
+        e.target.children[4].classList.toggle("fadeIn_1s", true);
+
+        delay(500).then(() => {
+          e.target.children[3].style.opacity = "1";
+          e.target.children[3].classList.toggle("fadeIn_1s", true);
+        });
+      });
+
+      // delay(1000).then(() => {
+      //   e.target.children[2].style.opacity = "1";
+      //   e.target.children[2].classList.toggle("fadeIn_1s", true);
+      // });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg4_005,
+  chapter3pg4_005_act,
+  specialPanelsOpt.chapter3pg4_005
+);
+/** end panel */
+
+/******** end sp-chapter3pg4 ********/
+
+/********************* start sp-chapter3pg5 *********************/
+
+specialPanels.chapter3pg5_003 = document.querySelector(".sp-chapter3pg5-003");
+specialPanelsOpt.chapter3pg5_003 = { threshold: 0.9 };
+
+function chapter3pg5_003_act(entries) {
+  entries.forEach((e) => {
+    console.log(e.intersectionRatio + " " + e.isIntersecting);
+    if (e.isIntersecting) {
+      // element 1
+      delay(500).then(() => {
+        e.target.children[1].style.opacity = "1";
+        e.target.children[1].classList.toggle("fadeIn_2s", true);
+      });
+
+      // delay(1000).then(() => {
+      //   e.target.children[2].style.opacity = "1";
+      //   e.target.children[2].classList.toggle("fadeIn_1s", true);
+      // });
+    }
+  });
+}
+
+createObserver(
+  specialPanels.chapter3pg5_003,
+  chapter3pg5_003_act,
+  specialPanelsOpt.chapter3pg5_003
+);
+/** end panel */
+
+specialPanels.sp_chapter3pg5_001_2 = document.querySelector(
+  ".sp-chapter3pg5-001-2-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg5_001_2 = {
+  triggerElement: specialPanels.sp_chapter3pg5_001_2,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg5_001_2_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.opacity = 0 + scrollProgres * 0.01;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg5_001_2,
+  sp_chapter3pg5_001_2_act,
+  specialPanelsOpt.sp_chapter3pg5_001_2
+);
+/** end panel */
+
+specialPanels.sp_chapter3pg5_001_3 = document.querySelector(
+  ".sp-chapter3pg5-001-3-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg5_001_3 = {
+  triggerElement: specialPanels.sp_chapter3pg5_001_3,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg5_001_3_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.opacity = 0 + scrollProgres * 0.01;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg5_001_3,
+  sp_chapter3pg5_001_3_act,
+  specialPanelsOpt.sp_chapter3pg5_001_3
+);
+/** end panel */
+
+specialPanels.sp_chapter3pg5_001_4 = document.querySelector(
+  ".sp-chapter3pg5-001-4-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg5_001_4 = {
+  triggerElement: specialPanels.sp_chapter3pg5_001_4,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg5_001_4_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.opacity = 0 + scrollProgres * 0.01;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg5_001_4,
+  sp_chapter3pg5_001_4_act,
+  specialPanelsOpt.sp_chapter3pg5_001_4
+);
+/** end panel */
+
+specialPanels.sp_chapter3pg5_001_5 = document.querySelector(
+  ".sp-chapter3pg5-001-5-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg5_001_5 = {
+  triggerElement: specialPanels.sp_chapter3pg5_001_5,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg5_001_5_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.opacity = 0 + scrollProgres * 0.01;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg5_001_5,
+  sp_chapter3pg5_001_5_act,
+  specialPanelsOpt.sp_chapter3pg5_001_5
+);
+/** end panel */
+
+specialPanels.sp_chapter3pg5_001_6 = document.querySelector(
+  ".sp-chapter3pg5-001-6-forSpace"
+);
+
+specialPanelsOpt.sp_chapter3pg5_001_6 = {
+  triggerElement: specialPanels.sp_chapter3pg5_001_6,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg5_001_6_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  theScene.nextElementSibling.style.opacity = 0 + scrollProgres * 0.01;
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg5_001_6,
+  sp_chapter3pg5_001_6_act,
+  specialPanelsOpt.sp_chapter3pg5_001_6
+);
+/** end panel */
+
+specialPanels.sp_chapter3pg5_002_1 = document.querySelector(
+  ".sp-chapter3pg5-002-1"
+);
+
+specialPanelsOpt.sp_chapter3pg5_002_1 = {
+  triggerElement: specialPanels.sp_chapter3pg5_002_1,
+  duration: 100,
+  triggerHook: "0",
+  offset: "0",
+  reverse: true,
+};
+
+function sp_chapter3pg5_002_1_act(scene) {
+  let scrollProgres = this.progress().toFixed(2) * 100;
+  // // console.log(scrollProgres);
+  const theScene = this.triggerElement();
+
+  if (between(scrollProgres, 0, 30)) {
+    theScene.nextElementSibling.style.opacity = `${
+      scrollProgres * 0.01 * 3.33333333333333
+    } `;
+  }
+
+  // theScene.nextElementSibling.style.opacity = scrollProgres + "%";
+  // theScene.previousElementSibling.style.opacity = 1 - scrollProgres + "%";
+}
+
+createScene(
+  specialPanels.sp_chapter3pg5_002_1,
+  sp_chapter3pg5_002_1_act,
+  specialPanelsOpt.sp_chapter3pg5_002_1
+);
+/** end panel */
+/******** end sp-chapter3pg5 ********/
 
 /********************* start x *********************/
 
