@@ -218,6 +218,20 @@ body {
 
 }
 
+.left-navigation-goHome {
+    /* background-color: rgba(var(--green-color), 1); */
+    background-image: url("/frontend/images/gohome.png");
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+
+}
+
+.left-navigation-goHome:hover {
+    opacity: 0.5 !important;
+}
+
+
 /********************* contents ************************/
 #contents {
     width: 90dvw;

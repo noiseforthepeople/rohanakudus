@@ -466,6 +466,11 @@ contentsAboutClose[1].addEventListener("click", () => {
   aboutAuthorsToggle();
 });
 
+// go home
+leftButtons[3].addEventListener("click", () => {
+  window.location.href = "/";
+});
+
 // pages list
 
 const allPagesList = document.getElementById("contents-allPages");
