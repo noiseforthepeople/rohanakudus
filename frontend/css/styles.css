@@ -228,7 +228,7 @@ body {
 }
 
 .left-navigation-goHome:hover {
-    opacity: 0.5 !important;
+   background-color: #5a5344;
 }
 
 
