@@ -68,7 +68,7 @@ window.addEventListener("keydown", (event) => {
 
   if (event.code == "KeyV") {
     event.preventDefault();
-    allPagesToggle();
+    leftButtons[3].click();
   }
 
   console.log(event.code);
