@@ -65,6 +65,13 @@ window.addEventListener("keydown", (event) => {
     event.preventDefault();
     allPagesToggle();
   }
+
+  if (event.code == "KeyV") {
+    event.preventDefault();
+    allPagesToggle();
+  }
+
+  console.log(event.code);
 });
 
 /********************* imageloader function ************************/
@@ -489,7 +496,7 @@ function allPagesToggle(close) {
     allPagesList.classList.remove("animate__slideInUp");
     allPagesList.classList.add("animate__slideOutDown");
     document.body.style.overflowY = "scroll";
-    bodyScroll.scrollTo(scrollToWhere, { duration: 0 });
+    // bodyScroll.scrollTo(scrollToWhere, { duration: 0 });
     delay(700).then(() => {
       allPagesList.classList.toggle("hide");
     });

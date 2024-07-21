@@ -181,7 +181,7 @@ body {
 }
 
 .left-navigation-buttons > *:hover { 
-    background-color: #000000;
+    background-color: #524a39;
     transform: scale(1.2);
     transition: all 0.2s ease-in-out;
 }
@@ -225,10 +225,6 @@ body {
     background-size: 50%;
     background-repeat: no-repeat;
 
-}
-
-.left-navigation-goHome:hover {
-   background-color: #5a5344;
 }
 
 
@@ -1224,3 +1220,8 @@ table, th, td {
     color: var(--light-text-color);
   }
 
+
+
+  button, optgroup, option, select {
+    appearance: none;
+  }
