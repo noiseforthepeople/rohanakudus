@@ -21,11 +21,11 @@
 
   @font-face {
     font-family: 'open-arrow';
-    src: url('/frontend/fonts/OpenArrow-Regular.eot') format('embedded-opentype'),
-         url('/frontend/fonts/OpenArrow-Regular.woff2') format('woff2'),
-         url('/frontend/fonts/OpenArrow-Regular.woff') format('woff'),
-         url('/frontend/fonts/OpenArrow-Regular.otf') format('opentype'),
-         url('/frontend/fonts/OpenArrow-Regular.ttf') format('truetype');
+    src: url('/./frontend/fonts/OpenArrow-Regular.eot') format('embedded-opentype'),
+         url('/./frontend/fonts/OpenArrow-Regular.woff2') format('woff2'),
+         url('/./frontend/fonts/OpenArrow-Regular.woff') format('woff'),
+         url('/./frontend/fonts/OpenArrow-Regular.otf') format('opentype'),
+         url('/./frontend/fonts/OpenArrow-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     unicode-range: U+2190-21ff;
@@ -192,7 +192,7 @@ body {
 
 .left-navigation-glossarium {
     background-color: rgba(var(--yellow-color), 1);
-    background-image: url("/frontend/images/glosarium.png");
+    background-image: url("/./frontend/images/glosarium.png");
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
@@ -202,7 +202,7 @@ body {
 
 .left-navigation-aboutComic {
     background-color: rgba(var(--red-color), 1);
-    background-image: url("/frontend/images/tentang komik.png");
+    background-image: url("/./frontend/images/tentang komik.png");
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
@@ -211,7 +211,7 @@ body {
 
 .left-navigation-author {
     background-color: rgba(var(--green-color), 1);
-    background-image: url("/frontend/images/tentangilustrator.png");
+    background-image: url("/./frontend/images/tentangilustrator.png");
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
@@ -220,7 +220,7 @@ body {
 
 .left-navigation-goHome {
     /* background-color: rgba(var(--green-color), 1); */
-    background-image: url("/frontend/images/gohome.png");
+    background-image: url("/./frontend/images/gohome.png");
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
@@ -903,7 +903,7 @@ table, th, td {
 .homeTextures-topleft {
     top: 0;
     left: 0;
-    background-image: url("/frontend/images/homepage_textures.png");
+    background-image: url("/./frontend/images/homepage_textures.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -913,7 +913,7 @@ table, th, td {
 .homeTextures-topright {
     right: 0;
     top: 0;
-    background-image: url("/frontend/images/homepage_textures.png");
+    background-image: url("/./frontend/images/homepage_textures.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -923,7 +923,7 @@ table, th, td {
 .homeTextures-bottomright {
     bottom: 0;
     right: 0;
-    background-image: url("/frontend/images/homepage_textures.png");
+    background-image: url("/./frontend/images/homepage_textures.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -934,7 +934,7 @@ table, th, td {
 .homeTextures-bottomleft {
     bottom: 0;
     left: 0;
-    background-image: url("/frontend/images/homepage_textures.png");
+    background-image: url("/./frontend/images/homepage_textures.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -1159,7 +1159,7 @@ table, th, td {
     width: 100dvw;
     height: 100dvh;
     background-color: var(--light-background-color);
-    background-image: url("/frontend/images/loading.webp");
+    background-image: url("/./frontend/images/loading.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 20%;
@@ -1185,7 +1185,7 @@ table, th, td {
     z-index: 9999;
     mix-blend-mode: overlay;
 
-    background-image: url("/frontend/images/textures.gif");
+    background-image: url("/./frontend/images/textures.gif");
     background-repeat: repeat-x repeat-y;
     background-position: center;
     background-size: 100%;
