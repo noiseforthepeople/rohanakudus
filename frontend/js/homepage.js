@@ -23,9 +23,9 @@ document.querySelector(".readComic").addEventListener("click", () => {
 /********************* click contiue ************************/
 document.querySelector(".continueReadComic").addEventListener("click", () => {
   if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
-    this.location.href = "/comic#" + checkLastPage();
+    this.location.href = "comic#" + checkLastPage();
   } else {
-    this.location.href = "/comic.html#" + checkLastPage();
+    this.location.href = "comic.html#" + checkLastPage();
   }
 });
 
