@@ -190,7 +190,7 @@ if (!currentHash) {
 
   saveLastPage();
 
-  fetchPage("/comics/prolog_1.html").then((data) => {
+  fetchPage("comics/prolog_1.html").then((data) => {
     while (data[0]) {
       comicsPage.append(data[0]);
       //console.log(data);
@@ -226,7 +226,7 @@ else {
   showLoading();
   selectButton.children[0].value = window.location.hash.replace("#", "");
 
-  fetchPage("/comics/" + window.location.hash.replace("#", "") + ".html").then(
+  fetchPage("comics/" + window.location.hash.replace("#", "") + ".html").then(
     (data) => {
       while (data[0]) {
         comicsPage.append(data[0]);
@@ -286,7 +286,7 @@ window.addEventListener("hashchange", (e) => {
   saveLastPage();
 
   // sini
-  fetchPage("/comics/" + window.location.hash.replace("#", "") + ".html").then(
+  fetchPage("comics/" + window.location.hash.replace("#", "") + ".html").then(
     (data) => {
       // console.log(data);
       // parse html data
