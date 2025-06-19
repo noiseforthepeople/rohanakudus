@@ -9,10 +9,10 @@ cancelMulaiBaca.addEventListener("click", (e) => {
 });
 
 acceptMulaiBaca.addEventListener("click", (e) => {
-  if (this.location.hostname === "komikroehanakoeddoes.com") {
-    this.location.href = "/comic#";
+  if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+    this.location.href = "comic#";
   } else {
-    this.location.href = "/comic.html#";
+    this.location.href = "comic.html#";
   }
 });
 
@@ -22,7 +22,7 @@ document.querySelector(".readComic").addEventListener("click", () => {
 
 /********************* click contiue ************************/
 document.querySelector(".continueReadComic").addEventListener("click", () => {
-  if (this.location.hostname === "komikroehanakoeddoes.com") {
+  if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
     this.location.href = "/comic#" + checkLastPage();
   } else {
     this.location.href = "/comic.html#" + checkLastPage();
