@@ -475,7 +475,7 @@ contentsAboutClose[1].addEventListener("click", () => {
 
 // go home
 leftButtons[3].addEventListener("click", () => {
-  window.location.href = "";
+  window.location.href = "index.html";
 });
 
 // pages list
